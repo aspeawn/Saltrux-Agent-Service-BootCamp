@@ -4,5 +4,6 @@
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/chap01-literal-and-variable" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/chap02-operator" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/chap04-control-flow" vcs="Git" />
   </component>
 </project>

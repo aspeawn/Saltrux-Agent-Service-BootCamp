@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/01_Java.iml" filepath="$PROJECT_DIR$/.idea/01_Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/chap01-literal-and-variable/chap01-literal-and-variable.iml" filepath="$PROJECT_DIR$/chap01-literal-and-variable/chap01-literal-and-variable.iml" />
       <module fileurl="file://$PROJECT_DIR$/chap02-operator/chap02-operator.iml" filepath="$PROJECT_DIR$/chap02-operator/chap02-operator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap03_method_and_api/chap03_method_and_api.iml" filepath="$PROJECT_DIR$/chap03_method_and_api/chap03_method_and_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap04-control-flow/chap04-control-flow.iml" filepath="$PROJECT_DIR$/chap04-control-flow/chap04-control-flow.iml" />
     </modules>
   </component>
 </project>
