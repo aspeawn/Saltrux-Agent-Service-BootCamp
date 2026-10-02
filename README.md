@@ -4,4 +4,4 @@
 
 Hello World
 
-두번째 수정입니다.
+1주차 JAVA 정리
