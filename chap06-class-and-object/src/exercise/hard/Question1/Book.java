@@ -1,4 +1,4 @@
-package exercise.Question1;
+package src.exercise.hard.Question1;
 
 public class Book {
     private String title;

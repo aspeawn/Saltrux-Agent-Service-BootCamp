@@ -7,6 +7,11 @@
       <module fileurl="file://$PROJECT_DIR$/chap02-operator/chap02-operator.iml" filepath="$PROJECT_DIR$/chap02-operator/chap02-operator.iml" />
       <module fileurl="file://$PROJECT_DIR$/chap03_method_and_api/chap03_method_and_api.iml" filepath="$PROJECT_DIR$/chap03_method_and_api/chap03_method_and_api.iml" />
       <module fileurl="file://$PROJECT_DIR$/chap04-control-flow/chap04-control-flow.iml" filepath="$PROJECT_DIR$/chap04-control-flow/chap04-control-flow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap05-array/chap05-array.iml" filepath="$PROJECT_DIR$/chap05-array/chap05-array.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap06-class-and-object/chap06-class-and-object.iml" filepath="$PROJECT_DIR$/chap06-class-and-object/chap06-class-and-object.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap06-class-and-object/src/chap06-class-and-object2.iml" filepath="$PROJECT_DIR$/chap06-class-and-object/src/chap06-class-and-object2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap07-inheritance/chap07-inheritance.iml" filepath="$PROJECT_DIR$/chap07-inheritance/chap07-inheritance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap08-polymorphism/chap08-polymorphism.iml" filepath="$PROJECT_DIR$/chap08-polymorphism/chap08-polymorphism.iml" />
     </modules>
   </component>
 </project>
