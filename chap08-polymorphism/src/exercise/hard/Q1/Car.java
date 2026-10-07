@@ -4,7 +4,12 @@ public class Car extends Vehicle {
     private String feulType;
 
     public Car(String feulType) {
+        super();
         this.feulType = feulType;
+    }
+
+    public String getFeulType() {
+        return feulType;
     }
 
     @Override

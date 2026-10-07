@@ -13,9 +13,7 @@ public class VehicleFactory {
             return new Vehicle(0);
         }
     }
-
     public static void runVehicle(Vehicle v){
         v.move();
     }
-
 }

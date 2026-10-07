@@ -4,6 +4,7 @@ public class Boat extends Vehicle{
     private String hullType;
 
     public Boat(String hullType) {
+        super(0);
         this.hullType = hullType;
     }
 

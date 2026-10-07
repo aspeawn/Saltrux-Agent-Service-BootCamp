@@ -12,6 +12,9 @@
       <module fileurl="file://$PROJECT_DIR$/chap06-class-and-object/src/chap06-class-and-object2.iml" filepath="$PROJECT_DIR$/chap06-class-and-object/src/chap06-class-and-object2.iml" />
       <module fileurl="file://$PROJECT_DIR$/chap07-inheritance/chap07-inheritance.iml" filepath="$PROJECT_DIR$/chap07-inheritance/chap07-inheritance.iml" />
       <module fileurl="file://$PROJECT_DIR$/chap08-polymorphism/chap08-polymorphism.iml" filepath="$PROJECT_DIR$/chap08-polymorphism/chap08-polymorphism.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap09-API/chap09-API.iml" filepath="$PROJECT_DIR$/chap09-API/chap09-API.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap10-Generics/chap10-Generics.iml" filepath="$PROJECT_DIR$/chap10-Generics/chap10-Generics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap11-collections/chap11-collections.iml" filepath="$PROJECT_DIR$/chap11-collections/chap11-collections.iml" />
     </modules>
   </component>
 </project>

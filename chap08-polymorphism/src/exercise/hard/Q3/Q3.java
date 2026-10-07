@@ -7,6 +7,8 @@ public class Q3 {
         Vehicle v1 = VehicleFactory.create("car");
         Vehicle v2 = VehicleFactory.create("boat");
 
+        System.out.println(((Car) v1).getFeulType());
+
         VehicleFactory.runVehicle(v1);
         VehicleFactory.runVehicle(v2);
     }
