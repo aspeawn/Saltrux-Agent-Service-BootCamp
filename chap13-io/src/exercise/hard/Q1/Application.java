@@ -24,6 +24,7 @@ public class Application {
         {
             // 객체 인스턴스를 member.dat에 저장
             oos.writeObject(mem);
+            System.out.println("member.dat 파일에 객체가 저장되었습니다.");
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -49,6 +50,6 @@ public class Application {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(inputMem);
+        System.out.println("읽어온 객체 : " + inputMem);
     }
 }
