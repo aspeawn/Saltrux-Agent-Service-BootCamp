@@ -17,6 +17,9 @@
       <module fileurl="file://$PROJECT_DIR$/chap11-collections/chap11-collections.iml" filepath="$PROJECT_DIR$/chap11-collections/chap11-collections.iml" />
       <module fileurl="file://$PROJECT_DIR$/chap12-exception/chap12-exception.iml" filepath="$PROJECT_DIR$/chap12-exception/chap12-exception.iml" />
       <module fileurl="file://$PROJECT_DIR$/chap13-io/chap13-io.iml" filepath="$PROJECT_DIR$/chap13-io/chap13-io.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap14-enum/chap14-enum.iml" filepath="$PROJECT_DIR$/chap14-enum/chap14-enum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap15-lambda/chap15-lambda.iml" filepath="$PROJECT_DIR$/chap15-lambda/chap15-lambda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap16-stream/chap16-stream.iml" filepath="$PROJECT_DIR$/chap16-stream/chap16-stream.iml" />
     </modules>
   </component>
 </project>
