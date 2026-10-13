@@ -30,7 +30,7 @@ public class MemberController {
     public void addMember(String name, int age, String phone, MembershipType membershipType) {
         // TODO: 위 요구사항에 맞게 등록 요청 처리 코드를 작성하세요.
         //  Date enrollDate, Date expiryDate, boolean active 추가해야함
-        Member mem = new Member(name, age, phone, membershipType, );
+//        Member mem = new Member(name, age, phone, membershipType, );
         System.out.println("회원이 성공적으로 등록되었습니다.");
     }
 
