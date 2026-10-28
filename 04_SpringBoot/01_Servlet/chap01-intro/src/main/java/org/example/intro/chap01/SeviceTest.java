@@ -1,0 +1,58 @@
+package org.example.intro.chap01;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+
+@WebServlet(value = "/service")
+public class SeviceTest extends HttpServlet {
+
+    /*
+    * GET 요청을 처리하는 메소드 ( Get : /service )
+    * - 데이터를 조회할 때 사용
+    * - 전달할 데이터를 Body(본문)에 담지 않음
+    * - URL의 쿼리문자열에 포함 (예: /service?name=bear)
+    * */
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        // 브라우저 주소창에 입력하는 것 -> GET 요청
+        String message = req.getParameter("message");
+
+        System.out.println("GET-message : "  + message);
+
+        resp.setContentType("text/plain; charset=UTF-8");
+        resp.getWriter().println("GET으로 받은 값 : " + message);
+
+    }
+
+    /*
+    * POST 요청을 처리하는 메소드 ( Post : /service )
+    * - 전달할 데이터가 HTTP 요청 본문(Body)에 담기므로 URL에 노출되지 않는다.
+    * */
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        // body -> 인코딩을 해줘야지 한글을 읽을 수 있음
+        req.setCharacterEncoding("UTF-8");
+
+        String message = req.getParameter("message");
+
+        System.out.println("message = " + message);
+
+        resp.setContentType("text/plain; charset=UTF-8");
+        resp.getWriter().println("POST로 받은 값 : " + message);
+    }
+
+
+    @Override
+    public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+        super.service(req, res);
+    }
+}
