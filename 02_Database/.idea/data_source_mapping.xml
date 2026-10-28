@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/lecture/00_Setup/01_Create_User.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/lecture/00_Setup/02_Create_tables_menudb.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/lecture/00_Setup/03_Create_Tables_EmployDB.sql" value="37b3a3e1-6ea2-4e3a-b164-2f8b87af0cb5" />
+    <file url="file://$PROJECT_DIR$/lecture/01_DQL/01_Select.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/lecture/01_DQL/02_Order_By.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/lecture/01_DQL/03_Where.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/lecture/01_DQL/04_Distinct.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/lecture/01_DQL/05_Limit.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/lecture/01_DQL/06_Built_In_Function.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/lecture/01_DQL/07_Join.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/lecture/01_DQL/08_Grouping.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/lecture/01_DQL/09_Subquery.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/lecture/01_DQL/10_Set_Operators.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/lecture/02_DML/01_DML.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/lecture/03_Transaction/Transaction.sql" value="37b3a3e1-6ea2-4e3a-b164-2f8b87af0cb5" />
+    <file url="file://$PROJECT_DIR$/lecture/04_DDL/01_DDL.sql" value="37b3a3e1-6ea2-4e3a-b164-2f8b87af0cb5" />
+    <file url="file://$PROJECT_DIR$/lecture/04_DDL/02_Constraints.sql" value="37b3a3e1-6ea2-4e3a-b164-2f8b87af0cb5" />
+    <file url="file://$PROJECT_DIR$/lecture/04_DDL/03_VIew.sql" value="37b3a3e1-6ea2-4e3a-b164-2f8b87af0cb5" />
+    <file url="file://$PROJECT_DIR$/lecture/04_DDL/04_INDEX.sql" value="37b3a3e1-6ea2-4e3a-b164-2f8b87af0cb5" />
+    <file url="file://$PROJECT_DIR$/practice/01_DQL/01_Select_Practice.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/practice/01_DQL/02_Where_Practice.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/practice/01_DQL/03_Built_In_Functions_Practice.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/practice/01_DQL/04_Join.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/practice/01_DQL/05.Grouping.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/practice/01_DQL/06.Subquery.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/practice/02_DML/01_DML.sql" value="4bf8614a-a0ff-4d4e-893f-e641645983bc" />
+    <file url="file://$PROJECT_DIR$/practice/04_DDL/01.DDL.sql" value="37b3a3e1-6ea2-4e3a-b164-2f8b87af0cb5" />
+    <file url="file://$PROJECT_DIR$/practice/04_DDL/mmsdb.sql" value="37b3a3e1-6ea2-4e3a-b164-2f8b87af0cb5" />
+  </component>
+</project>
