@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/01_JAVA.iml" filepath="$PROJECT_DIR$/01_JAVA/01_JAVA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/03_JDBC/03_JDBC.iml" filepath="$PROJECT_DIR$/03_JDBC/03_JDBC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02_Database/lecture/05_JDBC/05_JDBC.iml" filepath="$PROJECT_DIR$/02_Database/lecture/05_JDBC/05_JDBC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02_Database/lecture/06_JDBC_Exercise/06_JDBC_Exercise.iml" filepath="$PROJECT_DIR$/02_Database/lecture/06_JDBC_Exercise/06_JDBC_Exercise.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Saltrux-Agent-Service-BootCamp.iml" filepath="$PROJECT_DIR$/.idea/Saltrux-Agent-Service-BootCamp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap01-literal-and-variable/chap01-literal-and-variable.iml" filepath="$PROJECT_DIR$/01_JAVA/chap01-literal-and-variable/chap01-literal-and-variable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap02-operator/chap02-operator.iml" filepath="$PROJECT_DIR$/01_JAVA/chap02-operator/chap02-operator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap03_method_and_api/chap03_method_and_api.iml" filepath="$PROJECT_DIR$/01_JAVA/chap03_method_and_api/chap03_method_and_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap04-control-flow/chap04-control-flow.iml" filepath="$PROJECT_DIR$/01_JAVA/chap04-control-flow/chap04-control-flow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap05-array/chap05-array.iml" filepath="$PROJECT_DIR$/01_JAVA/chap05-array/chap05-array.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap06-class-and-object/chap06-class-and-object.iml" filepath="$PROJECT_DIR$/01_JAVA/chap06-class-and-object/chap06-class-and-object.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap06-class-and-object/src/chap06-class-and-object2.iml" filepath="$PROJECT_DIR$/01_JAVA/chap06-class-and-object/src/chap06-class-and-object2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap07-inheritance/chap07-inheritance.iml" filepath="$PROJECT_DIR$/01_JAVA/chap07-inheritance/chap07-inheritance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap08-polymorphism/chap08-polymorphism.iml" filepath="$PROJECT_DIR$/01_JAVA/chap08-polymorphism/chap08-polymorphism.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap09-API/chap09-API.iml" filepath="$PROJECT_DIR$/01_JAVA/chap09-API/chap09-API.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap10-Generics/chap10-Generics.iml" filepath="$PROJECT_DIR$/01_JAVA/chap10-Generics/chap10-Generics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap11-collections/chap11-collections.iml" filepath="$PROJECT_DIR$/01_JAVA/chap11-collections/chap11-collections.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap12-exception/chap12-exception.iml" filepath="$PROJECT_DIR$/01_JAVA/chap12-exception/chap12-exception.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap13-io/chap13-io.iml" filepath="$PROJECT_DIR$/01_JAVA/chap13-io/chap13-io.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap14-enum/chap14-enum.iml" filepath="$PROJECT_DIR$/01_JAVA/chap14-enum/chap14-enum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap15-lambda/chap15-lambda.iml" filepath="$PROJECT_DIR$/01_JAVA/chap15-lambda/chap15-lambda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap16-stream/chap16-stream.iml" filepath="$PROJECT_DIR$/01_JAVA/chap16-stream/chap16-stream.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap17-thread/chap17-thread.iml" filepath="$PROJECT_DIR$/01_JAVA/chap17-thread/chap17-thread.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_JAVA/chap99-java-application/chap99-java-application.iml" filepath="$PROJECT_DIR$/01_JAVA/chap99-java-application/chap99-java-application.iml" />
+    </modules>
+  </component>
+</project>
