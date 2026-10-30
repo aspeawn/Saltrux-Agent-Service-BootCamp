@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: charp01-request-mapping
