@@ -34,7 +34,7 @@ public class MappingController {
 //        throw new UnsupportedOperationException("TODO 1-1");
 
         model.addAttribute("message", "스터디룸에 오신 것을 환영합니다.");
-        return "result";
+        return "result";        // 논리 뷰 경로를 View Resolver가 완성
     }
 
     /**

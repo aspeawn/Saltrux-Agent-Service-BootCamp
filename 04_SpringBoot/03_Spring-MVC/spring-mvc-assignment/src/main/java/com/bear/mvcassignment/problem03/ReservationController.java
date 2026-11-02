@@ -37,8 +37,9 @@ public class ReservationController {
      */
     @PostMapping("preview")
     public String preview(@ModelAttribute("reservation") ReservationForm reservation, Model model) {
-        String totalprice = String.valueOf(reservation.getPrice() * reservation.getHours());
-        model.addAttribute("message", reservation + totalprice);
+        validateReservation(reservation);
+        int totalPrice = reservation.getPrice() * reservation.getHours();
+        model.addAttribute("totalPrice", totalPrice);
         return "reservations/preview";
     }
 
@@ -58,9 +59,12 @@ public class ReservationController {
      *       이동한 GET 화면을 다시 새로고침하면 문구가 사라져야 한다.
      */
 
-    @PostMapping("/reservations/complete")
+    @PostMapping("complete")
     public String complete(@ModelAttribute("reservation") ReservationForm reservation, RedirectAttributes redirectAttributes) {
-
+        validateReservation(reservation);
+        String message = reservation.getApplicant() + "님의 " + reservation.getRoomName() + " 예약이 완료되었습니다.";
+        redirectAttributes.addFlashAttribute("flashMessage", message);
+        return "redirect:/reservations/complete";
     }
 
     /**
@@ -74,7 +78,17 @@ public class ReservationController {
      *       직접 접근하거나 다시 GET하면 표시할 완료 메시지가 없습니다.가 표시된다.
      *       메시지가 없는 경우의 화면 처리는 제공 템플릿이 담당한다.
      */
+    @GetMapping("complete")
     public String completePage() {
-        throw new UnsupportedOperationException("TODO 3-3");
+        return "reservations/complete";
+    }
+
+    private void validateReservation(ReservationForm reservation) {
+        if (reservation.getHours() < 1 || reservation.getHours() > 8) {
+            throw new IllegalArgumentException("사용 시간은 1시간에서 8시간 사이여야 합니다.");
+        }
+        if (reservation.getPrice() < 0 || reservation.getPrice() > 10000) {
+            throw new IllegalArgumentException("시간당 요금은 0원에서 10000원 사이여야 합니다.");
+        }
     }
 }
