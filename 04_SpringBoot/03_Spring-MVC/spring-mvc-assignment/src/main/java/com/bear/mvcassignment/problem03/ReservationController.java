@@ -43,6 +43,15 @@ public class ReservationController {
         return "reservations/preview";
     }
 
+    @PostMapping("block")
+    public String blockPreview(@ModelAttribute("reservation") ReservationForm reservation, Model model) {
+        validateReservation(reservation);
+        int totalPrice = reservation.getPrice() * reservation.getHours();
+        model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("blockPreview", true);
+        return "reservations/preview";
+    }
+
     /**
      * 문제 3-2. 예약 완료 후 리다이렉트
      *

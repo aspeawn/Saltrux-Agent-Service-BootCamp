@@ -28,14 +28,37 @@
 
 <hr>
 <h2 id="problem03">문제 3. 예약 DTO와 리다이렉트</h2>
-<form action="/reservations/preview" method="post">
+<form id="reservationForm" action="/reservations/preview" method="post">
     <label>신청자: <input name="applicant" value="김학생" required></label><br>
     <label>스터디룸: <input name="roomName" value="A룸" required></label><br>
     <label>사용 시간: <input name="hours" type="number" value="3" min="1" max="8" required></label><br>
     <label>시간당 요금: <input name="price" type="number" value="5000" min="0" max="10000" required></label><br>
     <button type="submit">예약 미리보기</button> <small>ReservationController · POST /reservations/preview</small><br>
-    <button onclick="location.href='/reservations/block'">예약 블록 미리보기</button> <small>ReservationController · POST /reservations/block</small>
+    <button type="submit" formaction="/reservations/block">예약 블록 미리보기</button>
 </form>
+<!--<script>-->
+<!--    document.querySelector("#reservationForm").addEventListener("submit", async (event) => {-->
+<!--        const form = event.currentTarget;-->
+<!--        const target = event.submitter?.formAction || form.action;-->
+<!--        if (!target.endsWith("/reservations/block")) return;-->
+
+<!--        // 일반 폼 제출에는 사용자 정의 헤더를 넣을 수 없어 block 요청은 fetch로 보냅니다.-->
+<!--        event.preventDefault();-->
+<!--        const response = await fetch(target, {-->
+<!--            method: "POST",-->
+<!--            headers: {-->
+<!--                "X-Client-Id": "demo-client",-->
+<!--                "Content-Type": "application/x-www-form-urlencoded"-->
+<!--            },-->
+<!--            body: new URLSearchParams(new FormData(form))-->
+<!--        });-->
+<!--        const html = await response.text();-->
+<!--        if (response.ok) history.pushState({}, "", target);-->
+<!--        document.open();-->
+<!--        document.write(html);-->
+<!--        document.close();-->
+<!--    });-->
+<!--</script>-->
 <a href="/reservations/complete">예약 완료 화면</a> <small>ReservationController · GET /reservations/complete</small>
 
 <hr>
