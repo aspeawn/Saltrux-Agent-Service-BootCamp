@@ -33,7 +33,8 @@
     <label>스터디룸: <input name="roomName" value="A룸" required></label><br>
     <label>사용 시간: <input name="hours" type="number" value="3" min="1" max="8" required></label><br>
     <label>시간당 요금: <input name="price" type="number" value="5000" min="0" max="10000" required></label><br>
-    <button type="submit">예약 미리보기</button> <small>ReservationController · POST /reservations/preview</small>
+    <button type="submit">예약 미리보기</button> <small>ReservationController · POST /reservations/preview</small><br>
+    <button onclick="location.href='/reservations/block'">예약 블록 미리보기</button> <small>ReservationController · POST /reservations/block</small>
 </form>
 <a href="/reservations/complete">예약 완료 화면</a> <small>ReservationController · GET /reservations/complete</small>
 

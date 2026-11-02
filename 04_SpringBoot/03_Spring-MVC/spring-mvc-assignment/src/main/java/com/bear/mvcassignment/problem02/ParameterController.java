@@ -19,7 +19,7 @@ import org.springframework.web.context.request.WebRequest;
  */
 
 @Controller
-@RequestMapping("parameters/*")
+@RequestMapping("/parameters")
 public class ParameterController {
     /**
      * 문제 2-1. void 메서드로 입력 화면 열기
@@ -50,19 +50,19 @@ public class ParameterController {
      *       B룸, 2, 7000 -> totalPrice=14000
      */
 
-    @PostMapping("calculate")
+    @PostMapping("/calculate")
     public String calculate(WebRequest request, Model model) {
 
-        String name = request.getParameter("roomName");
-        System.out.println("name = " + name);
+        String roomName = request.getParameter("roomName");
         int hours = Integer.parseInt(request.getParameter("hours"));
-        System.out.println("hours = " + hours);
         int price = Integer.parseInt(request.getParameter("price"));
-        System.out.println("price = " + price);
-        int totalPrice = hours*price;
-        model.addAttribute("message", name + hours + price + totalPrice);
+        int totalPrice = hours * price;
+        model.addAttribute("roomName", roomName);
+        model.addAttribute("hours", hours);
+        model.addAttribute("price", price);
+        model.addAttribute("totalPrice", totalPrice);
 
-        return "/parameters/calculation";
+        return "parameters/calculation";
     }
 
     /**
@@ -79,10 +79,15 @@ public class ParameterController {
      *       ?keyword=자바&page= -> page=1 (누락뿐 아니라 빈 값도 기본값 사용)
      *       keyword 누락 또는 숫자가 아닌 page=abc -> HTTP 400
      */
-    @PostMapping("search")
-    public String search(@RequestParam String keyword, @RequestParam(defaultValue = "1") int page, @RequestParam(required = false) String tag, Model model) {
+    @GetMapping("/search")
+    public String search(@RequestParam("keyword") String keyword,
+                         @RequestParam(value = "page", defaultValue = "1") int page,
+                         @RequestParam(value = "tag", required = false) String tag,
+                         Model model) {
 
-        model.addAttribute("message", keyword + page + tag);
-        return "/parameters/search";
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("page", page);
+        model.addAttribute("tag", tag);
+        return "parameters/search";
     }
 }
