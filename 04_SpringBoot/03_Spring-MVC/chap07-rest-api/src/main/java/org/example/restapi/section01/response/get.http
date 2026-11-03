@@ -1,0 +1,105 @@
+### 1. get request hello
+GET http://localhost:8080/response/hello
+
+### 2. random (int)
+GET http://localhost:8080/response/random
+
+### 3. message
+GET http://localhost:8080/response/message
+
+### 4. list
+GET http://localhost:8080/response/list
+
+### 5. map
+GET http://localhost:8080/response/map
+
+###
+GET http://localhost:8080/response/image
+
+###
+GET http://localhost:8080/response/entity
+
+###
+GET http://localhost:8080/entity/users
+
+###
+GET http://localhost:8080/entity/users/1
+
+###
+POST http://localhost:8080/entity/users
+
+###
+DELETE http://localhost:8080/entity/users/1
+
+###
+### REST API 연습 문제: 사용자 관리 API 개선
+### 아래 요구사항을 구현하고 각 요청으로 결과를 확인해 보세요.
+### 데이터베이스 없이 컨트롤러의 users 목록을 사용합니다.
+###
+### 1) 사용자 단건 조회
+### - 존재하는 번호: 200 OK, result에 user 포함
+### - 없는 번호: 404 NOT_FOUND, 적절한 message 반환
+GET http://localhost:8080/entity/users/2
+
+### 없는 사용자 조회는 404를 반환해야 합니다.
+GET http://localhost:8080/entity/users/999
+
+### 2) 사용자 등록
+### - JSON 요청 본문을 UserDTO로 변환해 등록합니다.
+### - 번호와 등록 일시는 서버에서 설정합니다.
+### - 201 CREATED와 올바른 Location 헤더를 반환합니다.
+### - 등록 후 목록에서 새 사용자를 확인합니다.
+POST http://localhost:8080/entity/users
+Content-Type: application/json
+
+{
+  "id": "user04",
+  "pwd": "pass04",
+  "name": "연습 사용자"
+}
+
+### 등록 결과 확인
+GET http://localhost:8080/entity/users
+
+### 3) 사용자 전체 수정 (PUT)
+### - 경로의 userNo에 해당하는 사용자를 수정합니다.
+### - 없는 번호는 404 NOT_FOUND를 반환합니다.
+### - 수정할 필드: id, pwd, name
+PUT http://localhost:8080/entity/users/2
+Content-Type: application/json
+
+{
+  "id": "user02-updated",
+  "pwd": "newpass02",
+  "name": "수정된 이름"
+}
+
+### 수정 결과 확인
+GET http://localhost:8080/entity/users/2
+
+### 없는 사용자 수정은 404를 반환해야 합니다.
+PUT http://localhost:8080/entity/users/999
+Content-Type: application/json
+
+{
+  "id": "missing",
+  "pwd": "pass",
+  "name": "없는 사용자"
+}
+
+### 4) 사용자 삭제
+### - 삭제 성공 시 204 NO_CONTENT를 반환합니다.
+### - 없는 번호는 404 NOT_FOUND를 반환합니다.
+DELETE http://localhost:8080/entity/users/3
+
+### 삭제 결과 확인: 목록에 3번 사용자가 없어야 합니다.
+GET http://localhost:8080/entity/users
+
+### 없는 사용자 삭제는 404를 반환해야 합니다.
+DELETE http://localhost:8080/entity/users/999
+
+### 5) 도전 과제
+### - GET /entity/users?name=... 으로 이름 검색을 추가합니다.
+### - 검색어가 없으면 전체 목록을 반환합니다.
+### - 검색은 이름에 검색어가 포함된 사용자를 반환합니다.
+GET http://localhost:8080/entity/users?name=user
