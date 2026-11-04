@@ -1,3 +1,14 @@
 spring:
   application:
     name: chap07-rest-api
+
+# Swagger config
+springdoc:
+  api-docs:
+    path: /v1/api-docs # 커스텀 다러
+  swagger-ui:
+    path: /swagger-ui.l
+    # 스웨거 UI에서 각 API 호출 후 실제 소요된 시간 표시 여부 // API 문서 만들어주고 실제 테스트 랄 더 주고
+    display-request-duration: true
+    # HTTP 메소드 순서로 정렬하겠다.
+    operations-sorter: method
