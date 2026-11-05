@@ -1,0 +1,18 @@
+package org.example.jpaintro.dto;
+
+import lombok.*;
+
+// 요청전용 DTO
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+public class MenuRequestDTO {
+
+    private String menuName;
+    private Integer menuPrice;
+    private Integer categoryCode;
+    private String orderableStatus;
+
+}
