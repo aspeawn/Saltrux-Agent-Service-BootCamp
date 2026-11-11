@@ -35,4 +35,22 @@ public class Comment {
 
     @Column(name = "updated_at", nullable = false, length = 6)
     private LocalDateTime updatedAt;
+
+    public static Comment create(Member author, StudyPost post, String body) {
+        Comment comment = new Comment();
+        comment.author = author;
+        comment.studyPost = post;
+        comment.body = body;
+        comment.createdAt = LocalDateTime.now();
+        comment.updatedAt = comment.createdAt;
+        return comment;
+    }
+
+    public Comment update(String commentBody) {
+        if(commentBody != null) {
+            this.body = commentBody;
+            this.updatedAt = LocalDateTime.now();
+        }
+        return this;
+    }
 }

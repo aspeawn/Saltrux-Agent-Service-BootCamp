@@ -12,7 +12,7 @@ public class CategoryResponseDTO {
     private Long id;
     private String name;
 
-    public CategoryResponseDTO from(Category category){
+    public static CategoryResponseDTO from(Category category){
 
         return new CategoryResponseDTO(category.getId(), category.getName());
     }
