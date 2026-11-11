@@ -5,6 +5,7 @@ import com.bear.studyboard.category.entity.Category;
 import com.bear.studyboard.category.service.CategoryService;
 import com.bear.studyboard.common.dto.ApiResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +23,10 @@ public class CategoryController {
     @GetMapping
     public ResponseEntity<ApiResponse<List<CategoryResponseDTO>>> showCategory() {
 
-        CategoryResponseDTO category = categoryService.showCategory();
+        List<CategoryResponseDTO> categories = categoryService.showCategory();
 
-        return null;
+        return ResponseEntity.ok(
+                ApiResponse.of(HttpStatus.OK, "카테고리 조회 성공", categories)
+        );
     }
 }

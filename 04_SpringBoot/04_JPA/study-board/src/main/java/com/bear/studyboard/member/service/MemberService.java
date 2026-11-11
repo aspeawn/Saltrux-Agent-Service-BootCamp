@@ -114,6 +114,10 @@ public class MemberService {
             throw new BusinessException(ErrorCode.LOGIN_FAILED);
         }
 
+        // 이미 탈퇴한 회원일 경우 예외
+        if(member.getDrawnAt()!=null)
+            throw new BusinessException(ErrorCode.MEMBER_WITHDRAWN);
+
         // 탈퇴 시각 저장
         member.withdraw(LocalDateTime.now());
         return MemberAccountResponseDTO.from(member);

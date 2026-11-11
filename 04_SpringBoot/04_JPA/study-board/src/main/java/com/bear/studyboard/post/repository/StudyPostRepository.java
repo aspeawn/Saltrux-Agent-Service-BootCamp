@@ -1,6 +1,8 @@
 package com.bear.studyboard.post.repository;
 
 
+import com.bear.studyboard.category.entity.Category;
+import com.bear.studyboard.member.entity.Member;
 import com.bear.studyboard.post.dto.PostListItemResponseDTO;
 import com.bear.studyboard.post.entity.StudyPost;
 import org.springframework.data.domain.Page;
@@ -23,4 +25,4 @@ public interface StudyPostRepository extends JpaRepository <StudyPost, Long> {
             join post.author author
             """, countQuery = "select count(post) from StudyPost post")
     Page<PostListItemResponseDTO> findPostPage(Pageable pageRequest);
-    }
+}

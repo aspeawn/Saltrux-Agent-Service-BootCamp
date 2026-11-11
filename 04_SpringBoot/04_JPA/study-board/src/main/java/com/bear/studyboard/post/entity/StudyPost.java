@@ -42,4 +42,34 @@ public class StudyPost {
     @Column(name = "updated_at", nullable = false, length = 6)
     private LocalDateTime updatedAt;
 
+    public static StudyPost create(
+            Member author,
+            Category category,
+            String title,
+            String body,
+            String refUrl
+    ) {
+        StudyPost post = new StudyPost();
+        post.author = author;
+        post.category = category;
+        post.title = title;
+        post.body = body;
+        if(refUrl != null) post.refUrl = refUrl;    // 없으면 생략됨
+        post.createdAt = LocalDateTime.now();
+        post.updatedAt = post.createdAt;
+        return post;
+    }
+
+    public void update(String title, String body, Category category, String refUrl) {
+        if (title != null) this.title = title;
+        if (body != null) this.body = body;
+        if (category != null) this.category = category;
+        if (refUrl != null) this.refUrl = refUrl;
+
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    public void changeRefUrl(String refUrl) {
+        this.refUrl = refUrl;
+    }
 }
