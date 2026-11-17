@@ -1,0 +1,48 @@
+2026-11-17 13:41:00.668 ERROR [] o.s.boot.SpringApplication - Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[FILE] - File property must be set before any triggeringPolicy or rollingPolicy properties
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[FILE] - For more information, please visit https://logback.qos.ch/codes.html#rfa_file_after
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:340)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:290)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:236)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:213)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:180)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:173)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:151)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:133)
+	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:125)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:70)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$0(SpringApplicationRunListeners.java:54)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:111)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:105)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:53)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:344)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1353)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1342)
+	at com.bear.studyboard.StudyBoardApplication.main(StudyBoardApplication.java:10)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[FILE] - File property must be set before any triggeringPolicy or rollingPolicy properties
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[FILE] - For more information, please visit https://logback.qos.ch/codes.html#rfa_file_after
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:288)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:266)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:74)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:53)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:189)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:325)
+	... 19 common frames omitted
+2026-11-17 15:57:05.920 ERROR [3a5a25ba] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:06.559 ERROR [5c5a5bff] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:07.037 ERROR [3c01ba93] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:07.320 ERROR [2a456b37] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:07.722 ERROR [ed3c351d] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:07.931 ERROR [90b0134a] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:08.183 ERROR [7a0b9f54] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:08.384 ERROR [d918eb3b] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:08.657 ERROR [5080389c] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:08.910 ERROR [2bacfe9e] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:09.127 ERROR [f83f97f6] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:09.376 ERROR [218e589e] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 17:31:41.340 ERROR [70c190d1] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 17:31:42.536 ERROR [738cf553] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException

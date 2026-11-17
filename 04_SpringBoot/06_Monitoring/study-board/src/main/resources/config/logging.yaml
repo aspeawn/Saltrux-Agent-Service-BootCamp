@@ -1,0 +1,8 @@
+logging:
+  pattern:
+    # 로그를 작성할 때 식별자를 붙여서 찍는다.
+    correlation: "[%X{traceId:-}]"
+#  level:
+#    org.hibernate.SQL: debug
+#    org.hibernate.orm.jdbc.bind: trace
+#    org.springframework.ai.chat.client.advisor: debug

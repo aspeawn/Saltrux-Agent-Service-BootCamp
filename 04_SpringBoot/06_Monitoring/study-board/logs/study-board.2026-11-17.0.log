@@ -1,0 +1,187 @@
+2026-11-17T12:02:26.341+09:00  INFO 2724 --- [study-board] [main] []c.bear.studyboard.StudyBoardApplication  : Starting StudyBoardApplication using Java 21.0.12.1 with PID 2724 (C:\YK\Saltrux-Agent-Service-BootCamp\04_SpringBoot\study-board\study-board\build\classes\java\main started by Codelab in C:\YK\Saltrux-Agent-Service-BootCamp\04_SpringBoot\study-board\study-board)
+2026-11-17T12:02:26.345+09:00  INFO 2724 --- [study-board] [main] []c.bear.studyboard.StudyBoardApplication  : No active profile set, falling back to 1 default profile: "default"
+2026-11-17T12:02:27.157+09:00  INFO 2724 --- [study-board] [main] [].s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-17T12:02:27.272+09:00  INFO 2724 --- [study-board] [main] [].s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 106 ms. Found 5 JPA repository interfaces.
+2026-11-17T12:02:27.884+09:00  INFO 2724 --- [study-board] [main] []o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-11-17T12:02:27.894+09:00  INFO 2724 --- [study-board] [main] []o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-17T12:02:27.894+09:00  INFO 2724 --- [study-board] [main] []o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-17T12:02:27.917+09:00  INFO 2724 --- [study-board] [main] []b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1524 ms
+2026-11-17T12:02:28.273+09:00  INFO 2724 --- [study-board] [main] []org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-17T12:02:28.314+09:00  INFO 2724 --- [study-board] [main] []org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.13.Final
+2026-11-17T12:02:28.660+09:00  INFO 2724 --- [study-board] [main] []o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-17T12:02:28.684+09:00  INFO 2724 --- [study-board] [main] []com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-17T12:02:28.903+09:00  INFO 2724 --- [study-board] [main] []com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@344cf00f
+2026-11-17T12:02:28.904+09:00  INFO 2724 --- [study-board] [main] []com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-17T12:02:28.968+09:00  INFO 2724 --- [study-board] [main] []org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/study_board]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.46
+	Default catalog/schema: study_board/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-17T12:02:29.724+09:00  INFO 2724 --- [study-board] [main] []org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-17T12:02:29.762+09:00  INFO 2724 --- [study-board] [main] []j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-17T12:02:29.902+09:00  INFO 2724 --- [study-board] [main] []o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-17T12:02:32.183+09:00  INFO 2724 --- [study-board] [main] []o.s.b.a.e.web.EndpointLinksResolver      : Exposing 13 endpoints beneath base path '/actuator'
+2026-11-17T12:02:32.248+09:00  INFO 2724 --- [study-board] [main] []o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-11-17T12:02:32.256+09:00  INFO 2724 --- [study-board] [main] []c.bear.studyboard.StudyBoardApplication  : Started StudyBoardApplication in 6.369 seconds (process running for 6.828)
+2026-11-17T12:02:32.261+09:00  WARN 2724 --- [study-board] [main] []o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-11-17T12:02:32.261+09:00  WARN 2724 --- [study-board] [main] []o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-11-17T12:02:32.627+09:00  INFO 2724 --- [study-board] [RMI TCP Connection(2)-192.168.10.41] []o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-17T12:02:32.627+09:00  INFO 2724 --- [study-board] [RMI TCP Connection(2)-192.168.10.41] []o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-17T12:02:32.629+09:00  INFO 2724 --- [study-board] [RMI TCP Connection(2)-192.168.10.41] []o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-11-17T12:02:39.488+09:00  INFO 2724 --- [study-board] [http-nio-8080-exec-1] [920de6f8]c.b.s.post.service.StudyPostService      : 게시글 목록 조회 - page=0, size20
+2026-11-17T12:02:41.630+09:00  INFO 2724 --- [study-board] [http-nio-8080-exec-2] [7e7ca202]c.b.s.post.service.StudyPostService      : 게시글 목록 조회 - page=0, size20
+2026-11-17T12:04:08.358+09:00  INFO 2724 --- [study-board] [SpringApplicationShutdownHook] []o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-17T12:04:08.361+09:00  INFO 2724 --- [study-board] [tomcat-shutdown] []o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-11-17T12:04:08.367+09:00  INFO 2724 --- [study-board] [SpringApplicationShutdownHook] []j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-17T12:04:08.369+09:00  INFO 2724 --- [study-board] [SpringApplicationShutdownHook] []com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-11-17T12:04:08.374+09:00  INFO 2724 --- [study-board] [SpringApplicationShutdownHook] []com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-11-17 12:04:10.598 INFO  [] c.b.studyboard.StudyBoardApplication - Starting StudyBoardApplication using Java 21.0.12.1 with PID 9204 (C:\YK\Saltrux-Agent-Service-BootCamp\04_SpringBoot\study-board\study-board\build\classes\java\main started by Codelab in C:\YK\Saltrux-Agent-Service-BootCamp\04_SpringBoot\study-board\study-board)
+2026-11-17 12:04:10.600 INFO  [] c.b.studyboard.StudyBoardApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-17 12:04:11.414 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-17 12:04:11.535 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 113 ms. Found 5 JPA repository interfaces.
+2026-11-17 12:04:12.256 INFO  [] o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-17 12:04:12.269 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-17 12:04:12.270 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-17 12:04:12.296 INFO  [] o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1656 ms
+2026-11-17 12:04:12.657 INFO  [] org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-17 12:04:12.698 INFO  [] org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.4.13.Final
+2026-11-17 12:04:13.060 INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-17 12:04:13.087 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-11-17 12:04:13.328 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@178c4480
+2026-11-17 12:04:13.330 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-11-17 12:04:13.408 INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/study_board]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.46
+	Default catalog/schema: study_board/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-17 12:04:14.232 INFO  [] org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-17 12:04:14.279 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-17 12:04:14.403 INFO  [] o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-17 12:04:16.827 INFO  [] o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoints beneath base path '/actuator'
+2026-11-17 12:04:16.896 INFO  [] o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-11-17 12:04:16.905 INFO  [] c.b.studyboard.StudyBoardApplication - Started StudyBoardApplication in 6.74 seconds (process running for 7.201)
+2026-11-17 12:04:16.911 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-11-17 12:04:16.911 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-11-17 12:04:17.400 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-17 12:04:17.401 INFO  [] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-17 12:04:17.403 INFO  [] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-11-17 12:04:24.481 INFO  [e36e2875] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:04:36.637 INFO  [cf9a35a9] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:05:08.979 WARN  [20e3f807] c.b.s.c.error.ApiExceptionHandler - 요청처리실패 - GET /api/posts/99999, code = POST_NOT_FOUND
+2026-11-17 12:11:28.162 INFO  [] o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-17 12:11:28.166 INFO  [] o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-11-17 12:11:28.171 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-17 12:11:28.173 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-11-17 12:11:28.179 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-11-17 12:11:30.322 INFO  [] c.b.studyboard.StudyBoardApplication - Starting StudyBoardApplication using Java 21.0.12.1 with PID 20036 (C:\YK\Saltrux-Agent-Service-BootCamp\04_SpringBoot\study-board\study-board\build\classes\java\main started by Codelab in C:\YK\Saltrux-Agent-Service-BootCamp\04_SpringBoot\study-board\study-board)
+2026-11-17 12:11:30.324 INFO  [] c.b.studyboard.StudyBoardApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-17 12:11:31.127 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-17 12:11:31.242 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 107 ms. Found 5 JPA repository interfaces.
+2026-11-17 12:11:31.858 INFO  [] o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-17 12:11:31.869 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-17 12:11:31.869 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-17 12:11:31.893 INFO  [] o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1528 ms
+2026-11-17 12:11:32.249 INFO  [] org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-17 12:11:32.294 INFO  [] org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.4.13.Final
+2026-11-17 12:11:32.636 INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-17 12:11:32.665 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-11-17 12:11:32.880 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3bdc8975
+2026-11-17 12:11:32.881 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-11-17 12:11:32.945 INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/study_board]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.46
+	Default catalog/schema: study_board/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-17 12:11:33.686 INFO  [] org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-17 12:11:33.724 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-17 12:11:33.818 INFO  [] o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-17 12:11:36.048 INFO  [] o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoints beneath base path '/actuator'
+2026-11-17 12:11:36.114 INFO  [] o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-11-17 12:11:36.122 INFO  [] c.b.studyboard.StudyBoardApplication - Started StudyBoardApplication in 6.203 seconds (process running for 6.664)
+2026-11-17 12:11:36.128 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-11-17 12:11:36.128 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-11-17 12:11:36.656 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-17 12:11:36.656 INFO  [] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-17 12:11:36.658 INFO  [] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-11-17 12:11:53.229 INFO  [0b483e76] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:55.861 WARN  [d1795109] c.b.s.c.error.ApiExceptionHandler - 요청처리실패 - GET /api/posts/99999, code = POST_NOT_FOUND
+2026-11-17 12:11:57.253 INFO  [59252edc] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:57.573 INFO  [56e4c11d] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:57.728 INFO  [98f3380f] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:57.889 INFO  [6c0285ed] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:58.062 INFO  [8e91c651] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:58.199 INFO  [f41eb155] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:58.352 INFO  [935fb3dd] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:58.503 INFO  [2ec40cbe] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:58.626 INFO  [dd41390a] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:58.778 INFO  [dacc5184] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:58.915 INFO  [a1b2b7d3] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:59.067 INFO  [a2bd0849] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:59.204 INFO  [b5865677] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:59.389 INFO  [44fb8e05] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:59.482 INFO  [21e728c3] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:59.638 INFO  [8179e495] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:59.780 INFO  [02d2973a] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:11:59.887 INFO  [3a4a100c] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:00.049 INFO  [f22f714d] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:00.173 INFO  [3682e268] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:00.324 INFO  [a2db7265] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:00.464 INFO  [fade54b9] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:00.607 INFO  [b14e708f] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:00.742 INFO  [24ef8416] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:00.881 INFO  [fb84d7ba] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:01.029 INFO  [0e963c9a] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:01.149 INFO  [b379862e] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:01.298 INFO  [fe41d9b3] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:01.438 INFO  [721e8df8] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:01.596 INFO  [6c2826dc] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:01.710 INFO  [a0217ef3] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:01.929 INFO  [18284f7b] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:02.025 INFO  [f9fb75a3] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:02.245 INFO  [bb944d22] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:02.452 INFO  [14740e45] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:02.562 INFO  [5941340a] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:02.679 INFO  [415341e7] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:02.807 INFO  [3741d749] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:03.055 INFO  [16c15e12] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:03.143 INFO  [5910c9ae] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:03.254 INFO  [6fbc8156] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:03.414 INFO  [a4f8da2e] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:03.532 INFO  [14acf846] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:03.827 INFO  [08ebfa6f] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:04.111 INFO  [0eac8cdb] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:04.263 INFO  [873f7985] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:04.422 INFO  [3544d038] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:04.578 INFO  [89e0020e] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:04.726 INFO  [030d1de6] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:04.879 INFO  [bc97cecd] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:05.011 INFO  [bd3b160b] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:05.157 INFO  [9ac6a2d7] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:05.319 INFO  [30aa3b76] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:12:05.435 INFO  [3f76b420] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:24.994 INFO  [] o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-17 12:16:24.998 INFO  [] o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-11-17 12:16:25.002 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-17 12:16:25.006 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-11-17 12:16:25.010 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

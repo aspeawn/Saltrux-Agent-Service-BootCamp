@@ -1,0 +1,88 @@
+2026-11-17 12:16:27.418 INFO  [] c.b.studyboard.StudyBoardApplication - Starting StudyBoardApplication using Java 21.0.12.1 with PID 13416 (C:\YK\Saltrux-Agent-Service-BootCamp\04_SpringBoot\study-board\study-board\build\classes\java\main started by Codelab in C:\YK\Saltrux-Agent-Service-BootCamp\04_SpringBoot\study-board\study-board)
+2026-11-17 12:16:27.422 INFO  [] c.b.studyboard.StudyBoardApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-17 12:16:28.220 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-17 12:16:28.331 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 105 ms. Found 5 JPA repository interfaces.
+2026-11-17 12:16:29.037 INFO  [] o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-17 12:16:29.049 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-17 12:16:29.049 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-17 12:16:29.075 INFO  [] o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1621 ms
+2026-11-17 12:16:29.427 INFO  [] org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-17 12:16:29.472 INFO  [] org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.4.13.Final
+2026-11-17 12:16:29.837 INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-17 12:16:29.863 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-11-17 12:16:30.086 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@81a56b2
+2026-11-17 12:16:30.087 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-11-17 12:16:30.155 INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/study_board]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.46
+	Default catalog/schema: study_board/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-17 12:16:30.916 INFO  [] org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-17 12:16:30.955 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-17 12:16:31.059 INFO  [] o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-17 12:16:33.417 INFO  [] o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoints beneath base path '/actuator'
+2026-11-17 12:16:33.504 INFO  [] o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-11-17 12:16:33.512 INFO  [] c.b.studyboard.StudyBoardApplication - Started StudyBoardApplication in 6.564 seconds (process running for 7.033)
+2026-11-17 12:16:33.519 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-11-17 12:16:33.519 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-11-17 12:16:33.684 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-17 12:16:33.684 INFO  [] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-17 12:16:33.686 INFO  [] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-11-17 12:16:39.760 INFO  [b51d99d5] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:51.316 INFO  [620b3220] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:51.407 INFO  [37a9328a] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:51.522 INFO  [e5d4e417] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:51.643 INFO  [45d82ea3] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:51.823 INFO  [c05ecf23] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:51.927 INFO  [c0735899] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:52.019 INFO  [74008e6a] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:52.164 INFO  [d03f55f2] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:52.258 INFO  [43c633d5] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:52.470 INFO  [2bed8245] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:52.568 INFO  [b39cb5fd] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:52.660 INFO  [2535d678] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:52.801 INFO  [ef3926ac] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:52.941 INFO  [6a7876a8] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:53.096 INFO  [197785da] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:53.208 INFO  [f9f11cd2] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:53.320 INFO  [65a7b532] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:53.483 INFO  [92c5d3f5] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:53.645 INFO  [722c36b0] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:53.741 INFO  [9f93ca0e] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:53.949 INFO  [1a76248f] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:54.047 INFO  [f9f8d0c8] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:54.161 INFO  [25471de2] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:54.284 INFO  [5a631f9f] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:54.471 INFO  [715d688f] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:54.649 INFO  [c27300b0] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:54.800 INFO  [65aa2981] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:54.903 INFO  [f3b29492] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:55.097 INFO  [2dfcbf43] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:55.189 INFO  [215c91c2] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:55.316 INFO  [d9d73cae] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:55.473 INFO  [2341dde7] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:55.635 INFO  [1c2d53d1] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:55.789 INFO  [80a6354d] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:55.936 INFO  [1fe8e743] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:56.094 INFO  [c0baad17] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:56.214 INFO  [070ed959] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:56.412 INFO  [96e323ee] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:56.553 INFO  [67c270e6] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:56.700 INFO  [d2f5629b] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:56.892 INFO  [6936b6f5] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:57.060 INFO  [36ee82e3] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:57.239 INFO  [611f3b80] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:57.426 INFO  [5d9d3ae3] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:57.583 INFO  [e15250f4] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:57.911 INFO  [3bdfd4b5] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:58.054 INFO  [db2bfc3a] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:58.220 INFO  [ba099b61] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:58.525 INFO  [3d1633d0] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:58.610 INFO  [a4fb30c2] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20

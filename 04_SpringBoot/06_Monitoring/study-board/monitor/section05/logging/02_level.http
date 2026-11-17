@@ -1,0 +1,48 @@
+@apiBaseUrl = http://localhost:8080
+@prometheusUrl = http://localhost:9090
+
+### 로그의 레벨 (중요도)
+### 레벨을 정하면 그 레벨보다 중요한 것만 출력됨
+### TRACE : 가장 자세한 추적정보 -> 평소에는 끄고 사용
+### DEBUG : 개발하거나 문제를 추적할 때 -> 운영에서는 끄고 사용
+### INFO : 정상적으로 일어난 중요한일 -> 운영에서 사용
+### WARN : 실패했지만 예상 범주
+### ERROR : 예상지 못한 오류 (사람확인 필수)
+
+### 1. INFO - 게시글 등록
+POST {{apiBaseUrl}}/api/posts
+Content-Type: application/json
+
+{
+  "authorId": 1,
+  "categoryId": 1,
+  "title": "로그 실습 게시글",
+  "body": "INFO 로그가 찍히는지 확인한다."
+}
+
+### 2. WARN - 없는 게시글 조회
+GET {{apiBaseUrl}}/api/posts/99999
+Accept: application/json
+
+### 3. ERROR - 숫자 자리에 글자를 넣은 요청
+GET {{apiBaseUrl}}/api/posts/abc
+Accept: application/json
+
+### 4. DEBUG - 게시글 목록 조회
+GET {{apiBaseUrl}}/api/posts
+Accept: application/json
+
+### 5. PromQL - 최근 1분 ERROR 로그의 초당 발생률
+### Prometheus가 애플리케이션 메트릭을 수집 중이어야 한다.
+### 질의식: rate(logback_events_total{level="error"}[1m])
+GET {{prometheusUrl}}/api/v1/query?query=rate%28logback_events_total%7Blevel%3D%22error%22%7D%5B1m%5D%29
+Accept: application/json
+
+### 6. PromQL - 최근 5분 동안 발생한 ERROR 로그 개수
+### 질의식: increase(logback_events_total{level="error"}[5m])
+GET {{prometheusUrl}}/api/v1/query?query=increase%28logback_events_total%7Blevel%3D%22error%22%7D%5B5m%5D%29
+Accept: application/json
+
+### 7. PromQL - ERROR 레이블을 포함한 로그 메트릭 이름/레이블 확인
+GET {{prometheusUrl}}/api/v1/series?match%5B%5D=logback_events_total
+Accept: application/json

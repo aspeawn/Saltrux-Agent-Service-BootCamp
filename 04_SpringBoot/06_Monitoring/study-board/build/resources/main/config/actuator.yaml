@@ -17,6 +17,21 @@ management:
     env:
       enabled: true
 
+  # @Timed 설정
+  # 지표 어노테이션 (@Timed, @Counted 같은)을 찾아서 동작시킨다.
+  observations:
+    annotations:
+      enabled: true
+
+  #[http.server.requests] 메트릭에 대해 백분위수를 계산해서 응답받기 위한 설정
+  metrics:
+    distribution:
+      percentiles:
+        "[http.server.requests]": 0.5,0.95
+      expiry:
+        "[http.server.requests]": 30m
+
+
   # health응답에 항목별 상태와 상세정보를 보여주게 설정
   endpoint:
     health:
@@ -25,29 +40,13 @@ management:
       group:
         liveness:
           include: # 재실행 O
-          - ping
-        readiness:
-          include: # 재실행 X
+            - ping
+        readiness: # 재실행 X
+          include:
             - diskSpace
             - db
-
-  observations:
-    annotations:
-          enabled: true
-
-  # [http.server.requests] 매트릭에 대해 백분위 수를 계산해 응답받기 위한 설정
-  metrics:
-    distribution:
-      percentiles:
-        "[http.server.requests]": 0.5, 0.95
-      expiry:
-        "[http.server.requests]": 30m
-#
 info:
   app:
     name: 복습 게시글 어플리케이션
     description: 모니터링 실습용 어플리케이션
     version: 1.0.0
-
-# @Timed 설정
-# 지표 어노테이션 (@Timed, @Counted 같은)을 찾아서 동작시킨다.
