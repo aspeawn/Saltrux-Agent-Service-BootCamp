@@ -1,0 +1,74 @@
+2026-11-17 12:16:58.873 INFO  [e990feb1] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:59.057 INFO  [dec37b69] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:59.364 INFO  [c4bcbdd2] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:59.566 INFO  [57125508] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:16:59.867 INFO  [dd1f5f57] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 12:17:00.046 INFO  [0cb75ce9] c.b.s.post.service.StudyPostService - 게시글 목록 조회 - page=0, size20
+2026-11-17 13:37:21.145 INFO  [] o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-17 13:37:21.149 INFO  [] o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-11-17 13:37:21.155 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-17 13:37:21.158 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-11-17 13:37:21.159 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-11-17 13:41:00.668 ERROR [] o.s.boot.SpringApplication - Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[FILE] - File property must be set before any triggeringPolicy or rollingPolicy properties
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[FILE] - For more information, please visit https://logback.qos.ch/codes.html#rfa_file_after
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:340)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:290)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:236)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:213)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:180)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:173)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:151)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:133)
+	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:125)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:70)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$0(SpringApplicationRunListeners.java:54)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:111)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:105)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:53)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:344)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1353)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1342)
+	at com.bear.studyboard.StudyBoardApplication.main(StudyBoardApplication.java:10)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[FILE] - File property must be set before any triggeringPolicy or rollingPolicy properties
+ERROR in ch.qos.logback.core.rolling.RollingFileAppender[FILE] - For more information, please visit https://logback.qos.ch/codes.html#rfa_file_after
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:288)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:266)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:74)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:53)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:189)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:325)
+	... 19 common frames omitted
+2026-11-17 13:42:11.274 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-11-17 13:42:11.275 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-11-17 13:51:50.166 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-11-17 13:51:50.166 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-11-17 14:08:48.511 WARN  [93e09313] c.b.s.c.error.ApiExceptionHandler - 요청처리실패 - GET /api/posts/99999, code = POST_NOT_FOUND
+2026-11-17 14:13:12.863 WARN  [8b58be0d] c.b.s.c.error.ApiExceptionHandler - 요청처리실패 - POST /api/posts, code = CATEGORY_NOT_FOUND
+2026-11-17 14:13:14.137 WARN  [a12556ae] c.b.s.c.error.ApiExceptionHandler - 요청처리실패 - POST /api/posts, code = CATEGORY_NOT_FOUND
+2026-11-17 14:13:48.314 WARN  [b0235c71] c.b.s.c.error.ApiExceptionHandler - 요청처리실패 - POST /api/posts, code = CATEGORY_NOT_FOUND
+2026-11-17 14:13:49.170 WARN  [a96cfdb0] c.b.s.c.error.ApiExceptionHandler - 요청처리실패 - POST /api/posts, code = CATEGORY_NOT_FOUND
+2026-11-17 14:13:49.395 WARN  [2ab32105] c.b.s.c.error.ApiExceptionHandler - 요청처리실패 - POST /api/posts, code = CATEGORY_NOT_FOUND
+2026-11-17 14:13:49.948 WARN  [1aec2c13] c.b.s.c.error.ApiExceptionHandler - 요청처리실패 - POST /api/posts, code = CATEGORY_NOT_FOUND
+2026-11-17 15:17:16.392 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-11-17 15:17:16.393 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-11-17 15:57:05.920 ERROR [3a5a25ba] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:06.559 ERROR [5c5a5bff] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:07.037 ERROR [3c01ba93] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:07.320 ERROR [2a456b37] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:07.722 ERROR [ed3c351d] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:07.931 ERROR [90b0134a] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:08.183 ERROR [7a0b9f54] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:08.384 ERROR [d918eb3b] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:08.657 ERROR [5080389c] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:08.910 ERROR [2bacfe9e] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:09.127 ERROR [f83f97f6] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 15:57:09.376 ERROR [218e589e] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 16:35:43.730 WARN  [8aa2f178] c.b.s.c.error.ApiExceptionHandler - 요청처리실패 - GET /api/posts/99999, code = POST_NOT_FOUND
+2026-11-17 17:31:41.340 ERROR [70c190d1] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 17:31:42.536 ERROR [738cf553] c.b.s.c.error.ApiExceptionHandler - Unexpected API error type=org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
+2026-11-17 18:06:26.942 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'

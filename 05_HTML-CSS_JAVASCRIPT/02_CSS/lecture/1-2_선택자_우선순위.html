@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 1. 같은 순위면 나중에 쓴 것이 이긴다. */
+        .later-wins { color: blue; }
+        .later-wins { color: green; }
+
+        /* 2. 순위가 다르면 순서와 상관없이 더 구체적인 쪽이 이긴다.
+           아래는 클래스가 먼저 쓰였지만 아이디 선택자가 이긴다. */
+        .lower { background: yellow; }
+        #higher { background: orange; }
+
+        /* 3. 선택자를 겹쳐 쓸수록 구체적이 되어 이긴다.
+           이렇게 누적되는 구체성을 명시도(specificity)라고 한다. */
+        .a { color: gray; }
+        p.a { color: purple; }
+        div p.a { color: crimson; }
+
+        /* 4. !important는 위 모든 규칙을 무시하고 이긴다. 남용하면 안 된다. */
+        .important-test { background: lightgray; }
+        .important-win { background: blue !important; color: white !important; }
+
+        .box {
+            padding: 8px;
+            margin-bottom: 6px;
+            border: 1px solid #999;
+        }
+    </style>
+    <title>선택자 우선순위</title>
+</head>
+
+<body>
+    <h1>선택자 우선순위</h1>
+    <h5>한 태그에 여러 CSS 규칙이 겹칠 때 브라우저는 정해진 순서로 승자를 고른다.
+        "분명히 CSS를 썼는데 적용이 안 된다"는 문제의 대부분이 여기서 나온다.</h5>
+
+    <h3>1. 우선순위 사다리</h3>
+    <pre>
+ (낮음)  태그 선택자        p { }
+   │     클래스 선택자      .box { }
+   │     아이디 선택자      #main { }
+   │     인라인 스타일      style="..."
+ (높음)  !important
+    </pre>
+    <h5>위로 갈수록 강하다. <b>순위가 다르면 작성 순서는 아무 의미가 없다.</b></h5>
+
+    <h3>2. 같은 순위일 때 — 나중에 쓴 것이 이긴다</h3>
+    <pre>.later-wins { color: blue; }   /* 먼저 */
+.later-wins { color: green; }  /* 나중 — 이쪽이 적용된다 */</pre>
+    <p class="later-wins box">초록색으로 보인다.</p>
+
+    <h3>3. 순위가 다를 때 — 구체적인 쪽이 이긴다</h3>
+    <pre>.lower  { background: yellow; }  /* 클래스, 먼저 작성 */
+#higher { background: orange; }  /* 아이디, 나중 작성 */</pre>
+    <p id="higher" class="lower box">아이디가 이겨서 주황색이다.</p>
+
+    <h3>4. 선택자를 겹쳐 쓰면 더 구체적이 된다</h3>
+    <h5>같은 클래스라도 앞에 무언가를 더 붙이면 그만큼 구체적이 되어 이긴다.
+        이것을 명시도(specificity)라고 한다.</h5>
+    <pre>.a       { color: gray; }     /* 클래스 1개 */
+p.a      { color: purple; }   /* 태그 1 + 클래스 1 */
+div p.a  { color: crimson; }  /* 태그 2 + 클래스 1 — 가장 구체적 */</pre>
+    <div>
+        <p class="a box">가장 구체적인 div p.a가 이겨서 진홍색이다.</p>
+    </div>
+
+    <h3>5. 인라인 스타일과 !important</h3>
+    <pre>&lt;p class="important-test" style="background: yellowgreen;"&gt;</pre>
+    <p class="important-test box" style="background: yellowgreen;">
+        인라인 스타일이 클래스를 이겨서 연두색이다.
+    </p>
+
+    <pre>.important-win { background: blue !important; }</pre>
+    <p class="important-win box" style="background: yellowgreen;">
+        !important가 인라인 스타일까지 이겨서 파란색이다.
+    </p>
+    <h5>!important는 모든 걸 무시하고 이기기 때문에 편해 보이지만,
+        한 번 쓰기 시작하면 그걸 이기려고 또 !important를 쓰게 된다.
+        <b>우선순위 문제는 !important가 아니라 선택자를 고쳐서 푸는 것이 원칙이다.</b></h5>
+
+    <!-- [Tip] React 연결 : "CSS를 분명히 썼는데 화면이 안 바뀐다"는
+         프론트엔드에서 가장 흔한 질문이고, 원인은 거의 항상 셋 중 하나다.
+
+         1) 선택자가 대상을 못 잡고 있다      -> 오타이거나 구조가 다르다 (1-1번 파일)
+         2) 다른 규칙이 우선순위에서 이기고 있다 -> 이 파일의 내용
+         3) 라이브러리 기본 스타일에 밀렸다    -> 부트스트랩 같은 것이 이미 스타일을 걸어둔 경우
+
+         확인 방법: 브라우저에서 F12를 눌러 개발자 도구를 열고 해당 요소를 클릭하면
+         적용된 CSS 목록이 보인다. 진 규칙에는 취소선이 그어져 있다.
+         이걸 볼 줄 알면 AI에게 "이 요소에 .btn의 color가 걸려 있는데
+         부모의 #app 규칙에 밀리고 있다"처럼 정확히 지시할 수 있다.
+         증상만 말할 때와 해결 속도가 완전히 달라진다. -->
+</body>
+
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .size-test {
+            border: 2px solid red;
+        }
+
+        #test1 {
+            width: 800px;
+            height: 200px;
+        }
+
+        #test2 {
+            width: 80%;
+            height: 200px;
+        }
+
+        /* box-sizing : width/height를 '무엇까지 포함해서' 계산할지 정한다. */
+        .sizing-test {
+            width: 300px;
+            padding: 20px;
+            border: 5px solid navy;
+            background: #e3f2fd;
+            margin-bottom: 10px;
+        }
+
+        .content-box {
+            box-sizing: content-box;
+            /* 기본값. width는 '내용'만의 크기다. padding과 border는 바깥으로 더 붙는다.
+               따라서 실제 차지하는 폭은 300 + 20*2 + 5*2 = 350px이 된다. */
+        }
+
+        .border-box {
+            box-sizing: border-box;
+            /* width가 padding과 border까지 포함한 값이 된다.
+               내용이 안쪽으로 줄어들 뿐, 실제 차지하는 폭은 정확히 300px이다. */
+        }
+
+        /* width: 100%와 padding을 같이 쓸 때 생기는 대표적인 사고다. */
+        .parent-box {
+            width: 300px;
+            border: 2px dashed #666;
+            background: #fafafa;
+            margin-bottom: 10px;
+        }
+
+        .child-overflow {
+            width: 100%;
+            padding: 20px;
+            background: crimson;
+            color: white;
+            /* 부모 폭 100%(=300px)에 좌우 padding 40px이 더 붙어 340px이 된다. 부모를 뚫고 나간다. */
+        }
+
+        .child-fixed {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            background: seagreen;
+            color: white;
+            /* border-box를 주면 padding이 안쪽으로 계산되어 딱 맞는다. */
+        }
+
+        /* overflow : 내용이 상자보다 클 때 어떻게 처리할지 정한다. */
+        .of-test {
+            width: 200px;
+            height: 70px;
+            border: 1px solid black;
+            background: #fff9c4;
+            margin-bottom: 10px;
+        }
+
+        .of-visible { overflow: visible; }
+        .of-hidden { overflow: hidden; }
+        .of-auto { overflow: auto; }
+
+        .block {
+            width: 150px;
+            height: 130px;
+            border: 1px solid black;
+            color: white;
+            padding-top: 20px;
+            padding-left: 20px;
+        }
+
+        .area1 {
+            background: red;
+        }
+
+        .area2 {
+            background: orange;
+        }
+
+        .area3 {
+            background: yellowgreen;
+        }
+
+        .area4 {
+            background: green;
+        }
+
+        .area5 {
+            background: blue;
+        }
+
+        .block-test1 {
+            display: inline;
+            /* width와 height 속성 적용x, 가로로 배치된다.(padding 크기는 적용 됨) */
+        }
+
+        .block-test2 {
+            display: inline-block;
+            margin-left: -6px;
+            /* 줄일 수 없어 보이는 간격은 -margin으로 어느정도 커버는 가능하다. */
+        }
+
+        .block-test3 {
+            display: block;
+            /* 인라인 요소인 span이 블록 요소가 되어 width/height가 먹고 세로로 쌓인다. */
+        }
+
+        .block-test4 {
+            display: none;
+            /* 태그는 존재하지만 공간(영역)을 차지하지 않는다. 화면에서 완전히 제거된다. */
+        }
+    </style>
+    <title>레이아웃 스타일1</title>
+</head>
+
+<body>
+    <h1>레이아웃 스타일</h1>
+    <h3>width와 height</h3>
+    <p>내용이 차지하고 있는 영역의 크기를 조절할 수 있는 속성</p>
+    <h4>고정 크기</h4>
+    <div id="test1" class="size-test"></div>
+    <h4>가변 크기</h4>
+    <div id="test2" class="size-test"></div>
+    <hr>
+
+    <h3>box-sizing (매우 중요!)</h3>
+    <p>width와 height가 '무엇까지 포함한 크기'인지를 정하는 속성이다.
+        레이아웃이 조금씩 어긋나거나 삐져나오는 문제의 대부분이 여기서 나온다.</p>
+
+    <h4>content-box (기본값)</h4>
+    <pre>width: 300px; padding: 20px; border: 5px solid;  /* 실제 폭 = 300 + 40 + 10 = 350px */</pre>
+    <div class="sizing-test content-box">width는 300px이라고 썼지만 실제로는 350px을 차지한다.</div>
+
+    <h4>border-box</h4>
+    <pre>width: 300px; padding: 20px; border: 5px solid; box-sizing: border-box;  /* 실제 폭 = 300px */</pre>
+    <div class="sizing-test border-box">padding과 border가 안쪽으로 계산되어 정확히 300px이다.</div>
+
+    <h4>가장 흔한 사고 : width 100% + padding</h4>
+    <p>아래 두 상자는 CSS가 딱 한 줄만 다르다. 점선이 부모의 경계다.</p>
+    <pre>width: 100%; padding: 20px;  /* 부모를 뚫고 나간다 */</pre>
+    <div class="parent-box">
+        <div class="child-overflow">부모 밖으로 삐져나온다</div>
+    </div>
+    <pre>width: 100%; padding: 20px; box-sizing: border-box;  /* 딱 맞는다 */</pre>
+    <div class="parent-box">
+        <div class="child-fixed">부모 안에 정확히 들어간다</div>
+    </div>
+
+    <!-- [Tip] React 연결 : "레이아웃이 미묘하게 삐져나온다", "가로 스크롤이 생긴다"는 증상의 1순위 원인이다.
+         그래서 실무 CSS는 거의 항상 파일 맨 위에 아래 한 줄을 깔고 시작한다.
+             * { box-sizing: border-box; }
+         AI가 만들어 준 코드에 이 줄이 있는지 먼저 확인하는 습관을 들이면 좋다.
+         (Tailwind나 각종 CSS 초기화 코드에는 이 설정이 기본으로 들어 있다) -->
+
+    <h3>overflow</h3>
+    <p>내용이 상자 크기보다 클 때 넘치는 부분을 어떻게 처리할지 정하는 속성이다.</p>
+    <pre>overflow: visible;  /* 기본값. 상자 밖으로 그냥 넘쳐 나온다 */</pre>
+    <div class="of-test of-visible">이 글은 상자 높이보다 길어서 아래쪽 경계를 넘어간다. 넘친 글자가 그대로 보이기 때문에 아래 요소와 겹쳐 보일 수 있다.</div>
+
+    <pre>overflow: hidden;  /* 넘친 부분을 잘라낸다 */</pre>
+    <div class="of-test of-hidden">이 글은 상자 높이보다 길어서 아래쪽 경계를 넘어간다. 넘친 부분은 잘려서 보이지 않는다.</div>
+
+    <pre>overflow: auto;  /* 넘칠 때만 스크롤바가 생긴다 */</pre>
+    <div class="of-test of-auto">이 글은 상자 높이보다 길어서 아래쪽 경계를 넘어간다. 스크롤바가 생기므로 내용을 모두 읽을 수 있다.</div>
+
+    <!-- [Tip] React 연결 : 채팅창이나 목록처럼 '영역은 고정, 내용만 스크롤'되는 UI는 전부 overflow: auto로 만든다.
+         반대로 "내용이 안 보여요"의 원인이 overflow: hidden인 경우도 매우 흔하다. -->
+    <hr>
+
+    <h3>화면 배치 방법 변경</h3>
+    <p>블럭 요소와 인라인 요소의 속성을 변경하여 배치 방식을 변경할 수 있다.</p>
+    <h4>블럭 요소를 인라인 요소로 변경</h4>
+    <pre><b>>> display: inline 테스트</b></pre>
+    <pre>인라인 요소로 변경되면서 width와 height 속성이 무시된다.</pre>
+    <!-- div.block.block-test1.area$*5 -->
+    <div class="block block-test1 area1">첫 번째 영역</div>
+    <div class="block block-test1 area2">두 번째 영역</div>
+    <div class="block block-test1 area3">세 번째 영역</div>
+    <div class="block block-test1 area4">네 번째 영역</div>
+    <div class="block block-test1 area5">다섯 번째 영역</div>
+
+    <h4>블럭 요소를 인라인 블럭 요소로 변경</h4>
+    <pre><b>>> display: inline-block 테스트</b></pre>
+    <pre>영역은 인라인요소로 변경되지만 내용은 블럭요소가 되어
+width와 height 속성을 설정할 수 있다.(요소간에 작은 간격이 존재)
+    </pre>
+    <!-- div.block.block-test2.area$*5 -->
+    <div class="block block-test2 area1">첫 번째 영역</div>
+    <div class="block block-test2 area2">두 번째 영역</div>
+    <div class="block block-test2 area3">세 번째 영역</div>
+    <div class="block block-test2 area4">네 번째 영역</div>
+    <div class="block block-test2 area5">다섯 번째 영역</div>
+
+    <h4>인라인 요소를 블럭 요소로 변경</h4>
+    <pre><b>>> display: block 테스트</b></pre>
+    <pre>인라인 요소를 블럭 요소로 변경하면 width와 height값을 지정할 수 있고
+세로로 쌓인다.
+    </pre>
+    <!-- span.block.block-test3.area$*5 -->
+    <span class="block block-test3 area1">첫 번째 영역</span>
+    <span class="block block-test3 area2">두 번째 영역</span>
+    <span class="block block-test3 area3">세 번째 영역</span>
+    <span class="block block-test3 area4">네 번째 영역</span>
+    <span class="block block-test3 area5">다섯 번째 영역</span>
+
+    <h4>display: none으로 감추기</h4>
+    <pre><b>>> display: none 테스트</b></pre>
+    <pre>태그는 그대로 있지만 공간조차 차지하지 않는다. 아래에 상자 5개가 있지만 화면에는 아무것도 보이지 않는다.
+모달창을 여닫을 때 쓰는 방식이다.</pre>
+    <div class="block block-test4 area1">첫 번째 영역</div>
+    <div class="block block-test4 area2">두 번째 영역</div>
+    <div class="block block-test4 area3">세 번째 영역</div>
+    <div class="block block-test4 area4">네 번째 영역</div>
+    <div class="block block-test4 area5">다섯 번째 영역</div>
+    <p>바로 위에 상자 5개가 있지만 display: none이라 이 문단이 곧바로 이어진다.</p>
+
+</body>
+
+</html>

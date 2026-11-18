@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 시연용 상자다. 이미지 대신 CSS로 만든 도형을 쓰므로 별도 파일이 필요 없다. */
+        .box {
+            width: 120px;
+            height: 80px;
+            margin: 30px;
+            background: #1565c0;
+            color: white;
+            text-align: center;
+            line-height: 80px;
+            display: inline-block;
+        }
+
+        /* ---------- 1. transform : 요소를 이동/확대/회전/기울이기 ---------- */
+
+        .t-translate:hover { transform: translate(50px, 20px); }
+        .t-scale:hover { transform: scale(1.5); }
+        .t-rotate:hover { transform: rotate(45deg); }
+        .t-skew:hover { transform: skew(20deg, 10deg); }
+
+        /* 여러 변형을 한 줄에 이어 쓸 수 있다. 왼쪽부터 순서대로 적용된다. */
+        .t-multi:hover { transform: rotate(15deg) scale(1.3); }
+
+        /* transform-origin : 변형의 기준점이다. 기본값은 요소의 정중앙(center)이다. */
+        .t-origin {
+            transform-origin: left bottom;
+        }
+
+        .t-origin:hover { transform: rotate(45deg); }
+
+        /* ---------- 2. transition : 변화를 시간에 걸쳐 보여주기 ---------- */
+
+        /* transition이 없으면 hover 순간 뚝 끊기듯 바뀐다. 위 상자들이 그렇다. */
+        .tr-basic {
+            transition-duration: 0.5s;
+        }
+
+        .tr-basic:hover {
+            width: 200px;
+            background: #c62828;
+        }
+
+        /* transition-property : 어떤 속성만 애니메이션할지 고른다. 생략하면 전부(all)다. */
+        .tr-property {
+            transition-property: background;
+            transition-duration: 0.5s;
+        }
+
+        .tr-property:hover {
+            width: 200px;
+            /* width는 대상이 아니므로 즉시 바뀐다 */
+            background: #c62828;
+            /* background만 부드럽게 바뀐다 */
+        }
+
+        /* transition-timing-function : 변화의 속도 곡선이다. */
+        .tr-linear { transition: 1.5s linear; }
+        .tr-ease { transition: 1.5s ease; }
+        .tr-ease-in-out { transition: 1.5s ease-in-out; }
+
+        .tr-linear:hover,
+        .tr-ease:hover,
+        .tr-ease-in-out:hover {
+            transform: translateX(250px);
+        }
+
+        /* transition-delay : 변화 시작을 미룬다. */
+        .tr-delay {
+            transition-duration: 0.5s;
+            transition-delay: 1s;
+        }
+
+        .tr-delay:hover { background: #c62828; }
+
+        /* 단축 표기 : transition: 속성 지속시간 속도곡선 지연시간; */
+        .tr-shorthand {
+            transition: transform 0.3s ease-out;
+        }
+
+        .tr-shorthand:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .track {
+            border: 1px dashed #999;
+            margin-bottom: 5px;
+        }
+    </style>
+    <title>변형과 트랜지션</title>
+</head>
+
+<body>
+    <h1>변형(transform)과 트랜지션(transition)</h1>
+    <h5>transform은 "어떻게 바뀔지", transition은 "얼마 동안 바뀔지"를 정한다.
+        둘은 거의 항상 짝으로 쓰인다. 아래 상자들에 마우스를 올려서 확인한다.</h5>
+
+    <h3>1. transform — 요소 변형하기</h3>
+    <h5>요소를 이동·확대·회전·기울일 수 있다.
+        중요한 특징은 <b>변형해도 원래 차지하던 자리는 그대로</b>라는 점이다.
+        옆 요소를 밀어내지 않기 때문에 레이아웃을 건드리지 않고 시각 효과만 줄 수 있다.</h5>
+
+    <h4>translate — 이동</h4>
+    <pre>transform: translate(50px, 20px);</pre>
+    <div class="box t-translate">translate</div>
+
+    <h4>scale — 확대·축소</h4>
+    <pre>transform: scale(1.5);</pre>
+    <div class="box t-scale">scale</div>
+
+    <h4>rotate — 회전</h4>
+    <pre>transform: rotate(45deg);</pre>
+    <div class="box t-rotate">rotate</div>
+
+    <h4>skew — 기울이기</h4>
+    <pre>transform: skew(20deg, 10deg);</pre>
+    <div class="box t-skew">skew</div>
+
+    <h4>여러 변형 한 번에</h4>
+    <h5>공백으로 이어 쓰면 왼쪽부터 차례로 적용된다. 순서를 바꾸면 결과가 달라진다.</h5>
+    <pre>transform: rotate(15deg) scale(1.3);</pre>
+    <div class="box t-multi">rotate + scale</div>
+
+    <h4>transform-origin — 변형의 기준점</h4>
+    <h5>기본값은 요소의 정중앙이다. 아래 상자는 왼쪽 아래 모서리를 축으로 회전한다.</h5>
+    <pre>transform-origin: left bottom;</pre>
+    <div class="box t-origin">origin 변경</div>
+
+    <h3>2. transition — 시간에 걸쳐 바꾸기</h3>
+    <h5>위 상자들은 마우스를 올리는 순간 뚝 끊기듯 바뀐다. transition을 주면 그 변화가 부드럽게 이어진다.</h5>
+
+    <h4>transition-duration — 지속 시간</h4>
+    <pre>transition-duration: 0.5s;</pre>
+    <div class="box tr-basic">0.5초에 걸쳐</div>
+
+    <h4>transition-property — 대상 속성 고르기</h4>
+    <h5>아래 상자는 background만 대상으로 지정했다. 너비는 즉시 바뀌고 색만 부드럽게 바뀐다.</h5>
+    <pre>transition-property: background;  transition-duration: 0.5s;</pre>
+    <div class="box tr-property">background만</div>
+
+    <h4>transition-timing-function — 속도 곡선</h4>
+    <h5>같은 1.5초라도 어떻게 가속·감속하는지가 다르다. 세 개를 동시에 비교한다.</h5>
+    <pre>linear(일정) / ease(기본값, 느리게-빠르게-느리게) / ease-in-out</pre>
+    <div class="track"><div class="box tr-linear">linear</div></div>
+    <div class="track"><div class="box tr-ease">ease</div></div>
+    <div class="track"><div class="box tr-ease-in-out">ease-in-out</div></div>
+
+    <h4>transition-delay — 시작 지연</h4>
+    <pre>transition-delay: 1s;</pre>
+    <div class="box tr-delay">1초 후 시작</div>
+
+    <h4>단축 표기</h4>
+    <h5>실무에서는 개별 속성보다 이 한 줄 형태를 압도적으로 많이 쓴다.</h5>
+    <pre>transition: transform 0.3s ease-out;  /* 대상 지속시간 속도곡선 */</pre>
+    <div class="box tr-shorthand">살짝 떠오르기</div>
+    <h5>위 상자처럼 "hover하면 살짝 뜨고 커지는" 효과는 카드·버튼 UI의 가장 흔한 관용구다.</h5>
+
+    <!-- [Tip] React 연결 : AI에게 "버튼에 호버 효과 넣어줘"라고 하면 대개 아래 두 줄이 나온다.
+             transition: all 0.2s ease;
+             &:hover { transform: translateY(-2px); }
+
+         알아둘 점 두 가지.
+         1) transform은 레이아웃을 건드리지 않는다.
+            그래서 위치를 옮길 때 margin/top 대신 transform을 쓰면 옆 요소가 밀리지 않고 성능도 좋다.
+            "hover했더니 옆에 있는 것들이 같이 움직여요" -> margin으로 처리된 코드일 가능성이 높다.
+         2) transition이 안 먹을 때는 대상 속성이 애니메이션 가능한지 본다.
+            display: none <-> block 은 중간값이 없어서 transition이 걸리지 않는다.
+            이 경우 opacity와 visibility로 처리해야 한다. 자주 막히는 지점이다.
+
+         3D 변형(perspective, rotate3d 등)은 이 과정에서 다루지 않는다.
+         React 실무에서 쓸 일이 드물고, 필요해지면 그때 AI에게 물어보는 편이 빠르다. -->
+</body>
+
+</html>

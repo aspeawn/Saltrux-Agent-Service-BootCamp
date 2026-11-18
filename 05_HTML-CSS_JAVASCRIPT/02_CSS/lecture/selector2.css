@@ -1,0 +1,93 @@
+/* 1-1_css선택자.html이 link 태그로 불러다 쓰는 외부 스타일시트다.
+   CSS를 별도 파일로 분리하면 여러 HTML이 같은 스타일을 공유할 수 있다. */
+
+/* ---------- 1. 기본 선택자 ---------- */
+
+/* 전체 선택자 : 문서 안의 모든 태그를 선택한다.
+   실무에서는 주로 아래처럼 초기화 용도로 쓴다. */
+* {
+    box-sizing: border-box;
+}
+
+/* 태그 선택자 : 같은 태그를 전부 선택한다. */
+#basic li {
+    color: blue;
+}
+
+/* 아이디 선택자 : id 속성값이 일치하는 태그 하나를 선택한다. id는 문서에서 유일해야 한다. */
+#only-one {
+    background: yellow;
+    font-weight: bold;
+}
+
+/* 클래스 선택자 : class 속성값이 일치하는 태그를 모두 선택한다. 가장 많이 쓴다. */
+.marked {
+    background: #eee;
+    color: purple;
+}
+
+/* ---------- 2. 속성 선택자 ---------- */
+/* [속성=값] 형태로 속성값에 따라 선택한다. */
+
+[data-type="fruit"] { background: orange; }      /* 값이 정확히 일치 */
+[data-name^="ko"] { color: white; background: navy; }  /* 값이 ko로 시작 */
+[data-name$="_end"] { border: 2px solid red; }   /* 값이 _end로 끝남 */
+[data-name*="mid"] { font-style: italic; }        /* 값에 mid가 포함됨 */
+
+/* ---------- 3. 관계 선택자 ---------- */
+
+/* 자식 선택자(>) : 바로 아래 단계의 자식만 선택한다. */
+#relation > li {
+    border-left: 5px solid green;
+}
+
+/* 후손 선택자(공백) : 몇 단계 아래든 안에 있으면 모두 선택한다. */
+#relation span {
+    background: lightgreen;
+}
+
+/* 인접 형제 선택자(+) : 바로 다음에 오는 형제 하나만 선택한다. */
+#sibling-base + p {
+    background: gold;
+}
+
+/* 일반 형제 선택자(~) : 뒤에 오는 형제를 모두 선택한다. */
+#sibling-base ~ p {
+    border-bottom: 2px dotted #666;
+}
+
+/* ---------- 4. 구조 가상 클래스 ---------- */
+/* 형제들 사이에서 몇 번째인지로 선택한다. 번호는 1부터 센다. */
+
+#structure li:first-child { background: #ffcdd2; }
+#structure li:last-child { background: #c8e6c9; }
+#structure li:nth-child(2n) { color: crimson; }   /* 짝수번째 */
+
+/* :not() 부정 선택자 : 조건에 해당하지 않는 것을 선택한다. */
+#structure li:not(:first-child) { font-size: 0.95em; }
+
+/* ---------- 5. 상태 가상 클래스 ---------- */
+/* 사용자 동작이나 요소의 상태에 따라 스타일이 바뀐다. */
+
+.demo-btn:hover {
+    cursor: pointer;
+    background: cyan;
+}
+
+.demo-btn:active {
+    background: yellow;
+}
+
+#userId:focus {
+    background: #e8f5e9;
+    outline: 2px solid green;
+}
+
+input[type=checkbox]:checked + label {
+    color: red;
+    font-weight: bold;
+}
+
+input:disabled {
+    background: #ddd;
+}

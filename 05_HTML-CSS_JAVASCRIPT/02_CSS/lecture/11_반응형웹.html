@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형 웹 디자인</title>
+    <style>
+        /* 기본 스타일 (모바일 우선) */
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        .box {
+            background-color: #f0f0f0;
+            border: 1px solid #333;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* 유동형 이미지 */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* 유동형 그리드 예제 */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .grid-item {
+            background: #e0e0e0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* 미디어 쿼리 - 태블릿 */
+        @media (min-width: 768px) {
+            .container {
+                width: 750px;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* 미디어 쿼리 - 데스크톱 */
+        @media (min-width: 1024px) {
+            .container {
+                width: 970px;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        /* 반응형 네비게이션 */
+        .nav {
+            background: #333;
+            padding: 1rem;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: none; /* 모바일에서는 기본적으로 숨김 */
+        }
+
+        .nav-list.active {
+            display: block;
+        }
+
+        .nav-item {
+            padding: 10px;
+            color: white;
+        }
+
+        .nav-toggle {
+            color: white;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: block; /* 모바일에서만 보임 */
+        }
+
+        @media (min-width: 768px) {
+            .nav-list {
+                display: flex; /* 태블릿/데스크톱에서는 항상 표시 */
+                justify-content: space-around;
+            }
+
+            .nav-toggle {
+                display: none; /* 태블릿/데스크톱에서는 숨김 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>반응형 웹 디자인</h1>
+
+        <div class="box">
+            <h2>1. 반응형 웹의 핵심 구성 요소</h2>
+            <h3>1-1. 뷰포트(Viewport)</h3>
+            <pre>
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+            </pre>
+            <p>- 모바일 기기에서 웹페이지가 표시되는 영역을 설정</p>
+            <p>- 기기의 실제 화면 크기에 맞춰 컨텐츠를 표시</p>
+            
+            <h3>1-2. 미디어 쿼리(Media Queries)</h3>
+            <p>화면 크기에 따라 다른 스타일을 적용할 수 있게 해주는 CSS3 기능</p>
+            <pre>
+/* 모바일 우선 설계 */
+/* 기본 스타일 (모바일) */
+.container { width: 100%; }
+
+/* 태블릿 */
+@media (min-width: 768px) {
+    .container { width: 750px; }
+}
+
+/* 데스크톱 */
+@media (min-width: 1024px) {
+    .container { width: 970px; }
+}
+            </pre>
+        </div>
+
+        <div class="box">
+            <h2>2. 반응형 레이아웃 예제</h2>
+            <h3>2-1. 유동형 그리드</h3>
+            <div class="grid">
+                <div class="grid-item">항목 1</div>
+                <div class="grid-item">항목 2</div>
+                <div class="grid-item">항목 3</div>
+            </div>
+
+            <h3>2-2. 반응형 네비게이션</h3>
+            <nav class="nav">
+                <button class="nav-toggle">☰</button>
+                <ul class="nav-list">
+                    <li class="nav-item">홈</li>
+                    <li class="nav-item">소개</li>
+                    <li class="nav-item">서비스</li>
+                    <li class="nav-item">연락처</li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="box">
+            <h2>3. 반응형 디자인 패턴</h2>
+            <ul>
+                <li>Mostly Fluid: 작은 화면에서는 수직으로 쌓이고, 큰 화면에서는 격자로 배치</li>
+                <li>Column Drop: 화면이 작아지면서 컬럼이 순차적으로 아래로 떨어짐</li>
+                <li>Layout Shifter: 화면 크기에 따라 레이아웃이 완전히 다르게 변경</li>
+                <li>Tiny Tweaks: 작은 변화만 주는 단순한 패턴</li>
+                <li>Off Canvas: 작은 화면에서 콘텐츠를 숨겼다가 필요할 때 보여줌</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 반응형 네비게이션 토글 기능
+        document.querySelector('.nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-list').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

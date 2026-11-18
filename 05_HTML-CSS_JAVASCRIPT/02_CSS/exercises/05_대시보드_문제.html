@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 아래 기본 스타일은 완성되어 있다. 수정하지 않는다. */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 16px;
+            font-family: "Malgun Gothic", sans-serif;
+            background: #f5f5f5;
+        }
+
+        .head { background: #1565c0; color: white; }
+        .side { background: #6a1b9a; color: white; }
+        .main { background: white; }
+        .foot { background: #455a64; color: white; }
+
+        .head, .side, .main, .foot {
+            padding: 16px;
+        }
+
+        .card {
+            background: #e3f2fd;
+            border: 1px solid #90caf9;
+            padding: 16px;
+            text-align: center;
+        }
+
+        /* ============================================================
+           여기부터 작성한다. HTML은 수정하지 않는다.
+           ============================================================ */
+
+        /* TODO 1. 대시보드 전체 틀 (.dashboard)
+           - grid로 만든다.
+           - 열 구조 : 왼쪽 사이드바 180px 고정, 오른쪽 본문은 나머지 전부
+           - 행 구조 : 헤더 60px, 본문은 나머지 전부, 푸터 50px
+           - 칸 사이 간격 12px
+           - 전체 높이 500px
+
+           힌트: 나머지를 전부 차지하게 하는 단위가 있다. */
+
+
+        /* TODO 2. 영역 이름 붙이기 (.dashboard)
+           - grid-template-areas로 아래 배치를 만든다.
+
+               header   header
+               sidebar  main
+               footer   footer
+
+           - 그리고 각 요소에 grid-area로 이름을 지정한다.
+             .head -> header
+             .side -> sidebar
+             .main -> main
+             .foot -> footer */
+
+
+        /* TODO 3. 카드 목록 (.cards)
+           - .main 안의 카드 6개를 격자로 배치한다.
+           - 화면 폭에 따라 열 개수가 저절로 바뀌게 한다.
+             · 칸 하나의 최소 너비는 140px
+             · 들어갈 수 있는 만큼 열을 만든다
+             · 남는 공간은 칸들이 나눠 갖는다
+           - 칸 사이 간격 12px
+           - 위쪽 여백 16px
+
+           힌트: repeat()의 첫 인자에 숫자 말고 다른 값을 넣을 수 있다.
+                 두 번째 인자에는 최소/최대를 지정하는 함수를 쓴다. */
+
+
+        /* TODO 4. 모바일 대응 (미디어 쿼리)
+           - 화면 폭이 700px 이하일 때 아래처럼 바뀌게 한다.
+             · 열 구조를 한 줄로 바꾼다. (사이드바가 본문 위로 올라온다)
+             · 행 구조는 헤더 60px / 사이드바 auto / 본문 auto / 푸터 50px
+             · 영역 배치를 세로로 쌓는다.
+                 header
+                 sidebar
+                 main
+                 footer
+             · 전체 높이 고정을 풀어준다. (힌트: height를 auto로)
+
+           브라우저 폭을 줄여가며 확인한다. */
+    </style>
+    <title>[문제] 대시보드 레이아웃</title>
+</head>
+
+<!--
+================================================================================
+ 05. 대시보드 레이아웃 - grid와 반응형
+
+  [목표]
+    - grid-template-columns / rows로 격자 구조를 만들 수 있다.
+    - fr 단위로 남는 공간을 비율대로 나눌 수 있다.
+    - grid-template-areas로 영역에 이름을 붙여 배치할 수 있다.
+    - repeat(auto-fit, minmax())로 반응형 카드 목록을 만들 수 있다.
+    - 미디어 쿼리로 화면 크기에 따라 레이아웃을 바꿀 수 있다.
+
+  [유형]: 구현형
+
+  ────────────────────────────────────────────────────────────────────────────
+  [먼저 할 것] Grid Garden 게임 (https://cssgridgarden.com/#ko)
+
+  28단계이고 15~20분이면 끝난다. 속성은 게임으로 익히고,
+  이 문제에서는 "실제 레이아웃을 조립하는" 연습을 한다.
+  ────────────────────────────────────────────────────────────────────────────
+
+  [완성 예시]
+
+   [넓은 화면]                          [좁은 화면 - 700px 이하]
+   ┌──────────────────────┐            ┌──────────────┐
+   │      header          │            │   header     │
+   ├────────┬─────────────┤            ├──────────────┤
+   │        │  ┌──┬──┬──┐ │            │   sidebar    │
+   │ sidebar│  │카│카│카│ │            ├──────────────┤
+   │ (180px)│  ├──┼──┼──┤ │            │   main       │
+   │        │  │카│카│카│ │            │   ┌──┬──┐    │
+   │        │  └──┴──┴──┘ │            │   │카│카│    │
+   ├────────┴─────────────┤            ├──────────────┤
+   │      footer          │            │   footer     │
+   └──────────────────────┘            └──────────────┘
+
+  [flex와 grid, 언제 무엇을 쓰나]
+    04번에서는 flex로 내비바를 만들었고 여기서는 grid를 쓴다. 기준은 이렇다.
+      - 한 줄로 늘어놓는다        -> flex  (메뉴, 버튼 묶음, 아이콘+글자)
+      - 가로세로 격자를 만든다     -> grid  (페이지 전체 골격, 카드 목록)
+    실무에서는 grid로 큰 틀을 잡고 각 칸 안을 flex로 채우는 조합이 가장 흔하다.
+
+  [AI 활용 가이드]
+    [먼저 스스로 생각해볼 것들]
+      - grid-template-areas는 적어놓은 글자 모양이 곧 화면 배치다.
+        코드를 격자처럼 줄맞춰 쓰면 눈으로 바로 확인된다.
+      - TODO 3의 auto-fit은 처음 보면 어렵다. 값을 바꿔가며 창 폭을 조절해본다.
+
+    [AI에게 물어보면 좋은 것]
+      - "auto-fit이랑 auto-fill은 뭐가 달라?"
+      - "minmax(140px, 1fr)에서 1fr은 언제 적용되는 거야?"
+      - "미디어 쿼리에서 max-width랑 min-width 중 뭘 기준으로 잡는 게 좋아?"
+
+  [완성 조건]
+    1. 넓은 화면에서 헤더/푸터가 가로 전체를 덮고, 사이드바와 본문이 나란히 있다.
+    2. 사이드바는 180px을 유지한다.
+    3. 카드가 창 폭에 따라 열 개수가 저절로 바뀐다. (넓으면 3~4개, 좁으면 1~2개)
+    4. 창 폭을 700px 이하로 줄이면 네 영역이 세로로 쌓인다.
+================================================================================
+-->
+
+<body>
+    <div class="dashboard">
+        <header class="head">header</header>
+
+        <aside class="side">sidebar (180px)</aside>
+
+        <main class="main">
+            <h3>main</h3>
+            <div class="cards">
+                <div class="card">카드 1</div>
+                <div class="card">카드 2</div>
+                <div class="card">카드 3</div>
+                <div class="card">카드 4</div>
+                <div class="card">카드 5</div>
+                <div class="card">카드 6</div>
+            </div>
+        </main>
+
+        <footer class="foot">footer</footer>
+    </div>
+</body>
+
+</html>

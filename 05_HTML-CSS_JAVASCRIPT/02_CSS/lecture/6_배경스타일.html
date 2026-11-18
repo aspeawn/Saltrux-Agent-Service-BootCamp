@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: #f5f5f5;
+        }
+
+        /* 1. 배경색 표기법 5가지. 모두 같은 계열의 색이며 표기 방법만 다르다. */
+        .color-box {
+            display: inline-block;
+            width: 150px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            color: white;
+            margin-right: 5px;
+        }
+
+        .bc-name { background-color: royalblue; }
+        .bc-hex { background-color: #4169e1; }
+        .bc-rgb { background-color: rgb(65, 105, 225); }
+
+        /* 투명도는 0에 가까울수록 투명, 1에 가까울수록 불투명하다. */
+        .bc-rgba { background-color: rgba(65, 105, 225, 0.4); color: black; }
+
+        /* hue: 색상(0~360, 120은 초록, 240은 파랑), saturation: 채도, lightness: 명도 */
+        .bc-hsl { background-color: hsl(225, 73%, 57%); }
+
+        /* 2. background-clip : 배경을 어디까지 칠할지 정한다. 기본값은 border-box다. */
+        .clip-test {
+            background-color: white;
+            padding: 20px;
+            width: 200px;
+            border: 8px dashed black;
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 10px;
+        }
+
+        .clip-border { background-clip: border-box; }
+        .clip-padding { background-clip: padding-box; }
+        .clip-content { background-clip: content-box; }
+
+        /* 3. background-repeat / size / position */
+        .bg-img {
+            width: 300px;
+            height: 200px;
+            border: 2px solid red;
+            display: inline-block;
+            vertical-align: top;
+            margin: 0 10px 10px 0;
+            background-image: url('sample/image/flower1.jpg');
+        }
+
+        .rp-repeat { background-repeat: repeat; background-size: 80px; }
+        .rp-repeat-x { background-repeat: repeat-x; background-size: 80px; }
+        .rp-no { background-repeat: no-repeat; background-size: 80px; }
+
+        .sz-auto { background-repeat: no-repeat; background-size: auto; }
+        .sz-cover { background-repeat: no-repeat; background-size: cover; }
+        .sz-contain { background-repeat: no-repeat; background-size: contain; }
+
+        .ps-center {
+            background-repeat: no-repeat;
+            background-size: 80px;
+            background-position: center;
+        }
+
+        .ps-right-bottom {
+            background-repeat: no-repeat;
+            background-size: 80px;
+            background-position: right bottom;
+        }
+
+        .ps-px {
+            background-repeat: no-repeat;
+            background-size: 80px;
+            background-position: 30px 50px;
+        }
+
+        /* 4. background-attachment : fixed면 배경이 화면에 고정되어 스크롤해도 움직이지 않는다. */
+        .attach-fixed {
+            height: 300px;
+            overflow: auto;
+            border: 2px solid #1565c0;
+            background-image: url('sample/image/flower1.jpg');
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .attach-fixed p {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 10px;
+        }
+    </style>
+    <title>배경 스타일</title>
+</head>
+
+<body>
+    <h1>배경색과 배경 이미지</h1>
+
+    <h3>1. background-color 속성 : 요소의 배경색을 지정한다.</h3>
+    <pre> 선택자 { background-color : 색상명 | 16진수 | rgb() | rgba() | hsl(); }의 형식으로 표현한다.</pre>
+    <h5>아래 5개는 rgba의 투명도를 빼면 모두 같은 색이다. 표기법만 다르다.</h5>
+    <div class="color-box bc-name">royalblue</div>
+    <div class="color-box bc-hex">#4169e1</div>
+    <div class="color-box bc-rgb">rgb()</div>
+    <div class="color-box bc-rgba">rgba() 0.4</div>
+    <div class="color-box bc-hsl">hsl()</div>
+    <h5>div의 배경색은 부모에게서 상속되지 않는다. 필요한 요소마다 따로 지정해야 한다.</h5>
+
+    <hr>
+
+    <h3>2. background-clip 속성 : 배경을 어디까지 칠할지 정한다.</h3>
+    <pre> 선택자 { background-clip : border-box | padding-box | content-box; }의 형식으로 표현한다.</pre>
+    <h5>세 상자 모두 흰 배경에 8px 점선 테두리와 20px 안쪽 여백을 갖고 있다.
+        점선 사이의 틈으로 흰 배경이 어디까지 칠해졌는지 확인한다.</h5>
+    <div class="clip-test clip-border">border-box (기본값) : 테두리 아래까지 칠한다</div>
+    <div class="clip-test clip-padding">padding-box : 테두리 안쪽까지만 칠한다</div>
+    <div class="clip-test clip-content">content-box : 글자 영역까지만 칠한다</div>
+
+    <hr>
+
+    <h3>3. background-image 속성 : 요소의 배경에 이미지를 넣는다.</h3>
+    <pre> 선택자 { background-image : url("이미지경로"); }의 형식으로 표현한다.</pre>
+
+    <h4>background-repeat — 반복 여부</h4>
+    <h5>기본값은 repeat이다. 이미지가 요소보다 작으면 가로세로로 계속 반복된다.</h5>
+    <div class="bg-img rp-repeat" title="repeat"></div>
+    <div class="bg-img rp-repeat-x" title="repeat-x"></div>
+    <div class="bg-img rp-no" title="no-repeat"></div>
+    <h5>순서대로 repeat(기본값) / repeat-x(가로만) / no-repeat(반복 안 함)이다.</h5>
+
+    <h4>background-size — 크기</h4>
+    <div class="bg-img sz-auto" title="auto"></div>
+    <div class="bg-img sz-cover" title="cover"></div>
+    <div class="bg-img sz-contain" title="contain"></div>
+    <h5>auto는 원래 크기 그대로, <b>cover는 비율을 유지한 채 요소를 꽉 채운다(잘릴 수 있다)</b>,
+        contain은 비율을 유지한 채 이미지 전체가 보이도록 맞춘다(빈 곳이 생길 수 있다).
+        실무에서 배경 사진을 넣을 때는 거의 항상 cover를 쓴다.</h5>
+
+    <h4>background-position — 위치</h4>
+    <div class="bg-img ps-center" title="center"></div>
+    <div class="bg-img ps-right-bottom" title="right bottom"></div>
+    <div class="bg-img ps-px" title="30px 50px"></div>
+    <h5>순서대로 center / right bottom / 30px 50px 이다.
+        키워드, 백분율, px 단위를 모두 쓸 수 있다.</h5>
+
+    <hr>
+
+    <h3>4. background-attachment 속성 : 스크롤할 때 배경이 따라 움직일지 정한다.</h3>
+    <pre> 선택자 { background-attachment : scroll | fixed; }의 형식으로 표현한다.</pre>
+    <h5>기본값은 scroll로, 내용과 함께 배경도 움직인다.
+        아래 상자는 fixed라서 <b>안쪽 글자를 스크롤해도 배경 사진은 제자리에 고정된다.</b></h5>
+    <div class="attach-fixed">
+        <p>스크롤을 내려 보자.</p>
+        <p>글자만 올라가고</p>
+        <p>배경 사진은</p>
+        <p>움직이지 않는다.</p>
+        <p>이것이 fixed다.</p>
+        <p>웹사이트 첫 화면에서</p>
+        <p>배경만 멈춰 있는 효과가</p>
+        <p>이 속성으로 만들어진다.</p>
+    </div>
+
+    <!-- [Tip] React 연결 : 배경 이미지를 넣는 방법은 두 가지다.
+         1) CSS의 background-image  : 장식용 배경일 때 쓴다. 크기 조절(cover/contain)이 쉽다.
+         2) HTML의 <img> 태그       : 그 이미지 자체가 내용일 때 쓴다. alt를 줄 수 있다.
+
+         구분 기준은 "이 이미지가 없으면 내용 전달에 문제가 생기는가"다.
+         상품 사진은 <img>, 히어로 섹션 배경은 background-image가 맞다.
+         AI가 만든 코드에서 상품 사진이 background-image로 들어가 있다면
+         화면낭독기가 읽을 수 없으므로 <img>로 바꿔 달라고 하면 된다. -->
+</body>
+
+</html>

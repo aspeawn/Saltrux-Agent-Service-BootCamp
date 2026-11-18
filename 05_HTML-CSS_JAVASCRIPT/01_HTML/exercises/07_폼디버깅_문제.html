@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[문제] 폼 디버깅 - 설문 양식</title>
+</head>
+
+<!--
+================================================================================
+ 07. 폼 디버깅 - 고장난 설문 양식 고치기
+
+  [목표]
+    - 폼이 의도대로 동작하지 않을 때 원인을 스스로 찾아낼 수 있다.
+    - label-input 연결, name 속성, button type의 역할을 증상으로부터 역추적할 수 있다.
+
+  [유형]: 디버깅형
+
+  [증상 목록]
+    아래 설문 양식에는 버그가 5개 있다. 화면에는 멀쩡해 보이지만 동작이 잘못돼 있다.
+
+    증상 1. "이름" 라벨 글자를 클릭해도 입력창에 커서가 가지 않는다.
+    증상 2. 만족도 라디오 버튼이 하나만 선택되어야 하는데 3개가 전부 동시에 선택된다.
+    증상 3. 설문을 제출해도 "이메일"에 입력한 값이 서버로 넘어가지 않는다.
+    증상 4. [입력값 확인] 버튼을 누르면 페이지가 새로고침되면서 입력이 전부 날아간다.
+    증상 5. "수강 과목" 체크박스를 클릭해도 아무것도 선택되지 않는다.
+
+  [AI 활용 가이드]
+    [먼저 스스로 생각해볼 것들]
+      - 증상 하나를 고르고, 그 증상과 관련된 태그만 들여다본다.
+      - 8_폼관련태그.html의 정상 코드와 눈으로 비교해본다. 다른 점이 곧 원인이다.
+      - 최소 3개는 스스로 찾아본 뒤에 AI에게 물어본다.
+
+    [AI에게 물어볼 때는 이렇게]
+      (나쁜 예) "이 코드 고쳐줘."
+         -> 5개를 한꺼번에 고쳐주고 끝난다. 뭐가 문제였는지 모른 채 지나간다.
+
+      (좋은 예) "라디오 버튼 3개가 동시에 선택되는데, name 속성 때문일까?"
+         -> 원인을 지목해서 물으면 확인과 설명을 같이 받는다. 이게 실제 개발 방식이다.
+
+    [이 훈련이 중요한 이유]
+      React를 AI로 만들다 보면 "화면은 나오는데 동작이 이상한" 상황을 계속 만난다.
+      그때 증상만 전달하면 AI가 엉뚱한 곳을 고친다.
+      원인을 좁혀서 지목할 수 있으면 수정이 훨씬 빨라진다. 그 연습이다.
+
+  [완성 조건]
+    1. 다섯 증상이 모두 사라진다.
+    2. 아래 [원인 기록란]에 5개의 원인을 각각 한 줄로 적는다. (이게 진짜 과제다)
+================================================================================
+-->
+
+<body>
+    <h1>수업 만족도 설문</h1>
+
+    <form action="#" method="post">
+        <fieldset>
+            <legend>응답자 정보</legend>
+
+            <p>
+                <label for="username">이름 : </label>
+                <input type="text" id="name" name="username">
+            </p>
+
+            <p>
+                <label for="email">이메일 : </label>
+                <input type="email" id="email">
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>설문 항목</legend>
+
+            <p>
+                <label>수업 만족도 : </label>
+                <input type="radio" id="good" name="satisfaction1" value="good">
+                <label for="good">만족</label>
+                <input type="radio" id="soso" name="satisfaction2" value="soso">
+                <label for="soso">보통</label>
+                <input type="radio" id="bad" name="satisfaction3" value="bad">
+                <label for="bad">불만족</label>
+            </p>
+
+            <p>
+                <label>수강 과목 : </label>
+                <input type="checkbox" id="html" name="subject" value="html" disabled>
+                <label for="html">HTML</label>
+                <input type="checkbox" id="css" name="subject" value="css" disabled>
+                <label for="css">CSS</label>
+                <input type="checkbox" id="js" name="subject" value="js" disabled>
+                <label for="js">JavaScript</label>
+            </p>
+        </fieldset>
+
+        <p>
+            <button>입력값 확인</button>
+            <button type="submit">제출하기</button>
+        </p>
+    </form>
+
+    <!--
+    ================================================================================
+     [원인 기록란] - 여기를 채우는 것이 이 문제의 핵심이다.
+
+     증상 1의 원인 : 
+     증상 2의 원인 :
+     증상 3의 원인 :
+     증상 4의 원인 :
+     증상 5의 원인 :
+
+     "고쳤다"로 끝내지 말고 반드시 원인을 문장으로 적어본다.
+     말로 설명할 수 있어야 나중에 AI에게도 지시할 수 있다.
+    ================================================================================
+    -->
+</body>
+
+</html>

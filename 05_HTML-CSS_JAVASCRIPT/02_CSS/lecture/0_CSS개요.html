@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 적용 방법 2. 내부 스타일 시트 : head 안에 style 태그로 작성한다. 이 파일들이 쓰는 방식이다. -->
+    <style>
+        /* 3. 단위 비교용 기준 상자 */
+        .box {
+            background: #e3f2fd;
+            border: 1px solid #1565c0;
+            margin-bottom: 5px;
+        }
+
+        /* px : 화면 픽셀 고정값. 부모가 무엇이든 항상 같은 크기다. */
+        .px {
+            width: 200px;
+        }
+
+        /* % : 부모 요소의 너비를 기준으로 한 비율이다. */
+        .percent {
+            width: 50%;
+        }
+
+        /* em : 부모의 글자 크기(font-size)를 기준으로 한 배수다.
+           부모가 중첩되면 배수가 계속 곱해져서 크기를 예측하기 어려워진다. */
+        .parent {
+            font-size: 20px;
+            border: 1px dashed #999;
+            padding: 5px;
+        }
+
+        .em {
+            width: 10em;
+            /* 부모가 20px이므로 200px이 된다. */
+        }
+
+        /* rem : root(html 태그)의 글자 크기를 기준으로 한 배수다.
+           html의 기본값이 16px이므로 1rem = 16px이다. 부모가 몇 겹이든 결과가 같다. */
+        .rem {
+            width: 12.5rem;
+            /* 16px * 12.5 = 200px */
+        }
+
+        /* vw / vh : 브라우저 화면(viewport)의 너비/높이에 대한 비율이다.
+           100vw = 화면 너비 전체, 100vh = 화면 높이 전체. */
+        .vw {
+            width: 30vw;
+        }
+
+        /* 4. 색상 표기법 */
+        .color-chip {
+            display: inline-block;
+            width: 110px;
+            height: 60px;
+            margin-right: 5px;
+            color: white;
+            text-align: center;
+            line-height: 60px;
+        }
+
+        .c-name { background: royalblue; }
+        .c-hex { background: #405592; }
+        .c-rgb { background: rgb(65, 105, 225); }
+        .c-rgba { background: rgba(65, 105, 225, 0.6); color: black; }
+        .c-hsl { background: hsl(225, 73%, 57%); }
+
+        /* 5. 캐스케이딩 : 같은 요소에 여러 규칙이 겹칠 때 CSS가 하나를 골라낸다. */
+        p.cascade { color: green; }
+        .cascade { color: orange; }
+    </style>
+
+    <title>CSS 개요</title>
+</head>
+
+<body>
+    <h1>CSS 개요</h1>
+
+    <h3>1. CSS를 HTML에 적용하는 3가지 방법</h3>
+
+    <h4>방법 1. 인라인 스타일</h4>
+    <h5>태그에 style 속성을 직접 쓴다. 해당 태그 하나에만 적용되며 우선순위가 매우 높다.</h5>
+    <pre>&lt;p style="color: red;"&gt;</pre>
+    <p style="color: red;">인라인 스타일로 빨갛게 칠한 문단이다.</p>
+
+    <h4>방법 2. 내부 스타일 시트</h4>
+    <h5>head 안에 style 태그로 작성한다. 이 HTML 파일 하나에만 적용된다.</h5>
+    <pre>&lt;style&gt; p { color: blue; } &lt;/style&gt;</pre>
+    <p>지금 이 파일이 쓰고 있는 방식이다. 위쪽 head를 열어보면 확인할 수 있다.</p>
+
+    <h4>방법 3. 외부 스타일 시트</h4>
+    <h5>별도의 .css 파일로 분리하고 link 태그로 연결한다. 여러 HTML이 같은 css를 공유할 수 있다.</h5>
+    <pre>&lt;link rel="stylesheet" href="selector2.css"&gt;</pre>
+    <p>실무에서 기본이 되는 방식이다. 1-1번 파일에서 실제로 사용해 본다.</p>
+
+    <!-- [Tip] React 연결 : React에서도 이 3가지가 그대로 나타난다.
+         인라인 -> style={{ color: 'red' }}  (중괄호 두 겹은 JSX 문법 + 객체 표기)
+         외부   -> import './App.css'
+         "AI가 짜준 코드에서 스타일이 어디에 정의되어 있는지" 찾으려면 이 3군데를 보면 된다. -->
+
+    <h3>2. 캐스케이딩(Cascading)</h3>
+    <h5>CSS의 C는 Cascading, 즉 '위에서 아래로 흐른다'는 뜻이다.
+        한 요소에 여러 규칙이 겹치면 브라우저가 우선순위를 따져 하나를 고른다.</h5>
+    <pre>p.cascade { color: green; }  /* 태그 + 클래스 : 더 구체적 */
+.cascade    { color: orange; } /* 클래스만 : 덜 구체적 */</pre>
+    <p class="cascade">나중에 쓴 orange가 아니라 더 구체적인 green이 적용된다.</p>
+    <h5>왜 이렇게 되는지는 1-2번 파일(선택자 우선순위)에서 규칙으로 정리한다.
+        여기서는 "CSS는 겹쳐 쓸 수 있고, 겹치면 규칙에 따라 하나가 이긴다"는 것만 기억한다.</h5>
+
+    <h3>3. 단위</h3>
+    <h5>아래 상자들은 모두 화면상 같은 200px로 보이지만, 기준이 서로 다르다.
+        브라우저 창의 가로 폭을 줄였다 늘였다 하면서 어떤 상자가 따라 움직이는지 확인한다.</h5>
+
+    <h4>px (절대 단위)</h4>
+    <pre>width: 200px;</pre>
+    <div class="box px">px : 창을 줄여도 그대로다</div>
+
+    <h4>% (부모 기준 비율)</h4>
+    <pre>width: 50%;</pre>
+    <div class="box percent">% : 부모 너비의 절반이다</div>
+
+    <h4>em (부모 글자 크기 기준)</h4>
+    <pre>.parent { font-size: 20px; }  .em { width: 10em; }</pre>
+    <div class="parent">
+        부모 (font-size: 20px)
+        <div class="box em">em : 20px * 10 = 200px</div>
+    </div>
+
+    <h4>rem (root 글자 크기 기준)</h4>
+    <pre>width: 12.5rem;  /* 16px * 12.5 = 200px */</pre>
+    <div class="parent">
+        부모 (font-size: 20px)
+        <div class="box rem">rem : 부모와 무관하게 16px * 12.5 = 200px</div>
+    </div>
+    <h5>em은 부모의 영향을 받고 rem은 받지 않는다. 그래서 중첩이 깊어질수록 rem이 예측하기 쉽다.</h5>
+
+    <h4>vw (화면 너비 기준)</h4>
+    <pre>width: 30vw;</pre>
+    <div class="box vw">vw : 창을 줄이면 같이 줄어든다</div>
+
+    <!-- [Tip] React 연결 : AI가 생성해 주는 React/Tailwind 코드는 px보다 rem을 훨씬 많이 쓴다.
+         Tailwind의 p-4, gap-2 같은 클래스도 내부적으로는 rem 값이다 (p-4 = 1rem = 16px).
+         "왜 이 값이 16의 배수로 나오지?"의 답이 rem이다. -->
+
+    <h3>4. 색상 표기법</h3>
+    <h5>아래 5개는 rgba를 제외하면 모두 같은 색이다. 표기법만 다르다.</h5>
+    <pre>royalblue / #4169e1 / rgb(65,105,225) / rgba(65,105,225,0.4) / hsl(225,73%,57%)</pre>
+    <div class="color-chip c-name">색상 이름</div>
+    <div class="color-chip c-hex">#4169e1</div>
+    <div class="color-chip c-rgb">rgb()</div>
+    <div class="color-chip c-rgba">rgba() 투명도 0.4</div>
+    <div class="color-chip c-hsl">hsl()</div>
+    <h5>실무에서는 #4169e1 같은 16진수 표기를 가장 많이 쓰고,
+        투명도가 필요할 때만 rgba를 쓴다. hsl은 색상(H)·채도(S)·명도(L)로 다루므로
+        "같은 색의 밝기만 조금 바꾸고 싶을 때" 편하다.</h5>
+</body>
+
+</html>

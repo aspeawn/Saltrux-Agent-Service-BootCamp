@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[문제] 이미지와 링크 - 사진 갤러리</title>
+</head>
+
+<!--
+================================================================================
+ 05. 이미지와 링크 - 사진 갤러리 만들기
+
+  [목표]
+    - img 태그로 이미지를 삽입하고 src, alt 속성을 올바르게 사용할 수 있다.
+    - figure, figcaption으로 이미지에 설명을 붙일 수 있다.
+    - a 태그로 링크를 만들고 target 속성을 지정할 수 있다.
+    - id와 앵커(#)를 활용해 페이지 안에서 이동하는 목차를 만들 수 있다.
+    - 이미지에 링크를 걸 수 있다.
+
+  [유형]: 구현형
+
+  [사용할 이미지]
+    이 폴더 기준으로 상위 폴더의 sample/image 안에 있다. 경로는 아래와 같이 쓴다.
+      ../sample/image/flower1.jpg
+      ../sample/image/flower2.jpg
+      ../sample/image/river1.jpg
+      ../sample/image/tower1.jpg
+
+    경로의 ".."은 '한 단계 위 폴더'라는 뜻이다.
+    지금 파일은 exercises 폴더 안에 있고 이미지는 그 바깥에 있으므로 한 단계 올라가야 한다.
+
+  [AI 활용 가이드]
+    [먼저 스스로 생각해볼 것들]
+      - 이미지가 안 보이면 대부분 경로 문제다. F12 콘솔에 404 오류가 뜨는지 먼저 본다.
+      - alt에 무엇을 써야 할지 고민해본다. "꽃 사진"과 "이미지1" 중 어느 쪽이 나을까?
+
+    [AI에게 물어보면 좋은 것]
+      - "alt 속성은 안 써도 이미지가 보이는데 왜 필수라고 해?"
+      - "target=_blank를 쓰면 좋은 경우랑 안 좋은 경우가 각각 언제야?"
+      - "img를 a로 감싸는 거랑 a를 img로 감싸는 거, 둘 다 되는 거야?"
+
+    [AI에게 통째로 시키지 말 것]
+      - "갤러리 만들어줘." 한 줄이면 끝나버린다.
+      - 특히 경로(../)는 직접 맞춰본다. 프로젝트가 커지면 계속 만나는 문제다.
+
+  [완성 조건]
+    1. 이미지 4장이 모두 정상적으로 보인다. (깨진 이미지 아이콘이 없다)
+    2. 맨 위 목차의 링크를 클릭하면 해당 섹션으로 화면이 이동한다.
+    3. 이미지를 클릭하면 새 탭에서 원본 이미지가 열린다.
+    4. 이미지마다 설명 글이 붙어 있다.
+    5. 개발자 도구에서 확인했을 때 모든 img에 alt 속성이 있다.
+================================================================================
+-->
+
+<body>
+
+    <!-- TODO 1. h1으로 페이지 제목 "사진 갤러리"를 작성한다. -->
+    <h1 id ="top">사진 갤러리</h1>
+
+    <!-- TODO 2. 목차를 만든다.
+         - ul 목록 안에 a 태그로 링크 3개를 넣는다. ("꽃 / 풍경 / 건축")
+         - 각 링크의 href는 "#아이디명" 형태로 쓴다. (예: href="#flower")
+         - 이렇게 하면 페이지 안에서 해당 위치로 이동한다. 이것을 앵커라고 한다. -->
+      <ul>
+        <li><a href="#flower">꽃</a></li> 
+        <li><a href="#landscape">풍경</a></li>
+        <li><a href="#architecture">건축</a></li>
+      </ul>
+    <hr>
+
+    <!-- TODO 3. "꽃" 섹션을 만든다.
+         - h2 태그에 id="flower"를 지정한다. (위 목차의 href="#flower"와 짝이 된다)
+         - figure 태그 안에 img와 figcaption을 넣는다.
+           · img : src는 ../sample/image/flower1.jpg
+                   alt는 이미지를 볼 수 없는 사람에게 설명하듯 구체적으로 쓴다.
+                   width를 300으로 지정한다.
+           · figcaption : 사진 설명을 한 줄 쓴다.
+         - 같은 방식으로 flower2.jpg도 하나 더 추가한다. -->
+      <h2 id="flower">꽃</h2>
+        <figure >
+          <img src="../lecture/sample/image/flower1.jpg" alt = 봄에 자주 볼 수 있는 벚꽃으로 연분홍색의 짧은 개화 기간과 화려한 군락으로 사랑받는 대표적인 봄꽃입니다. width="300">
+          <figcaption>flower 1 사진 설명입니다.</figcaption>
+        </figure>
+        <figure>
+          <img src="../lecture/sample/image/flower2.jpg" alt = 여름에 피는 해바라기로, 큰 노란 꽃과 강한 햇빛을 상징하며, 태양을 향해 고개를 돌리는 특징이 있습니다. width="300">
+          <figcaption>flower 2 사진 설명입니다.</figcaption>
+        </figure>
+    <hr>
+
+    <!-- TODO 4. "풍경" 섹션을 만든다.
+         - h2 태그에 id="landscape"를 지정한다.
+         - river1.jpg를 figure/figcaption 구조로 넣는다.
+         - 이번에는 이미지를 클릭하면 원본이 열리도록 만든다.
+           · img를 a 태그로 감싼다.
+           · a의 href는 이미지 경로와 같게 한다.
+           · target="_blank"를 주어 새 탭에서 열리게 한다. -->
+        <h2 id="landscape">풍경</h2>
+        <figure>
+          <a href="../lecture/sample/image/river1.jpg" target="_blank">
+            <img src="../lecture/sample/image/river1.jpg" alt = 강과 주변 자연 풍경을 담은 사진으로, 물의 흐름과 주변 경관이 조화를 이루며 평화롭고 아름다운 자연의 모습을 보여준다. width="300">
+          </a>
+          <figcaption>river 1 사진 설명입니다.</figcaption>
+        </figure>
+    <hr>
+
+    <!-- TODO 5. "건축" 섹션을 만든다.
+         - h2 태그에 id="architecture"를 지정한다.
+         - tower1.jpg를 TODO 4와 같은 방식(클릭하면 새 탭)으로 넣는다. -->
+        <h2 id="architecture">건축</h2>
+        <figure>
+          <a href="../lecture/sample/image/tower1.jpg" target="_blank">
+            <img src="../lecture/sample/image/tower1.jpg" alt = 현대적인 디자인과 독특한 구조를 가진 타워 건축물로, 도시의 랜드마크 역할을 하며 관광객들에게 인기 있는 명소이다. width="300">
+          </a>
+          <figcaption>tower 1 사진 설명입니다.</figcaption>
+        </figure>
+    <hr>
+
+    <!-- TODO 6. 페이지 맨 아래에 "맨 위로" 링크를 만든다.
+         - body 시작 부분(TODO 1의 h1)에 id="top"을 추가하고
+           여기서 href="#top"으로 연결한다. -->
+        <a href="#top">맨 위로</a>
+
+    <!-- TODO 7. 외부 사이트 링크를 하나 만든다.
+         - MDN 문서(https://developer.mozilla.org/ko/)로 연결한다.
+         - 새 탭에서 열리게 한다.
+         - 외부 링크라는 것을 사용자가 알 수 있게 링크 글자를 적절히 쓴다. -->
+        <a href="https://developer.mozilla.org/ko/" target="_blank">MDN 문서</a>
+
+</body>
+
+</html>

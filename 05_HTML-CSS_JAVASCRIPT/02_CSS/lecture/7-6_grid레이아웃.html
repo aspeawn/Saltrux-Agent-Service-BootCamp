@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 모든 시연에서 공통으로 쓰는 컨테이너와 아이템이다. */
+        .container {
+            display: grid;
+            /* ★ 부모에 grid를 주면 자식들이 grid item이 되어 격자에 배치된다. */
+            border: 2px dashed #666;
+            background: #fafafa;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .item {
+            background: #2e7d32;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* 1. grid-template-columns : 열의 개수와 너비를 정한다. */
+        .col-px { grid-template-columns: 100px 100px 100px; }
+        .col-fr { grid-template-columns: 1fr 1fr 1fr; }
+        .col-mix { grid-template-columns: 200px 1fr; }
+        .col-ratio { grid-template-columns: 2fr 1fr; }
+        .col-repeat { grid-template-columns: repeat(4, 1fr); }
+
+        /* 2. grid-template-rows : 행의 높이를 정한다. 생략하면 내용에 맞춰 자동으로 잡힌다. */
+        .row-fixed { grid-template-rows: 80px 80px; }
+
+        /* 3. gap : flex와 똑같이 동작한다. 행/열 간격을 따로 줄 수도 있다. */
+        .gap-split { row-gap: 30px; column-gap: 5px; }
+
+        /* 4. 셀 영역 지정 : 아이템이 몇 칸을 차지할지 정한다. */
+        .span-col2 { grid-column: span 2; }
+        .span-row2 { grid-row: span 2; }
+
+        /* 5. grid-template-areas : 영역에 이름을 붙여 배치한다.
+           CSS를 읽는 것만으로 화면 구조가 눈에 그려지는 것이 장점이다. */
+        .layout {
+            grid-template-columns: 200px 1fr;
+            grid-template-rows: 60px 1fr 40px;
+            grid-template-areas:
+                "header header"
+                "sidebar main"
+                "footer footer";
+            height: 300px;
+        }
+
+        .layout .head { grid-area: header; background: #1565c0; }
+        .layout .side { grid-area: sidebar; background: #6a1b9a; }
+        .layout .main { grid-area: main; background: #2e7d32; }
+        .layout .foot { grid-area: footer; background: #455a64; }
+
+        /* 6. (심화) auto-fit + minmax : 화면 너비에 맞춰 열 개수가 저절로 바뀐다. */
+        .auto-grid {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+    </style>
+    <title>grid 레이아웃</title>
+</head>
+
+<body>
+    <h1>grid 레이아웃</h1>
+    <h5>행과 열을 동시에 다루는 2차원 레이아웃 방식이다.
+        flex가 한 방향(1차원)으로 늘어놓는 도구라면, grid는 페이지 전체를 격자로 나누는 도구다.</h5>
+
+    <h3>flex와 grid, 언제 무엇을 쓰나</h3>
+    <h5>한 줄로 늘어놓는 것(메뉴, 버튼 묶음, 아이콘+글자)은 flex,
+        화면 전체 뼈대나 카드 목록처럼 가로세로가 모두 있는 것은 grid를 쓴다.
+        실무에서는 grid로 큰 틀을 잡고 각 칸 안을 flex로 채우는 조합이 가장 흔하다.</h5>
+
+    <!-- 🥕 속성 하나하나를 손으로 익히는 건 Grid Garden 게임으로 대체한다.
+         https://cssgridgarden.com/#ko  (한글 지원, 28단계)
+         이 파일은 "게임에서 배운 속성으로 실제 레이아웃을 짜는 법"을 확인하는 용도다. -->
+
+    <h3>1. grid-template-columns — 열 나누기</h3>
+    <pre>grid-template-columns: 100px 100px 100px;  /* 고정 폭 3열 */</pre>
+    <div class="container col-px">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h4>fr 단위</h4>
+    <h5>fr(fraction)은 '남는 공간을 비율대로 나눠라'는 뜻이다. grid에서 가장 많이 쓰는 단위다.</h5>
+    <pre>grid-template-columns: 1fr 1fr 1fr;  /* 1:1:1 균등 분할 */</pre>
+    <div class="container col-fr">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <pre>grid-template-columns: 2fr 1fr;  /* 2:1 비율 */</pre>
+    <div class="container col-ratio">
+        <div class="item">2fr</div>
+        <div class="item">1fr</div>
+    </div>
+
+    <pre>grid-template-columns: 200px 1fr;  /* 사이드바는 고정, 본문은 나머지 전부 */</pre>
+    <div class="container col-mix">
+        <div class="item">200px 고정</div>
+        <div class="item">1fr (나머지)</div>
+    </div>
+    <h5>고정 폭과 fr을 섞는 이 패턴이 사이드바 레이아웃의 기본형이다.</h5>
+
+    <h4>repeat()</h4>
+    <h5>같은 값을 여러 번 반복할 때 쓴다. repeat(4, 1fr)은 1fr 1fr 1fr 1fr과 완전히 같다.</h5>
+    <pre>grid-template-columns: repeat(4, 1fr);</pre>
+    <div class="container col-repeat">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>
+
+    <h3>2. gap — 칸 사이 간격</h3>
+    <h5>flex의 gap과 똑같다. 행과 열의 간격을 따로 줄 수도 있다.</h5>
+    <pre>row-gap: 30px;  column-gap: 5px;</pre>
+    <div class="container col-repeat gap-split">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+    </div>
+
+    <h3>3. 여러 칸 차지하기 — span</h3>
+    <h5>아이템에 주는 속성이다. span 2는 '두 칸을 차지해라'는 뜻이다.</h5>
+    <pre>1번 아이템에 grid-column: span 2;</pre>
+    <div class="container col-repeat">
+        <div class="item span-col2">가로 2칸</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>
+
+    <pre>1번 아이템에 grid-row: span 2;</pre>
+    <div class="container col-repeat row-fixed">
+        <div class="item span-row2">세로 2칸</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+    </div>
+
+    <h3>4. grid-template-areas — 이름으로 배치하기 ★</h3>
+    <h5>영역마다 이름을 붙이고 그 이름을 격자 모양 그대로 적는다.
+        CSS 코드의 생김새가 실제 화면 배치와 똑같아서, 읽기만 해도 구조가 파악된다.</h5>
+    <pre>grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";</pre>
+    <div class="container layout">
+        <div class="item head">header</div>
+        <div class="item side">sidebar</div>
+        <div class="item main">main</div>
+        <div class="item foot">footer</div>
+    </div>
+    <h5>빈 칸을 두고 싶으면 그 자리에 마침표(.)를 적는다.</h5>
+
+    <h3>5. (심화) 화면 크기에 따라 열 개수 자동 조절</h3>
+    <h5>당장 외울 필요는 없지만, AI가 만들어 준 카드 목록 CSS에서 자주 보게 되는 형태다.
+        "칸의 최소 너비는 150px, 들어갈 수 있는 만큼 열을 만들어라"는 뜻이다.
+        브라우저 창 폭을 줄였다 늘였다 하면 열 개수가 저절로 바뀐다.</h5>
+    <pre>grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));</pre>
+    <div class="container auto-grid">
+        <div class="item">카드 1</div>
+        <div class="item">카드 2</div>
+        <div class="item">카드 3</div>
+        <div class="item">카드 4</div>
+        <div class="item">카드 5</div>
+        <div class="item">카드 6</div>
+    </div>
+    <h5>미디어 쿼리 없이 반응형이 되기 때문에 실무에서 많이 쓴다. (미디어 쿼리는 11번 파일에서 다룬다)</h5>
+
+    <!-- [Tip] React 연결 : AI에게 "대시보드 레이아웃 만들어줘"라고 하면 대개 grid로 짜준다.
+         받은 코드에서 먼저 볼 것은 grid-template-columns 한 줄이다. 여기에 열 구조가 다 들어있다.
+
+         레이아웃이 깨졌을 때 확인할 순서:
+         1) 칸이 이상하게 나뉜다   -> grid-template-columns의 값 개수를 센다 (열 개수가 곧 그 개수다)
+         2) 아이템이 엉뚱한 데 있다 -> 그 아이템에 grid-column / grid-area가 걸려 있는지 본다
+         3) 칸은 맞는데 간격이 없다 -> gap이 있는지 본다 (margin으로 처리하면 끝 칸이 틀어진다)
+
+         flex와 헷갈릴 때의 기준 : "가로로만 늘어놓는가(flex), 가로세로 격자인가(grid)".
+         AI에게 지시할 때도 "이건 2차원 배치니까 grid로 바꿔줘"처럼 말하면 의도가 정확히 전달된다. -->
+</body>
+
+</html>

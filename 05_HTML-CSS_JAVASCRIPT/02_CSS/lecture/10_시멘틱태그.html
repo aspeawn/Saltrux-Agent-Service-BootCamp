@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 1. div로만 짠 레이아웃과 시맨틱 태그로 짠 레이아웃을 나란히 비교한다.
+           CSS는 두 쪽이 똑같다. 달라지는 건 HTML 태그 이름뿐이다. */
+        .page {
+            display: grid;
+            grid-template-columns: 100px 1fr 100px;
+            grid-template-rows: 50px 1fr 40px;
+            grid-template-areas:
+                "head head head"
+                "nav  main aside"
+                "foot foot foot";
+            gap: 5px;
+            height: 260px;
+            width: 460px;
+            margin-bottom: 20px;
+        }
+
+        .page > * {
+            color: white;
+            padding: 8px;
+        }
+
+        /* grid-area로 각 영역의 자리를 지정한다. 태그 이름이 아니라 클래스로 배치하므로
+           div로 짜든 시맨틱 태그로 짜든 CSS는 동일하다. */
+        .p-head { grid-area: head; background: #1565c0; }
+        .p-nav { grid-area: nav; background: #c62828; }
+        .p-main { grid-area: main; background: #2e7d32; }
+        .p-aside { grid-area: aside; background: #6a1b9a; }
+        .p-foot { grid-area: foot; background: #455a64; }
+
+        /* 2. article : main 안에서 반복되는 개별 콘텐츠 단위다. */
+        article {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 4px;
+            margin-bottom: 4px;
+        }
+    </style>
+    <title>시맨틱 태그</title>
+</head>
+
+<body>
+    <h1>시맨틱 태그</h1>
+    <h5>시맨틱(semantic)은 '의미를 가진'이라는 뜻이다.
+        div와 span은 아무 의미가 없는 중립적인 상자지만, header·nav·footer 같은 태그는
+        그 영역이 무슨 역할인지를 이름 자체로 알려준다.</h5>
+
+    <h3>1. 태그별 의미와 용도</h3>
+    <table border="1" cellpadding="6" style="border-collapse: collapse;">
+        <tr>
+            <th>태그</th>
+            <th>역할</th>
+        </tr>
+        <tr>
+            <td>header</td>
+            <td>머리말 영역. 로고, 검색창, 상단 메뉴(nav)가 주로 들어간다.</td>
+        </tr>
+        <tr>
+            <td>nav</td>
+            <td>다른 페이지로 이동하는 링크 묶음. header 안이나 사이드에 위치한다.</td>
+        </tr>
+        <tr>
+            <td>main</td>
+            <td>페이지의 핵심 본문. 한 페이지에 하나만 쓴다.</td>
+        </tr>
+        <tr>
+            <td>section</td>
+            <td>주제별로 묶은 영역. 보통 제목(h1~h6)을 동반한다.</td>
+        </tr>
+        <tr>
+            <td>article</td>
+            <td>그 자체로 독립적으로 배포될 수 있는 콘텐츠 단위. 게시글, 댓글, 상품 카드 등.</td>
+        </tr>
+        <tr>
+            <td>aside</td>
+            <td>본문과 직접 관련 없는 부가 영역. 광고, 링크 모음, 사이드바.</td>
+        </tr>
+        <tr>
+            <td>footer</td>
+            <td>꼬리말. 회사 정보, 저작권, 연락처.</td>
+        </tr>
+    </table>
+
+    <h5>section과 article이 가장 헷갈린다. 기준은 "떼어내도 말이 되는가"다.
+        블로그 글 하나는 떼어내도 완결된 글이므로 article,
+        "인기 게시글 목록"처럼 묶음의 성격을 나타내는 영역은 section이다.
+        article 안에 section이, section 안에 article이 들어가는 것 모두 가능하다.</h5>
+
+    <h3>2. div로 짠 레이아웃</h3>
+    <h5>아래는 모두 div다. 화면에는 아무 문제 없이 잘 나온다.</h5>
+    <div class="page">
+        <div class="p-head">div (머리말)</div>
+        <div class="p-nav">div</div>
+        <div class="p-main">div (본문)</div>
+        <div class="p-aside">div</div>
+        <div class="p-foot">div (꼬리말)</div>
+    </div>
+
+    <h3>3. 시맨틱 태그로 짠 같은 레이아웃</h3>
+    <h5>CSS는 위와 완전히 동일하고 태그 이름만 바꿨다. 화면 결과도 똑같다.
+        <b>보이는 게 같은데 왜 바꾸는가?</b> 아래 4번에서 설명한다.</h5>
+    <div class="page">
+        <header class="p-head">header (머리말)</header>
+        <nav class="p-nav">nav</nav>
+        <main class="p-main">
+            main (본문)
+            <article>article</article>
+            <article>article</article>
+        </main>
+        <aside class="p-aside">aside</aside>
+        <footer class="p-foot">footer (꼬리말)</footer>
+    </div>
+
+    <h3>4. 시맨틱 태그를 쓰는 이유</h3>
+    <h5>① <b>검색 엔진</b>이 어디가 본문이고 어디가 광고인지 구분할 수 있다.<br>
+        ② <b>화면 낭독기</b>가 시각장애인 사용자에게 "여기부터 본문입니다"라고 안내할 수 있다.
+        div는 아무 정보도 주지 못한다.<br>
+        ③ <b>코드를 읽는 사람</b>이 구조를 훨씬 빨리 파악한다.
+        div가 수십 개 중첩된 코드와 header/main/footer로 나뉜 코드의 차이는 크다.</h5>
+
+    <h5>참고. 시맨틱 태그는 기본적으로 block 레벨 요소일 뿐,
+        특별한 스타일이 붙어 있지는 않다. 배치는 결국 CSS(flex·grid)로 해야 한다.</h5>
+
+    <!-- [Tip] React 연결 : React는 화면을 '컴포넌트'라는 조각으로 나눠 만든다.
+         이때 컴포넌트의 경계가 시맨틱 태그의 경계와 거의 그대로 맞아떨어진다.
+             <Header />  -> <header>
+             <Sidebar /> -> <aside>
+             <PostCard /> -> <article>
+
+         AI에게 화면을 요청할 때 "헤더, 사이드바, 본문으로 나눠줘"처럼
+         시맨틱 태그 이름을 그대로 써서 지시하면 구조가 정확하게 잡힌다.
+         반대로 AI가 div만 잔뜩 만들어 놨다면 "시맨틱 태그로 바꿔줘" 한 마디로 정리할 수 있다.
+
+         주의. React 코드에서 보게 되는 <div className="header">는 시맨틱 태그가 아니다.
+         클래스 이름이 header일 뿐 태그는 여전히 의미 없는 div다. 이 둘을 구분할 수 있어야 한다. -->
+</body>
+
+</html>

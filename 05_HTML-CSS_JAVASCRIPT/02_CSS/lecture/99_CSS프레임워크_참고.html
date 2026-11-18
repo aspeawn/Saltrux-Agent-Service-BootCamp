@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5.3.8 (2025-08) : CSS 한 줄만 넣으면 바로 쓸 수 있다. -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Tailwind CSS v4 : 브라우저에서 바로 쓰는 방식(개발용).
+         주의. 예전 주소인 cdn.tailwindcss.com은 v3용이며 현재는 지원이 끊겼다.
+         v4부터는 아래 주소를 쓴다. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+        body {
+            padding: 20px;
+            font-family: "Malgun Gothic", sans-serif;
+        }
+
+        .demo-box {
+            border: 2px dashed #999;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        /* 직접 작성한 CSS. 아래 3번에서 프레임워크와 비교한다. */
+        .my-button {
+            background: #0d6efd;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+    </style>
+
+    <title>[참고] CSS 프레임워크 - Bootstrap과 Tailwind</title>
+</head>
+
+<!--
+================================================================================
+ 99. CSS 프레임워크 - Bootstrap과 Tailwind [참고 자료]
+
+  이 파일은 수업 시간에 다루지 않는다. 필요할 때 열어보는 참고 자료다.
+
+  [왜 수업에서 비중 있게 다루지 않는가]
+
+    CSS 프레임워크는 원래 "CSS를 직접 쓰는 시간을 아끼려고" 나온 도구다.
+    미리 만들어둔 클래스를 조합해서 버튼·카드·표를 빠르게 찍어내는 것이 목적이었다.
+
+    그런데 AI에게 "파란 버튼 만들어줘"라고 하면 CSS를 바로 써준다.
+    시간을 아끼려고 클래스 이름 수백 개를 외우던 이유가 상당 부분 사라진 것이다.
+
+    그래서 이 과정에서는 프레임워크 문법을 외우는 데 시간을 쓰지 않는다.
+    대신 앞에서 배운 것 - 박스 모델, flex, grid, 선택자 우선순위 - 을 확실히 하는 쪽이 낫다.
+    프레임워크가 만들어낸 결과물을 읽고 고칠 수 있어야 하는데, 그 바탕이 결국 순수 CSS다.
+
+  [그래도 알아둘 것]
+
+    Tailwind는 사정이 조금 다르다. React 프로젝트에서 여전히 많이 쓰이고,
+    AI에게 React 화면을 만들어달라고 하면 대부분 Tailwind 클래스로 만들어 준다.
+    직접 작성하지는 않더라도 읽을 수는 있어야 한다.
+
+    Bootstrap은 지금도 널리 쓰이지만 새 React 프로젝트에서 선택되는 일은 줄었다.
+    다만 기존 프로젝트에서 만날 수 있으므로 "이런 게 있다"는 정도는 알아둔다.
+================================================================================
+-->
+
+<body>
+
+    <h1>CSS 프레임워크</h1>
+
+    <h3>1. Bootstrap - 완성된 부품을 가져다 쓰는 방식</h3>
+    <p>
+        버튼, 카드, 경고창 같은 <b>완성된 부품</b>에 이름이 붙어 있다.
+        그 이름을 클래스로 적으면 바로 그 모양이 된다.
+    </p>
+    <pre>&lt;button class="btn btn-primary"&gt;버튼&lt;/button&gt;</pre>
+
+    <div class="demo-box">
+        <button class="btn btn-primary">기본 버튼</button>
+        <button class="btn btn-danger">위험 버튼</button>
+        <button class="btn btn-outline-secondary">외곽선 버튼</button>
+
+        <div class="alert alert-warning mt-3">경고 메시지 상자다.</div>
+
+        <div class="card" style="width: 260px;">
+            <div class="card-body">
+                <h5 class="card-title">카드 제목</h5>
+                <p class="card-text">카드 본문이다.</p>
+                <a href="#" class="btn btn-primary btn-sm">더 보기</a>
+            </div>
+        </div>
+    </div>
+
+    <p>
+        장점은 빠르다는 것이다. 단점도 분명하다.
+        <b>어느 사이트든 비슷하게 생기고</b>, 기본 스타일을 바꾸려면
+        우선순위 싸움(1-2번 파일에서 배운 그것)을 하게 된다.
+    </p>
+
+    <h3>2. Tailwind - 작은 조각을 조립하는 방식</h3>
+    <p>
+        완성품 대신 <b>속성 하나짜리 클래스</b>를 준다. 이것을 여러 개 붙여서 원하는 모양을 만든다.
+        이런 방식을 유틸리티 우선(utility-first)이라고 부른다.
+    </p>
+    <pre>&lt;button class="bg-blue-600 text-white px-4 py-2 rounded"&gt;버튼&lt;/button&gt;
+
+    bg-blue-600  -> background-color
+    text-white   -> color
+    px-4 py-2    -> padding 좌우 / 상하
+    rounded      -> border-radius</pre>
+
+    <div class="demo-box">
+        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">기본 버튼</button>
+        <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">위험 버튼</button>
+
+        <div class="mt-4 flex items-center gap-3 p-4 bg-gray-100 rounded-lg">
+            <span class="font-bold">flex items-center gap-3</span>
+            <span class="text-sm text-gray-600">7-5번에서 배운 flex와 같은 것이다</span>
+        </div>
+    </div>
+
+    <p>
+        클래스 이름이 CSS 속성과 <b>거의 1:1로 대응</b>한다는 점이 중요하다.
+        <code>flex items-center gap-3</code>은 결국
+        <code>display:flex; align-items:center; gap:12px;</code>이다.
+        <b>순수 CSS를 알면 Tailwind는 따로 배울 것이 거의 없다.</b>
+    </p>
+
+    <h3>3. 같은 버튼, 세 가지 방법</h3>
+    <div class="demo-box">
+        <p>세 버튼은 거의 같은 모양이다. 만드는 방법만 다르다.</p>
+
+        <pre>직접 CSS : &lt;button class="my-button"&gt;      (style에 .my-button 정의)
+Bootstrap : &lt;button class="btn btn-primary"&gt;
+Tailwind  : &lt;button class="bg-blue-600 text-white px-4 py-2 rounded"&gt;</pre>
+
+        <button class="my-button">직접 작성한 CSS</button>
+        <button class="btn btn-primary">Bootstrap</button>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded">Tailwind</button>
+    </div>
+
+    <h3>4. 정리</h3>
+    <table border="1" cellpadding="8" style="border-collapse: collapse;">
+        <tr>
+            <th></th>
+            <th>Bootstrap</th>
+            <th>Tailwind</th>
+        </tr>
+        <tr>
+            <td>방식</td>
+            <td>완성된 부품을 가져다 씀</td>
+            <td>작은 조각을 조립함</td>
+        </tr>
+        <tr>
+            <td>클래스</td>
+            <td><code>btn btn-primary</code></td>
+            <td><code>bg-blue-600 px-4 py-2</code></td>
+        </tr>
+        <tr>
+            <td>속도</td>
+            <td>매우 빠름</td>
+            <td>보통 (조합해야 함)</td>
+        </tr>
+        <tr>
+            <td>자유도</td>
+            <td>낮음 (다 비슷해짐)</td>
+            <td>높음</td>
+        </tr>
+        <tr>
+            <td>React에서</td>
+            <td>줄어드는 추세</td>
+            <td><b>주류</b></td>
+        </tr>
+    </table>
+
+    <!-- [Tip] React 연결
+         AI에게 React 화면을 만들어달라고 하면 대개 Tailwind 클래스로 만들어 준다.
+         받은 코드가 이렇게 생겼을 것이다.
+
+           <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow">
+
+         길어 보이지만 하나씩 풀면 전부 아는 것이다.
+           flex                -> display: flex
+           items-center        -> align-items: center
+           justify-between     -> justify-content: space-between
+           p-4                 -> padding: 1rem
+           bg-white            -> background: white
+           rounded-lg          -> border-radius
+           shadow              -> box-shadow
+
+         즉 7-5번(flex)과 7-1번(박스 모델)을 알면 읽을 수 있다.
+
+         고쳐달라고 할 때도 CSS 용어로 말하면 정확하게 전달된다.
+           (막연함) "간격 좀 넓혀줘"
+           (정확함) "gap을 키우고 padding을 늘려줘"
+
+         참고로 Tailwind의 숫자는 대부분 rem 단위다. p-4는 1rem(16px)이다.
+         0_CSS개요에서 rem을 다룬 이유가 여기에도 있다.
+
+         한 가지 주의. 이 파일처럼 CDN으로 쓰는 방식은 개발·학습용이다.
+         실제 프로젝트에서는 Vite에 설치해서 쓰며, 그래야 사용하지 않는 클래스가 제거되어
+         최종 CSS 파일 크기가 작아진다. -->
+</body>
+
+</html>

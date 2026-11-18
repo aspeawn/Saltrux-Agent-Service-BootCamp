@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>수업 만족도 설문조사</title>
+</head>
+<body>
+    <h1>HTML 수업 만족도 설문조사</h1>
+    
+    <form action="#" method="post">
+        <fieldset>
+            <legend>기본 정보</legend>
+            <p>
+                <label for="name">이름:</label>
+                <input type="text" id="name" name="name" required>
+            </p>
+            <p>
+                <label>성별:</label>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">남성</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">여성</label>
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>수업 평가</legend>
+            <p>
+                <label>수업 난이도:</label>
+                <ul>
+					<!-- style="display: inline-block"로 li 태그를 수평으로 배치 가능 -->
+                    <li style="display: inline-block; margin-right: 20px;">
+                        <input type="radio" id="easy" name="difficulty" value="easy">
+                        <label for="easy">알고보니 천상 프론트엔드 개발자</label>
+                    </li>
+                    <li style="display: inline-block; margin-right: 20px;">
+                        <input type="radio" id="moderate" name="difficulty" value="moderate">
+                        <label for="moderate">적당히 리프레시됨</label>
+                    </li>
+                    <li style="display: inline-block;">
+                        <input type="radio" id="hard" name="difficulty" value="hard">
+                        <label for="hard">역시나 천상 백엔드 개발자</label>
+                    </li>
+                </ul>
+            </p>
+            
+            <p>가장 유용했던 주제: (복수 선택 가능)</p>
+            <ul>
+                <li><input type="checkbox" id="topic1" name="topics" value="text">
+                    <label for="topic1">1. 글자 관련 태그</label></li>
+                <li><input type="checkbox" id="topic2" name="topics" value="list">
+                    <label for="topic2">2. 목록 관련 태그</label></li>
+                <li><input type="checkbox" id="topic3" name="topics" value="table">
+                    <label for="topic3">3. 표 관련 태그</label></li>
+                <li><input type="checkbox" id="topic4" name="topics" value="area">
+                    <label for="topic4">4. 영역 관련 태그</label></li>
+                <li><input type="checkbox" id="topic5" name="topics" value="image">
+                    <label for="topic5">5. 이미지 관련 태그</label></li>
+                <li><input type="checkbox" id="topic6" name="topics" value="media">
+                    <label for="topic6">6. 미디어 관련 태그</label></li>
+                <li><input type="checkbox" id="topic7" name="topics" value="hyperlink">
+                    <label for="topic7">7. 하이퍼링크 관련 태그</label></li>
+                <li><input type="checkbox" id="topic8" name="topics" value="form">
+                    <label for="topic8">8. 폼 관련 태그</label></li>
+            </ul>
+        </fieldset>
+
+        <fieldset>
+            <legend>기타 의견</legend>
+            <p>
+                <label for="feedback">건의사항:</label><br>
+                <textarea id="feedback" name="feedback" rows="5" cols="50"></textarea>
+            </p>
+        </fieldset>
+
+        <p>
+            <button type="submit">제출하기</button>
+            <button type="reset">다시작성</button>
+        </p>
+    </form>
+</body>
+</html> 

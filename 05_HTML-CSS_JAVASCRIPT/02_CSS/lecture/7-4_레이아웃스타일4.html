@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .outer {
+            border: 1px solid red;
+            height: 320px;
+            /* 자식이 모두 absolute라 부모 높이가 0이 된다. 시연을 위해 높이를 지정했다. */
+            position: relative;
+            /* 안쪽 div들을 감싸는 바깥쪽 div에 적용할 속성으로 상대적 원점을 의미 */
+        }
+
+        .first {
+            width: 300px;
+            height: 300px;
+            background: yellow;
+            position: absolute;
+        }
+
+        .second {
+            width: 200px;
+            height: 200px;
+            background: yellowgreen;
+            top: 50px;
+            left: 50px;
+            /* 
+              부모에 position: relative와 자신의 position: absolute만 있으면
+              웹 브라우저의 절대 위치가 아니라 부모의 원점에 대한 상대 위치를 의미
+            */
+            position: absolute;
+        }
+
+        .third {
+            width: 100px;
+            height: 100px;
+            background: red;
+            top: 100px;
+            left: 100px;
+            position: absolute;
+        }
+
+        .vis-test {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .vis-test1 {
+            background: red;
+        }
+
+        /* visibility: hidden — 보이지 않지만 자리는 그대로 차지한다. */
+        .vis-hidden {
+            background: yellow;
+            visibility: hidden;
+        }
+
+        /* display: none — 보이지 않고 자리도 차지하지 않는다. */
+        .vis-none {
+            background: yellow;
+            display: none;
+        }
+
+        .vis-test3 {
+            background: green;
+        }
+
+        .wrap {
+            position: relative;
+        }
+
+        .z-test {
+            width: 150px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .z-test1 {
+            background: yellow;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            z-index: 3;
+            /* z-index의 수치가 커질수록 화면으로 튀어나오는 방향(나머지 요소를 덮어 씀) */
+        }
+
+        .z-test2 {
+            background: green;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            z-index: 2;
+        }
+
+        .z-test3 {
+            background: red;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .float-test {
+            border: 1px solid black;
+            width: 100px;
+            height: 50px;
+            float: left;
+        }
+
+        /* float의 영향을 여기서 끊는다. */
+        .clear-left {
+            clear: left;
+        }
+
+        /* position: sticky
+           평소에는 문서 흐름을 따라 같이 스크롤되다가,
+           지정한 위치(top)에 닿는 순간 그 자리에 고정된다. relative와 fixed의 중간 성격이다. */
+        .sticky-area {
+            height: 200px;
+            overflow: auto;
+            border: 2px dashed #666;
+        }
+
+        .sticky-head {
+            position: sticky;
+            top: 0;
+            /* ★ sticky는 top/left 등 위치 값을 반드시 같이 줘야 동작한다. 빠뜨리면 아무 일도 일어나지 않는다. */
+            background: #1565c0;
+            color: white;
+            padding: 10px;
+        }
+    </style>
+    <title>레이아웃 스타일4</title>
+</head>
+
+<body>
+    <h1>배치 관련 스타일</h1>
+    <h3>절대 위치와 상대 위치(중요!)</h3>
+    <div class="outer">
+        <div class="first"></div>
+        <div class="second"></div>
+        <div class="third"></div>
+    </div>
+    <hr>
+    <h3>visibility</h3>
+    <p>페이지에 특정 속성을 보이거나 보이지 않게 하는 속성</p>
+    <h4>visibility: hidden — 안 보이지만 자리는 차지한다</h4>
+    <pre>visibility: hidden;</pre>
+    <div class="vis-test vis-test1"></div>
+    <div class="vis-test vis-hidden"></div>
+    <div class="vis-test vis-test3"></div>
+    <p>가운데 노란 상자가 사라졌지만 빨강과 초록 사이에 <b>빈 자리가 그대로 남아 있다.</b></p>
+
+    <h4>display: none — 안 보이고 자리도 차지하지 않는다</h4>
+    <pre>display: none;</pre>
+    <div class="vis-test vis-test1"></div>
+    <div class="vis-test vis-none"></div>
+    <div class="vis-test vis-test3"></div>
+    <p>이번에는 빈 자리도 없어서 <b>빨강과 초록이 곧바로 붙는다.</b> 둘의 차이가 바로 이것이다.</p>
+
+    <h3>position: sticky</h3>
+    <p>평소에는 내용과 함께 스크롤되다가, 지정한 위치에 닿으면 그 자리에 붙어서 고정되는 속성이다.
+        아래 상자 안에서 스크롤을 내려 보면 제목 줄이 위에 붙어 따라오는 것을 볼 수 있다.</p>
+    <pre>position: sticky; top: 0;</pre>
+    <div class="sticky-area">
+        <div class="sticky-head">스크롤을 내려도 위에 붙어 있는 제목</div>
+        <p>내용 1</p>
+        <p>내용 2</p>
+        <p>내용 3</p>
+        <p>내용 4</p>
+        <p>내용 5</p>
+        <p>내용 6</p>
+        <p>내용 7</p>
+        <p>내용 8</p>
+    </div>
+    <p>fixed는 화면(브라우저 창)에 아예 못박히지만, sticky는 부모 영역을 벗어나면 같이 밀려 올라간다.
+        표의 머리글 고정, 사이드바 메뉴 고정 등에 쓰인다.</p>
+
+    <!-- [Tip] React 연결 : "헤더가 스크롤해도 따라다니게 해줘" 요청에 AI는 보통 sticky를 써 준다.
+         이때 안 먹는 경우가 많은데, 원인은 거의 둘 중 하나다.
+         1) top 값을 안 줬다  -> sticky는 위치 값이 없으면 동작하지 않는다
+         2) 부모에 overflow: hidden이 걸려 있다 -> sticky가 무력화된다
+         이 두 가지를 짚어서 지시하면 AI가 바로 고친다. -->
+
+    <h3>z-index</h3>
+    <p>페이지 안의 요소들을 순서대로 위로 쌓는 속성이다.</p>
+    <div class="wrap">
+        <!-- div.z-test.z-test${요소$}*3 -->
+        <div class="z-test z-test1">요소1</div>
+        <div class="z-test z-test2">요소2</div>
+        <div class="z-test z-test3">요소3</div>
+    </div>
+
+    <br><br><br><br><br><br><br><br>
+    <hr>
+    <h3>float속성</h3>
+    <p>페이지 내의 요소의 위치를 왼쪽이나 오른쪽으로 쌓이도록 지정하는 속성
+        (띄워서, 블럭 요소를 가로로 쌓기에 용이)
+    </p>
+    <p><b>지금은 레이아웃 용도로 쓰지 않는다.</b> float은 원래 '글 안에 이미지를 끼워 넣어 글자가 감싸고 흐르게 하는' 용도로
+        만들어진 속성인데, 가로 배치 수단이 달리 없던 시절에 레이아웃에 전용해서 쓰던 것이다.
+        부모가 높이를 인식하지 못해 clear로 뒤처리를 해야 하는 등 부작용이 많다.
+        지금은 가로 배치에 flex(7-5번)나 grid(7-6번)를 쓴다.
+        다만 오래된 코드나 기존 프로젝트에서 자주 마주치므로, 만났을 때 알아볼 수 있을 정도로만 익혀 둔다.</p>
+    <div class="float">
+        <!-- div.float-test.float-test$*5 -->
+        <div class="float-test float-test1">111</div>
+        <div class="float-test float-test2">222</div>
+        <div class="float-test float-test3">333</div>
+        <div class="float-test float-test4">444</div>
+        <div class="float-test float-test5">555</div>
+    </div>
+
+    <!-- float은 다음 요소에 영향을 주지 않도록 clear로 꺼 주어야 한다. -->
+    <div class="clear-left"></div>
+    <p>clear: left를 걸어 둔 덕분에 이 문단이 상자들 옆이 아니라 아래에 놓인다.</p>
+
+</body>
+
+</html>
