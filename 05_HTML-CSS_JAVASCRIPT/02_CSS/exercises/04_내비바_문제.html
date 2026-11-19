@@ -1,89 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-        /* 아래 기본 스타일은 완성되어 있다. 수정하지 않는다. */
-        * {
-            box-sizing: border-box;
-        }
+      /* 아래 기본 스타일은 완성되어 있다. 수정하지 않는다. */
+      * {
+        box-sizing: border-box;
+      }
 
-        body {
-            margin: 0;
-            font-family: "Malgun Gothic", sans-serif;
-        }
+      body {
+        margin: 0;
+        font-family: "Malgun Gothic", sans-serif;
+      }
 
-        .logo {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: white;
-        }
+      .logo {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: white;
+      }
 
-        .menu a {
-            color: white;
-            text-decoration: none;
-            padding: 6px 10px;
-        }
+      .menu a {
+        color: white;
+        text-decoration: none;
+        padding: 6px 10px;
+      }
 
-        .bell {
-            font-size: 1.3rem;
-            color: white;
-        }
+      .bell {
+        font-size: 1.3rem;
+        color: white;
+      }
 
-        .side {
-            background: #eceff1;
-            padding: 16px;
-        }
+      .side {
+        background: #eceff1;
+        padding: 16px;
+      }
 
-        .main {
-            padding: 16px;
-        }
+      .main {
+        padding: 16px;
+      }
 
-        .filler {
-            height: 1200px;
-            background: linear-gradient(#fff, #e0e0e0);
-        }
+      .filler {
+        height: 1200px;
+        background: linear-gradient(#fff, #e0e0e0);
+      }
 
-        /* ============================================================
+      /* ============================================================
            여기부터 작성한다. HTML은 수정하지 않는다.
            ============================================================ */
 
-        /* TODO 1. 헤더 (.header)
+      /* TODO 1. 헤더 (.header)
            - 배경색 #1565c0
            - 안쪽 여백 12px 20px
            - 가로 배치로 만든다.
            - 로고는 왼쪽 끝, 메뉴 묶음은 오른쪽 끝에 붙게 한다.
              (힌트: 주 축 정렬. 양 끝에 붙이고 사이를 벌리는 값이 있다)
            - 세로는 가운데 정렬한다. */
+      .header {
+        background-color: #1565c0;
+        padding: 12px 20px;
+        display: flex;
+        justify-content: space-between; /* 양 끝에 붙이고 사이를 벌림 */
+        align-items: center; /* 세로 가운데 정렬 */
+      }
 
-
-        /* TODO 2. 헤더를 스크롤해도 위에 고정되게 만든다.
+      /* TODO 2. 헤더를 스크롤해도 위에 고정되게 만든다.
            - .header에 속성 두 줄을 추가한다.
            - 하나만 쓰면 동작하지 않는다. 3번 문제에서 다룬 내용이다. */
+      .header {
+        scroll-behavior: smooth;
+        position: sticky;
+        top: 0;
+      }
 
-
-        /* TODO 3. 오른쪽 묶음 (.nav-right)
+      /* TODO 3. 오른쪽 묶음 (.nav-right)
            - 메뉴와 알림 아이콘을 가로로 나란히 놓는다.
            - 세로 가운데 정렬
            - 아이템 사이 간격 16px
              (margin 말고 간격 전용 속성을 쓴다) */
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 16px; /* 아이템 사이 간격 */
+      }
 
-
-        /* TODO 4. 메뉴 (.menu)
+      /* TODO 4. 메뉴 (.menu)
            - 링크들을 가로로 나란히 놓는다.
            - 아이템 사이 간격 8px
            - ul의 기본 여백과 목록 점을 없앤다. */
+      .menu {
+        display: flex;
+        gap: 8px; /* 아이템 사이 간격 */
+        list-style: none; /* 목록 점 제거 */
+        margin: 0; /* 기본 여백 제거 */
+        padding: 0; /* 기본 여백 제거 */
+      }
 
-
-        /* TODO 5. 메뉴 링크 hover 효과 (.menu a:hover)
+      /* TODO 5. 메뉴 링크 hover 효과 (.menu a:hover)
            - 배경색을 반투명 흰색으로 rgba(255, 255, 255, 0.2)
            - 모서리 4px 둥글게
            - .menu a 쪽에 transition을 주어 0.2초에 걸쳐 부드럽게 바뀌게 한다. */
+      .menu a:hover {
+        background-color: rgba(255, 255, 255, 0.2); /* 기본 배경색 */
+        border-radius: 4px; /* 모서리 둥글게 */
+        transition: background-color 0.2s; /* 부드럽게 바뀌도록 */
+      }
 
-
-        /* TODO 6. 알림 배지 (.bell-wrap, .badge)
+      /* TODO 6. 알림 배지 (.bell-wrap, .badge)
            - 종 아이콘 오른쪽 위에 빨간 동그라미로 숫자가 뜨게 한다.
            - .bell-wrap : 배지의 기준점이 되게 만든다. (힌트: position)
            - .badge     : 기준점에 대해 자유롭게 위치를 잡는다. (힌트: position)
@@ -91,24 +114,49 @@
                           배경 crimson, 글자색 흰색
                           글자 크기 0.7rem, 안쪽 여백 2px 6px
                           완전히 둥글게 (border-radius를 크게) */
+      .bell-wrap {
+        position: relative; /* 배지의 기준점 */
+      }
+      .badge {
+        position: absolute; /* 기준점에 대해 자유롭게 위치 */
+        top: -4px;
+        right: -8px;
+        background-color: crimson; /* 배경색 */
+        color: white; /* 글자색 */
+        font-size: 0.7rem; /* 글자 크기 */
+        padding: 2px 6px; /* 안쪽 여백 */
+        border-radius: 50%; /* 완전히 둥글게 */
+      }
 
-
-        /* TODO 7. 본문 레이아웃 (.layout)
+      /* TODO 7. 본문 레이아웃 (.layout)
            - 사이드바와 본문을 가로로 나란히 놓는다. */
+      .layout {
+        display: flex; /* 가로로 나란히 */
+      }
 
-
-        /* TODO 8. 사이드바 (.side)
+      /* TODO 8. 사이드바 (.side)
            - 너비를 200px로 고정한다.
            - 화면이 좁아져도 줄어들지 않게 한다.
              (힌트: flex 아이템은 기본적으로 찌그러진다. flex-shrink)
-
+            
            본문 (.main)
            - 남는 공간을 전부 차지하게 한다. (힌트: flex 한 줄) */
+      .side {
+        /* display: flex; flex 아이템으로 만들기 */
+        width: 200px; /* 너비 고정 */
+        flex-shrink: 0; /* 화면이 좁아져도 줄어들지 않게 */
+        /* 정렬 오른쪽으로 */
+        /* justify-content: right; */
+        /* justify-content: right; 오른쪽 정렬 */
+      }
+      .main {
+        flex: 1; /* 남는 공간 전부 차지 */
+      }
     </style>
     <title>[문제] 내비게이션 바</title>
-</head>
+  </head>
 
-<!--
+  <!--
 ================================================================================
  04. 내비게이션 바 - flex와 position
 
@@ -165,36 +213,37 @@
 ================================================================================
 -->
 
-<body>
+  <body>
     <header class="header">
-        <div class="logo">MyApp</div>
+      <div class="logo">MyApp</div>
 
-        <div class="nav-right">
-            <ul class="menu">
-                <li><a href="#">홈</a></li>
-                <li><a href="#">소개</a></li>
-                <li><a href="#">문의</a></li>
-            </ul>
+      <div class="nav-right">
+        <ul class="menu">
+          <li><a href="#">홈</a></li>
+          <li><a href="#">소개</a></li>
+          <li><a href="#">문의</a></li>
+        </ul>
 
-            <div class="bell-wrap">
-                <span class="bell">&#128276;</span>
-                <span class="badge">3</span>
-            </div>
+        <div class="bell-wrap">
+          <span class="bell">&#128276;</span>
+          <span class="badge">3</span>
         </div>
+      </div>
     </header>
 
     <div class="layout">
-        <aside class="side">
-            사이드바<br>
-            (200px 고정)
-        </aside>
+      <aside class="side">
+        사이드바<br />
+        (200px 고정)
+      </aside>
 
-        <main class="main">
-            <h2>본문 영역</h2>
-            <p>남는 공간을 전부 차지해야 한다. 브라우저 폭을 줄여보면서 확인하자.</p>
-            <div class="filler">스크롤 확인용 영역</div>
-        </main>
+      <main class="main">
+        <h2>본문 영역</h2>
+        <p>
+          남는 공간을 전부 차지해야 한다. 브라우저 폭을 줄여보면서 확인하자.
+        </p>
+        <div class="filler">스크롤 확인용 영역</div>
+      </main>
     </div>
-</body>
-
+  </body>
 </html>

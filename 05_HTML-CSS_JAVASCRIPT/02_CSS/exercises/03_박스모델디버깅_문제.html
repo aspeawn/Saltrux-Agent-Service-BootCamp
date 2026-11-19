@@ -26,6 +26,7 @@
             padding: 20px;
             border: 3px solid navy;
             background: #cfe8ff;
+            /* box-sizing: border-box; */
         }
 
         /* ============================================================
@@ -37,6 +38,7 @@
             border: 2px solid #e65100;
             background: #ffe0b2;
             padding: 10px;
+            /* overflow: auto; */
             box-sizing: border-box;
         }
 
@@ -50,6 +52,7 @@
             color: white;
             text-align: center;
             line-height: 40px;
+            /* display: inline-block */
         }
 
         /* ============================================================
@@ -67,6 +70,7 @@
             background: #6a1b9a;
             color: white;
             padding: 8px;
+            top: 0;
         }
     </style>
     <title>[문제] 박스 모델 디버깅</title>
@@ -156,23 +160,25 @@
     ================================================================================
      [원인 기록란]
 
-      사례 A의 원인 :
-              실제 너비가 몇 px이 되는지 계산해서 적어보자 :
-              수정 방법 :
+      사례 A의 원인 : 너비가 300px인 부모 안에 width 100% + padding 20px을 줬더니 실제 너비가 346px이 나왔다.
+              실제 너비가 몇 px이 되는지 계산해서 적어보자 : 346px
+              수정 방법 : width 계산에 padding과 border가 포함되도록 box-sizing: border-box를 준다.
 
-      사례 B의 원인 :
-              수정 방법 :
+      사례 B의 원인 : 스크롤 속성을 주지 않아 상자 안에서 넘치는 글자가 밖으로 흘러나왔다.
+              수정 방법 : 스크롤 속성 overflow: auto를 준다.
 
-      사례 C의 원인 :
-              수정 방법 :
+      사례 C의 원인 : tag는 span 태그로 인라인 요소라 width/height가 적용되지 않았다.
+              수정 방법 : display: inline-block 또는 display: block을 준다.
 
-      사례 D의 원인 :
-              수정 방법 :
+      사례 D의 원인 : scroll-head에 position: sticky를 줬는데, 부모에 overflow 속성이 있으면 sticky가 동작하지 않는다.
+              수정 방법 : top 0을 붙인다
 
       [마지막 질문]
         사례 A 같은 문제를 프로젝트 전체에서 한 번에 막으려면
         CSS 파일 맨 위에 어떤 한 줄을 두면 될까?
-              답 :
+              답 : * {
+    box-sizing: border-box;
+}
     ================================================================================
     -->
 </body>

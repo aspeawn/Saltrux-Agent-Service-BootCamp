@@ -56,7 +56,7 @@
         }
 
         .btn-danger {
-            background: crimson;
+            background: crimson ;
             color: white;
             padding: 8px 16px;
             border: none;
@@ -122,18 +122,18 @@
     <!--
       [1부 관찰]
         Q1. 창 폭을 줄였을 때 같이 줄어드는 상자는 어느 것인가? (복수 가능)
-            답 :
+            답 : %,vw
 
         Q2. em 상자의 실제 너비는 몇 px인가? 그렇게 계산되는 이유는?
             (F12로 실제 값을 확인해보자)
-            답 :
+            답 : 202px -> border이 1px으로 설정되어있어서 1x2 = 2
 
         Q3. rem 상자의 실제 너비는 몇 px인가? em과 무엇이 다른가?
-            답 :
+            답 : 202px
 
         Q4. 부모의 font-size를 40px로 바꾸면 em 상자와 rem 상자는 각각 어떻게 되는가?
             (직접 바꿔보고 확인한다)
-            답 :
+            답 : 폰트가 상자의 범위를 넘어감
     -->
 
     <hr>
@@ -161,12 +161,14 @@
           #sample3            { color: purple; }
           .sample-important   { color: orange !important; }
 
-        2-1의 예측 색 :          실제 :          이유 :
-        2-2의 예측 색 :          실제 :          이유 :
-        2-3의 예측 색 :          실제 :          이유 :
+        2-1의 예측 색 :   blue       실제 :   blue       이유 :  style의 sample로 지정
+        2-2의 예측 색 :   blue       실제 :   brown       이유 : 안의 style이 우선
+        2-3의 예측 색 :   purple       실제 :   orange       이유 :  important 키워드로 해당 색 지정
 
         Q. 2-1에서 green이 나중에 쓰였는데도 이기지 못한 이유는 무엇인가?
-           답 :
+           답 : p.sample은 태그(p)와 클래스(sample)이 같이 있는데, 
+           .sample은 클래스만 명시되어있어 특이도가 낮아 나중에 쓰였어도 못함
+               
     -->
 
     <hr>
@@ -188,14 +190,14 @@
     <!--
       [3부 원인 기록란]
 
-        사례 A의 원인 :
-        사례 A의 수정 방법 :
+        사례 A의 원인 : 클래스 이름이 다름
+        사례 A의 수정 방법 : notice-box
 
-        사례 B의 원인 :
-        사례 B의 수정 방법 :
+        사례 B의 원인 : title 클래스에 대한 규칙이 #card .title 규칙보다 우선순위가 낮아서 적용되지 않음
+        사례 B의 수정 방법 : #card .title 규칙을 제거하거나, .title 규칙을 더 구체적으로 만들어서 우선순위를 높인다.
 
-        사례 C의 원인 :
-        사례 C의 수정 방법 :
+        사례 C의 원인 : .btn-danger 클래스에 대한 규칙이 .btn 규칙보다 우선순위가 낮아서 적용되지 않음. 또한, .btn 규칙에 !important가 붙어 있어 .btn-danger의 규칙이 무시됨.
+        사례 C의 수정 방법 : .btn 규칙에서 !important를 제거하거나, .btn-danger 규칙에 !important를 추가하여 우선순위를 높인다.
 
       [진단 순서 - 막히면 이 순서대로 확인한다]
         1단계. 선택자가 대상을 잡고 있는가?

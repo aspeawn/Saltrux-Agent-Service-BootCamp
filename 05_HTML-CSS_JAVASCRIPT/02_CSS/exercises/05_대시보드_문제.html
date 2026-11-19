@@ -45,6 +45,14 @@
            - 전체 높이 500px
 
            힌트: 나머지를 전부 차지하게 하는 단위가 있다. */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 180px 1fr; /* 왼쪽 사이드바 180px, 오른쪽 본문 나머지 */
+            grid-template-rows: 60px 1fr 50px; /* 헤더 60px, 본문 나머지, 푸터 50px */
+
+            gap: 12px; /* 칸 사이 간격 */
+            height: 500px; /* 전체 높이 */
+        }
 
 
         /* TODO 2. 영역 이름 붙이기 (.dashboard)
@@ -59,6 +67,12 @@
              .side -> sidebar
              .main -> main
              .foot -> footer */
+             .dashboard {
+            grid-template-areas:
+                "header header"
+                "sidebar main"
+                "footer footer";
+        }
 
 
         /* TODO 3. 카드 목록 (.cards)
@@ -72,6 +86,12 @@
 
            힌트: repeat()의 첫 인자에 숫자 말고 다른 값을 넣을 수 있다.
                  두 번째 인자에는 최소/최대를 지정하는 함수를 쓴다. */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* 화면 폭에 따라 열 개수가 저절로 바뀌게 */
+            gap: 12px; /* 칸 사이 간격 */
+            margin-top: 16px; /* 위쪽 여백 */
+        }
 
 
         /* TODO 4. 모바일 대응 (미디어 쿼리)
@@ -86,6 +106,19 @@
              · 전체 높이 고정을 풀어준다. (힌트: height를 auto로)
 
            브라우저 폭을 줄여가며 확인한다. */
+        @media (max-width: 700px) {
+            .dashboard {
+                grid-template-columns: 1fr; /* 열 구조를 한 줄로 바꾼다 */
+                grid-template-rows: 60px auto auto 50px; /* 행 구조는 헤더 60px / 사이드바 auto / 본문 auto / 푸터 50px */
+                grid-template-areas:
+                    "header"
+                    "sidebar"
+                    "main"
+                    "footer"; /* 영역 배치를 세로로 쌓는다 */
+                height: auto; /* 전체 높이 고정을 풀어준다 */
+            }
+          }
+          
     </style>
     <title>[문제] 대시보드 레이아웃</title>
 </head>
@@ -154,7 +187,7 @@
     <div class="dashboard">
         <header class="head">header</header>
 
-        <aside class="side">sidebar (180px)</aside>
+        <aside class="side ">sidebar (180px)</aside>
 
         <main class="main">
             <h3>main</h3>

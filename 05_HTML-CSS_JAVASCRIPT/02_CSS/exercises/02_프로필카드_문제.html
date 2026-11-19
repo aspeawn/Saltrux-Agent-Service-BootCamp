@@ -17,52 +17,94 @@
            - 모서리를 8px 둥글게
            - 배경색 흰색
            - 화면 가운데로 오게 한다. (힌트: margin의 auto 값) */
+           .card {
+            width: 360px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            margin: 40px auto; /* 화면 가운데로 오게 함 */
+           }
 
 
         /* TODO 2. 페이지 배경 (body)
            - 배경색을 연한 회색(#f0f0f0)으로
            - 기본 글꼴을 지정한다. (힌트: 맑은 고딕을 먼저, 없으면 sans-serif)
            - 위아래 여백 40px */
-
+           .body {
+            background-color: #f0f0f0;
+            font-family: 'Malgun Gothic', sans-serif;
+            margin: 40px 0;
+           }
 
         /* TODO 3. 프로필 이미지 (.card img)
            - 너비 100px, 높이 100px
            - 완전한 원으로 만든다. (힌트: border-radius를 절반 이상으로)
            - 아래쪽 여백 10px */
+         .card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; /* 완전한 원으로 만들기 */
+            margin-bottom: 10px;
+         }
 
 
         /* TODO 4. 이름 (.name)
            - 글자 크기 1.5rem
            - 굵게
            - 아래 여백을 4px로 줄인다. (h2의 기본 여백이 크다) */
-
+         .name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 4px; /* 아래 여백 줄이기 */
+         }
 
         /* TODO 5. 직함 (.role)
-           - 글자 크기 0.9rem
+           - 글자 크기 0.9rem 
            - 글자색 회색(#777)
            - 모두 대문자로 보이게 한다. (힌트: text-transform)
            - 글자 사이 간격을 살짝 벌린다. (힌트: letter-spacing 1px) */
-
+         .role {
+            font-size: 0.9rem;
+            color: #777;
+            text-transform: uppercase; /* 모두 대문자로 */
+            letter-spacing: 1px; /* 글자 사이 간격 벌리기 */
+         }
 
         /* TODO 6. 소개 문단 (.bio)
            - 줄 간격을 1.6으로
            - 글자색 #444
            - 양쪽 정렬 */
-
+         .bio {
+            line-height: 1.6; /* 줄 간격 */
+            color: #444; /* 글자색 */
+            text-align: justify; /* 양쪽 정렬 */
+         }
 
         /* TODO 7. 강조 표시 (.bio mark)
            - 형광펜 색을 기본 노랑 대신 연한 하늘색(#cfe8ff)으로 바꾼다. */
-
+         .bio mark {
+            background-color: #cfe8ff; /* 연한 하늘색 */
+         }
 
         /* TODO 8. 기술 목록 (.skills)
            - 목록 앞의 점을 네모(square)로 바꾼다.
            - 점이 글자 안쪽에 들어오게 한다. (힌트: list-style-position)
            - 왼쪽 안쪽 여백 20px */
-
+         .skills {
+            list-style-type: square; /* 점을 네모로 */
+            list-style-position: inside; /* 점이 글자 안쪽에 들어오게 */
+            padding-left: 20px; /* 왼쪽 안쪽 여백 */
+         }
 
         /* TODO 9. 구분선 (hr)
            - 테두리를 없애고 위쪽만 1px 점선으로 만든다.
            - 위아래 여백 16px */
+         hr {
+            border: none; /* 테두리 없애기 */
+            border-top: 1px dashed #ccc; /* 위쪽만 점선 */
+            margin: 16px 0; /* 위아래 여백 */
+         }
 
 
         /* TODO 10. 배너 영역 (.banner)
@@ -72,6 +114,17 @@
            - 이미지의 가운데가 보이도록 위치를 잡는다.
            - 높이 120px, 아래 여백 16px
            - 글자색은 흰색, 가운데 정렬, 줄 높이 120px */
+         .banner {
+            background-image: url('../lecture/sample/image/city1.jpg'); /* 배경 이미지 */
+            background-repeat: no-repeat; /* 반복되지 않게 */
+            background-size: cover; /* 영역을 꽉 채우도록 */
+            background-position: center; /* 가운데 위치 */
+            height: 120px; /* 높이 */
+            margin-bottom: 16px; /* 아래 여백 */
+            color: white; /* 글자색 흰색 */
+            text-align: center; /* 가운데 정렬 */
+            line-height: 120px; /* 줄 높이 120px */
+         }
     </style>
     <title>[문제] 프로필 카드</title>
 </head>
@@ -125,7 +178,7 @@
     <div class="card">
         <div class="banner">MY PROFILE</div>
 
-        <img src="../sample/image/flower1.jpg" alt="프로필 사진">
+        <img src="../lecture/sample/image/flower1.jpg" alt="프로필 사진">
 
         <h2 class="name">홍길동</h2>
         <p class="role">backend developer</p>
@@ -149,5 +202,4 @@
         </ul>
     </div>
 </body>
-
 </html>
