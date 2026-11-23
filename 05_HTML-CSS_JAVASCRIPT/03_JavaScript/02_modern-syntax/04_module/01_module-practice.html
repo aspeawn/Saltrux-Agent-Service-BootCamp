@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>모듈 실행해보기</h1>
+    <div id="output"></div>
+    <!-- Javascript에서 import를 사용하기 위해 -->
+    <!-- 
+    script type="module"
+    ES모듈로 실행하라고 브라우저에 알려주는 표시
+    import/ export
+    -->
+    <script type="module">
+      import { PI, add } from "./main.js"; // internalNote는 export하지 않았기 때문에 접근 불가
+      //이름 내보내기 : 중괄호로 가져오고 이름이 일치해야함
+
+      // default export : 중괄호가 없이, 이름을 마음대로
+
+      import greet, { LANG } from "./greeting.js";
+
+      const output = document.getElementById("output");
+      const result = [
+        `PI = ${PI}`,
+        `add(3, 4) = ${add(3, 4)}`,
+        `greet('홍길동') = ${greet("홍길동")}`,
+        `LANG = ${LANG}`,
+      ];
+
+      result.forEach((line) => {
+        const p = document.createElement("p");
+        p.textContent = line;
+        output.appendChild(p);
+      });
+
+      console.log(`internalNote: ${internalNote}`); // main.js에서 export하지 않은 변수는 접근 불가
+
+      var moduleVar = "이 변수는 이 모듈 안에서만 유효"; // 모듈 스코프를 가진다.
+
+      console.log(window.moduleVar); //
+    </script>
+  </body>
+</html>
