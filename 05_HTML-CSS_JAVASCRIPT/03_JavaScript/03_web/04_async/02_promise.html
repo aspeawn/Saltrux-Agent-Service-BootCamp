@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02_Promise</title>
+    <style>
+      #log {
+        background: #f4f4f4;
+        padding: 10px;
+        min-height: 120px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>02. Promise</h1>
+
+    <button id="btn1">1초 뒤 성공하는 Promise</button>
+    <button id="btn2">1초 뒤 실패하는 Promise</button>
+    <button id="btn3">체인으로 이어붙이기</button>
+
+    <h3>실행 결과</h3>
+    <div id="log"></div>
+
+    <script>
+      const $log = document.getElementById("log");
+
+      function log(message) {
+        $log.insertAdjacentHTML("beforeend", `<div>${message}</div>`);
+        console.log(message);
+      }
+      /*
+      Promis : 지금 결과가 없지만, 나중에 주겠다는 약속을 담은 객체
+
+      - 대기(pending)     : 진행중
+      - 이행(fulfilled)   : 성공
+      - 거부(rejected)    : 실패
+      */
+
+      // Promis 객체
+      // 성공하면 resolve / 실패하면 reject
+      function wait(ms, shouldFail = false) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            if (shouldFail) {
+              // 실패
+              reject(new Error(`$(ms)ms 후 실패했다.`));
+            } else {
+              // 성공
+              resolve(`${ms}ms 후 성공했다.`);
+            }
+          }, ms);
+        });
+      }
+
+      // 1. 결과 받기
+      document.getElementById("btn1").addEventListener("click", () => {
+        log("시작");
+
+        wait(1000).then((result) => {
+          log("성공: " + result);
+        });
+
+        log("종료");
+      });
+
+      document.getElementById("btn2").addEventListener("click", () => {
+        log("시작");
+
+        wait(1000, true)
+          .then((result) => log("성공: " + result))
+          .catch((error) => log("실패 : " + error.message))
+          .finally(() => log("finally는 성공 실패와 관계없이 항상 실행"));
+
+        log("종료");
+      });
+
+      document.getElementById("btn3").addEventListener("click", () => {
+        wait(500)
+          .then((r1) => {
+            log("1단계 : " + r1);
+            return wait(500);
+          })
+          .then((r2) => {
+            log("2단계 : " + r2);
+            return wait(500);
+          })
+          .then((r3) => {
+            log("3단계 : " + r3);
+          })
+          .catch((error) => log("실패 : " + error.message))
+          .finally(() => log("finally는 성공 실패와 관계없이 항상 실행"));
+      });
+    </script>
+  </body>
+</html>

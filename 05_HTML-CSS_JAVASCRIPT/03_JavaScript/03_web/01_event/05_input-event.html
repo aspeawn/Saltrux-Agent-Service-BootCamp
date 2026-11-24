@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05_사용자 입력 양식 이벤트</title>
+    <style>
+      form {
+        border: 1px solid #ccc;
+        padding: 16px;
+        width: 460px;
+      }
+      #log {
+        background: #f4f4f4;
+        padding: 10px;
+        min-height: 100px;
+        font-family: monospace;
+      }
+      label {
+        display: inline-block;
+        width: 70px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>05. 사용자 입력 양식 이벤트</h1>
+
+    <form name="memberjoin">
+      <label for="username">이름</label>
+      <input type="text" name="username" id="username" value="홍길동" />
+      <br /><br />
+
+      <label>성별</label>
+      <input type="radio" name="gender" id="male" value="m" checked /><label
+        for="male"
+        >남자</label
+      >
+      <input type="radio" name="gender" id="female" value="f" /><label
+        for="female"
+        >여자</label
+      >
+      <br /><br />
+
+      <label>나이</label>
+      <select id="age" name="age">
+        <option value="10">10대 이하</option>
+        <option value="20">20대</option>
+        <option value="30">30대</option>
+      </select>
+      <br /><br />
+
+      <label>약관</label>
+      <input type="checkbox" id="agree" name="agree" /> 동의합니다 <br /><br />
+
+      <label>자기소개</label>
+      <textarea
+        name="introduce"
+        rows="4"
+        cols="34"
+        maxlength="100"
+        placeholder="자기소개를 입력하세요"
+      ></textarea>
+      <div>글자 수 : <span id="counter">0</span> / 100</div>
+    </form>
+
+    <h3>실행 결과</h3>
+    <div id="log"></div>
+
+    <script>
+      const $log = document.getElementById("log");
+
+      function log(message) {
+        $log.insertAdjacentHTML("beforeend", `<div>${message}</div>`);
+        console.log(message);
+      }
+
+      const $form = document.forms.memberjoin;
+
+      const $username = $form.username;
+      const $age = $form.age;
+      const $agree = $form.agree;
+      const $introduce = $form.introduce;
+      
+
+      // 값 읽기
+      /**
+       * - text, select, textarea : .value
+       * - check box              : .checked (value는 one이라고 나옴)
+       * - radio                  : $form.이름.value 체크된 것의 value를 읽음
+       */
+      log(`이름 : ${$username.value}`);
+      log(`성별 : ${$form.gender.value}`);
+      log(`나이 : ${$age.value}`);
+      log(`약관 : ${$agree.checked}`);
+
+      // 2. input/ change
+      // input : 값이 바뀔때마다 즉시
+      // change : 변경이 끝났을 때
+      $username.addEventListener("change", (e) => {
+        log(`[input] 이름 : ${e.target.value}`);
+      });
+
+      $username.addEventListener("change", (e) => {
+        log(`[input] 이름 : ${e.target.value}`);
+      });
+
+      $username.addEventListener("change", (e) => {
+        log(`[input] 나이 : ${e.target.value}`);
+      });
+
+      $username.addEventListener("change", (e) => {
+        log(`[input] 약관 : ${e.target.value}`);
+      });
+
+      // 3. 글자수 세기 -> input 글을 쓸때마다 글자 수가 변경되게
+      const $counter = document.getElementById("counter");
+      $introduce.addEventListener("input", (e) => {
+        $counter.textContent = $introduce.value.length;
+        log(`[input] 글자수 : ${e.target.value.length}`);
+      });
+
+      // 동적으로 화면 이벤트를 만들 때
+      // 1. 어디서 이벤트가 발생할지 (이벤트 핸들러를 적용시킬 요소)
+      // 2. 뭘바꿀까? -> 결과가 어떻게 될 지 생각
+
+
+    </script>
+  </body>
+</html>

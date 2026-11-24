@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03_이벤트 객체</title>
+    <style>
+      .area {
+        width: 260px;
+        height: 140px;
+        background: lightgray;
+        padding: 10px;
+      }
+      #log {
+        background: #f4f4f4;
+        padding: 10px;
+        min-height: 80px;
+        font-family: monospace;
+      }
+      input {
+        padding: 6px;
+        width: 200px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>03. 이벤트 객체</h1>
+
+    <h3>1. 이벤트 객체 살펴보기</h3>
+    <div class="area" id="area">이 영역 안을 클릭해보세요.</div>
+
+    <h3>2. target 과 currentTarget</h3>
+    <div class="area" id="outer">
+      바깥 상자를 눌러보세요.
+      <button id="inner">안쪽 버튼</button>
+    </div>
+
+    <h3>3. 입력값 읽기</h3>
+    <input type="text" id="nameInput" placeholder="이름을 입력해보세요" />
+
+    <h3>실행 결과</h3>
+    <div id="log"></div>
+
+    <script>
+      const $log = document.getElementById("log");
+
+      function log(message) {
+        $log.insertAdjacentHTML("beforeend", `<div>${message}</div>`);
+        console.log(message);
+      }
+
+      // 이벤트 객체 : 이벤트가 발생하면 브라우저에서 그 정보를 담은 객체를
+      // 핸들러의 첫번째 인자로 넘겨준다. (e, event)
+      document.getElementById("area").addEventListener("click", (e) => {
+        log(`type : ${e.type}, x : ${e.clientX}, y : ${e.clientY}`);
+        console.log(e);
+      });
+
+      // e.target : 실제로 이벤트가 발생한 요소
+      // e.currentTarget : 핸들러를 등록한 요소
+      document.getElementById("outer").addEventListener("click", (e) => {
+        log(
+          `target : ${e.target.tagName} / currentTarget : ${e.currentTarget.tagName}`,
+        );
+        console.log(e);
+      });
+
+      // 입력값 얻기
+      document.getElementById("nameInput").addEventListener('input', (e) => {log(`입력값 : ${e.target.value}`)})
+    </script>
+  </body>
+</html>

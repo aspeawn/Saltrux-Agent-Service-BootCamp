@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02_이벤트 핸들러 제거</title>
+    <style>
+      #log {
+        background: #f4f4f4;
+        padding: 10px;
+        min-height: 80px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>02. 이벤트 핸들러 제거</h1>
+
+    <h3>1. 제거되는 경우</h3>
+    <button id="btn1">눌러도 아무 일이 없어야 한다</button>
+
+    <h3>2. 제거되지 않는 경우</h3>
+    <button id="btn2">눌러보면 여전히 동작한다</button>
+
+    <h3>3. once 옵션</h3>
+    <button id="btn3">처음 한 번만 동작한다</button>
+
+    <h3>실행 결과</h3>
+    <div id="log"></div>
+
+    <script>
+      const $log = document.getElementById("log");
+
+      function log(message) {
+        $log.insertAdjacentHTML("beforeend", `<div>${message}</div>`);
+        console.log(message);
+      }
+
+      // 1. 요소찾기
+      const $btn1 = document.getElementById("btn1");
+      // 2. 함수만들기
+      const handleClick = () => log("이 메시지는 나오면 안됩니다!");
+      // 3. 이벤트 핸들러에 등록하기
+      $btn1.addEventListener("click", handleClick);
+      // 이벤트 리스너 지우기
+      $btn1.removeEventListener("click", handleClick);
+
+      // 핸들러함수를 익명함수형태로 작성했을 경우
+      // 모양은 같지만 서로다른함수라 지울 수 없음.
+      const $btn2 = document.getElementById("btn2");
+      $btn2.addEventListener("click", () => log("동작한다."));
+      $btn2.removeEventListener("click", () => log("동작한다."));
+
+      // 한번만 실행하는 핸들러
+      document.getElementById("btn3").addEventListener(
+        "click",
+        () => {
+          log("한번만 동작하기");
+        },
+        { once: true },
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01_JSON과 localStorage</title>
+    <style>
+      #log {
+        background: #f4f4f4;
+        padding: 10px;
+        min-height: 120px;
+        font-family: monospace;
+      }
+      li {
+        margin: 4px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>01. JSON과 localStorage</h1>
+
+    <h3>1. JSON 변환</h3>
+    <button id="jsonBtn">변환해 보기</button>
+
+    <h3>2. 할 일 목록 저장</h3>
+    <input type="text" id="todoInput" placeholder="할 일을 입력하세요" />
+    <button id="addBtn">추가</button>
+    <button id="resetBtn">전부 지우기</button>
+    <ul id="todoList"></ul>
+
+    <h3>실행 결과</h3>
+    <div id="log"></div>
+
+    <script>
+      const $log = document.getElementById("log");
+
+      function log(message) {
+        $log.insertAdjacentHTML("beforeend", `<div>${message}</div>`);
+        console.log(message);
+      }
+
+      document.getElementById("jsonBtn").addEventListener("click", () => {
+        const user = { name: "홍길동", age: 20 };
+
+        // 객체 -> 문자열
+        const text = JSON.stringify(user);
+        log(`stringify : ${text} (${typeof text})`);
+
+        const parsed = JSON.parse(text);
+        log(`parse : ${parsed} (${typeof parsed})`);
+
+        // 변환을 안하고 객체로 그대로 저장 -> 내용이 사라짐
+        localStorage.setItem("wrongUser", user);
+
+        log(`그대로 저장 : ${localStorage.getItem("wrongUser")}`);
+        localStorage.removeItem("wrongUser");
+
+        // 변환하고 저장
+        localStorage.setItem("goodUser", text);
+        log(`변환후 저장 : ${localStorage.getItem("goodUser")}`);
+        const parsedUser = JSON.parse(localStorage.getItem("goodUser"));
+
+        log(`파싱후 출력 : ${parsedUser}`);
+      });
+
+      // 로컬스토리지 키값
+      const STORAGE_KEY = "todos";
+      // 입력할 곳의 요소
+      const $todoInput = document.getElementById("todoInput");
+      // todo를 보여줄 공간의 요소
+      const $todoList = document.getElementById("todoList");
+
+      // 로컬스토리지에 저장된 Todos 목록을 꺼내오는 함수 (없으면 빈배열 반환)
+      function loadTodos() {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "[]");
+      }
+
+      // Todos 를 화면에 그려주는 역할
+      function render(todoItems) {
+        // $todoList 요소 안에 있는 HTML 코드를 지우는 역할
+        $todoList.innerHTML = "";
+
+        todoItems.forEach((todo) => {
+          $todoList.insertAdjacentHTML("beforeend", `<li>${todo.text}</li>`);
+        });
+      }
+
+      // 기존에 있던 목록으로 초기화
+      let todos = loadTodos();
+      render(todos);
+
+      // // 지금 저장되어있던 todos키의 value = 저장된 투두 목록
+      // let todos = localStorage.getItem(STORAGE_KEY) ?? [];
+
+      document.getElementById("addBtn").addEventListener("click", () => {
+        // localstorage에 저장
+        const text = $todoInput.value.trim();
+
+        if (!text) return;
+
+        // 기존 todos 배열 + 추가된 todo
+        todos = [...todos, { id: Date.now(), text }];
+
+        // 저장
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+
+        // 그리기
+        render(todos);
+
+        // 입력한 내용을 지워주기
+        $todoInput.value = "";
+      });
+
+      document.getElementById("resetBtn").addEventListener("click", () => {
+        localStorage.removeItem(STORAGE_KEY);
+        todos = [];
+        render(todos);
+      });
+    </script>
+  </body>
+</html>

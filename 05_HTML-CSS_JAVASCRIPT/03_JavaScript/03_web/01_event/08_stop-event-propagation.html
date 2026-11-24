@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>08_이벤트 전파 방지</title>
+    <style>
+      .card {
+        border: 1px solid #888;
+        padding: 16px;
+        margin: 10px 0;
+        width: 300px;
+        cursor: pointer;
+      }
+      .card button {
+        margin-top: 8px;
+      }
+      #log {
+        background: #f4f4f4;
+        padding: 10px;
+        min-height: 80px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>08. 이벤트 전파 방지</h1>
+
+    <h3>1. 전파를 막지 않은 경우</h3>
+    <div class="card" id="card1">
+      카드 1 (아무 데나 누르면 상세 보기)
+      <br />
+      <button id="delete1">삭제</button>
+    </div>
+
+    <h3>2. 전파를 막은 경우</h3>
+    <div class="card" id="card2">
+      카드 2 (아무 데나 누르면 상세 보기)
+      <br />
+      <button id="delete2">삭제</button>
+    </div>
+
+    <h3>실행 결과</h3>
+    <div id="log"></div>
+
+    <script>
+      const $log = document.getElementById("log");
+
+      function log(message) {
+        $log.insertAdjacentHTML("beforeend", `<div>${message}</div>`);
+        console.log(message);
+      }
+
+      // 전파를 막지 않은 경우
+      document.getElementById("card1").addEventListener("click", () => {
+        log("[카드 1] 상세 보기로 이동");
+      });
+
+      document.getElementById("delete1").addEventListener("click", () => {
+        log("[카드 1] 삭제");
+      });
+
+      document.getElementById("card2").addEventListener("click", () => {
+        log("[카드 2] 상세 보기로 이동");
+      });
+
+      document.getElementById("delete2").addEventListener("click", () => {
+        e.stopPropagation();    // 이벤트 전파 막기
+        log("[카드 2] 삭제");
+      });
+
+      
+
+    </script>
+  </body>
+</html>

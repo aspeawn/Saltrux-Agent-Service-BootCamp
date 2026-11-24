@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03_async와 await</title>
+    <style>
+      #log {
+        background: #f4f4f4;
+        padding: 10px;
+        min-height: 120px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>03. async와 await</h1>
+
+    <button id="btn1">순서대로 실행 (await)</button>
+    <button id="btn2">오류 처리 (try/catch)</button>
+    <button id="btn3">사용자 가져오기 (200)</button>
+    <button id="btn4">없는 사용자 가져오기 (404)</button>
+
+    <h3>실행 결과</h3>
+    <div id="log"></div>
+
+    <script>
+      const $log = document.getElementById("log");
+
+      function log(message) {
+        $log.insertAdjacentHTML("beforeend", `<div>${message}</div>`);
+        console.log(message);
+      }
+
+      function wait(ms, shouldFail = false) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            if (shouldFail) {
+              reject(new Error(`${ms}ms 후 실패했습니다.`));
+            } else {
+              resolve(`${ms}ms 후 성공했습니다.`);
+            }
+          }, ms);
+        });
+      }
+
+      /*
+      async와 await
+      - Promise를 동기 코드처럼 위에서 아래로 읽히게 써주는 문법
+
+      1) 함수 앞에 async를 붙인다.
+      2) Promis 앞에 awiat를 붙여서 결과가 나올 때까지 기다렸다가 값을 꺼냄
+      3) 오류는 try/catch로 잡는다.
+      */
+      document.getElementById("btn1").addEventListener("click", async () => {
+        log("시작");
+
+        const r1 = await wait(500);
+        log("1단계 : " + r1);
+
+        const r2 = await wait(500);
+        log("2단계 : " + r2);
+
+        const r3 = await wait(500);
+        log("3단계 : " + r3);
+
+        log("끝");
+      });
+
+      document.getElementById("btn2").addEventListener("click", async () => {
+        try {
+          const result = await wait(500, true);
+          log("실행되지 않음");
+        } catch (error) {
+          log("오류를 잡다 : " + error.message);
+        } finally {
+          log("finally는 항상 실행");
+        }
+      });
+
+      // fetch로 실제 서버 요청 보내기
+
+      const API = "https://jsonplaceholder.typicode.com/";
+
+      async function getUser(id) {
+        try {
+          const res = await fetch(`${API}/users/${id}`);
+
+          if (!res.ok) {
+            throw new Error(`요청실패 : ${res.status}`);
+          }
+
+          const user = await res.json(); // 응답 본문을 JSON 객체로 변경
+          log(`[${id}번] 이름 : ${user.name} / 이메일 : ${user.email}`);
+        } catch (error) {
+          log(`[${id}번] 오류를 잡음 : ${error.message}`);
+        }
+      }
+
+      document.getElementById("btn3").addEventListener("click", () => {
+        getUser(1);
+      });
+
+      document.getElementById("btn3").addEventListener("click", () => {
+        getUser(999);
+      });
+    </script>
+  </body>
+</html>

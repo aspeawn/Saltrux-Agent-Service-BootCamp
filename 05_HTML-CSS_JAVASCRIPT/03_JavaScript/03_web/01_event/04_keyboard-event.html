@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04_키보드 이벤트</title>
+    <style>
+      #log {
+        background: #f4f4f4;
+        padding: 10px;
+        min-height: 120px;
+        font-family: monospace;
+      }
+      input {
+        padding: 6px;
+        width: 260px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>04. 키보드 이벤트</h1>
+
+    <input type="text" id="keyInput" placeholder="아무 키나 눌러보세요" />
+
+    <h3>실행 결과</h3>
+    <div id="log"></div>
+
+    <script>
+      const $log = document.getElementById("log");
+
+      function log(message) {
+        $log.insertAdjacentHTML("beforeend", `<div>${message}</div>`);
+        console.log(message);
+      }
+
+      // keyup : 키에서 손을 뗄때
+      // keydown : 키를 누를 떄
+      document.getElementById("keyInput").addEventListener("keydown", (e) => {
+        log(`key : ${e.key}`);
+
+        if (e.ey === "Enter") {
+          log(" -> Enter : 여기서 검색을한다.")
+        }
+      });
+
+
+    </script>
+  </body>
+</html>

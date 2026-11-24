@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_setTimeout</title>
+    <style>
+        #log { background: #f4f4f4; padding: 10px; min-height: 120px; font-family: monospace; }
+    </style>
+</head>
+
+<body>
+    <h1>01. setTimeout</h1>
+
+    <button id="startBtn">실행하기</button>
+
+    <h3>실행 결과</h3>
+    <div id="log"></div>
+
+    <script>
+        const $log = document.getElementById('log');
+
+        function log(message) {
+            const time = new Date().toLocaleTimeString('ko-KR');
+            $log.insertAdjacentHTML('beforeend', `<div>[${time}] ${message}</div>`);
+            console.log(message);
+        }
+
+        document.getElementById('startBtn').addEventListener('click', () => {
+
+          // setTimeout(콜백함수, 지연시간)
+          // 지정한 시간이 지난뒤 콜백을 한번 호출
+          setTimeout(() => log("1초가 지났다."), 1000);
+          setTimeout(() => log("1초가 지났다."), 3000);
+          
+          setTimeout(() => log("0으로 등록한것."), 0);
+          log("--- 여기까지 실행");
+        });
+    </script>
+  </body>
+</html>

@@ -8,7 +8,7 @@
 const product = { name: '키보드', price: 45000, stock: 0, maker: null };
 
 const { name, price } = product;
-console.log(name, price);                    // 예상 :
+console.log(name, price);                    // 예상 :   
 
 const { price: cost, name: title } = product;
 console.log(title, cost);                    // 예상 :

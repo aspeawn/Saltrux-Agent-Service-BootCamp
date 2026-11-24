@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02_setInterval</title>
+    <style>
+      #log {
+        background: #f4f4f4;
+        padding: 10px;
+        min-height: 120px;
+        font-family: monospace;
+      }
+      #clock {
+        font-size: 2em;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>02. setInterval</h1>
+
+    <h3>1. 5까지 세고 스스로 멈추기</h3>
+    <button id="countBtn">세기 시작</button>
+
+    <h3>2. 시계 - 버튼으로 멈추기</h3>
+    <div id="clock">--:--:--</div>
+    <button id="clockStart">시작</button>
+    <button id="clockStop">정지</button>
+
+    <h3>실행 결과</h3>
+    <div id="log"></div>
+
+    <script>
+      const $log = document.getElementById("log");
+
+      function log(message) {
+        $log.insertAdjacentHTML("beforeend", `<div>${message}</div>`);
+        console.log(message);
+      }
+
+      document.getElementById("countBtn").addEventListener("click", () => {
+        let count = 1;
+
+        /*
+          setInterval(콜백함수, 시간)
+          - 시간마다 콜백을 바놉ㄱ해서 호출, clearInterval로 취소할 때까지 멈추지 안흥ㅁ
+          */
+        const timerId = setInterval(() => {
+          log(`${count}초`);
+
+          if (count === 5) {
+            clearInterval(timerId);
+            log("5까지 세고 멈추기");
+          }
+
+          count++;
+        }, 1000);
+      });
+
+      const $clock = document.getElementById("clock");
+      let clockId = null;
+
+      document.getElementById("clockStart").addEventListener("click", () => {
+        if (clockId !== null) return;
+
+        clockId = setInterval(() => {
+          $clock.textContent = new Date().toLocaleTimeString("ko-KR");
+        }, 1000);
+
+        log("시계 시작");
+      });
+
+      document.getElementById("clockStop").addEventListener("click", () => {
+        clearInterval(clockId);
+        clockId = null;
+        log("시계를 멈췄다");
+      });
+    </script>
+  </body>
+</html>

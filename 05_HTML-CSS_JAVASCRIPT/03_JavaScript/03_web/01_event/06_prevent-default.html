@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>06_기본 동작 막기와 폼 제출</title>
+    <style>
+      section {
+        border: 1px solid #ccc;
+        padding: 12px;
+        margin: 12px 0;
+        width: 420px;
+      }
+      #log {
+        background: #f4f4f4;
+        padding: 10px;
+        min-height: 60px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>06. 기본 동작 막기와 폼 제출</h1>
+
+    <section>
+      <h3>1. 링크 이동 막기</h3>
+      <a href="https://www.google.com">클릭해도 이동하지 않는 a 태그</a>
+    </section>
+
+    <section>
+      <h3>2. 검증에 실패하면 전송 막기</h3>
+      <form
+        name="search"
+        method="GET"
+        action="https://search.naver.com/search.naver"
+      >
+        <input
+          type="text"
+          name="query"
+          placeholder="검색할 키워드를 입력하세요"
+        />
+        <button type="submit">네이버 검색하기</button>
+      </form>
+    </section>
+
+    <section>
+      <h3>3. 항상 막고 직접 처리하기</h3>
+      <form name="login">
+        <input type="email" name="email" placeholder="이메일" />
+        <input type="password" name="password" placeholder="비밀번호" />
+        <button type="submit">로그인</button>
+        <button type="button" id="resetBtn">지우기</button>
+      </form>
+    </section>
+
+    <h3>실행 결과</h3>
+    <div id="log"></div>
+
+    <script>
+      const $log = document.getElementById("log");
+
+      function log(message) {
+        $log.insertAdjacentHTML("beforeend", `<div>${message}</div>`);
+        console.log(message);
+      }
+
+      document.querySelector("a").addEventListener("click", (e) => {
+        e.preventDefault(); // a태그 기본 동작을 막음
+        log("a 태그를 눌렀지만 이동 x");
+      });
+
+      document.forms.search.addEventListener("submit", (e) => {
+        const keyword = e.target.query.value.trim();
+
+        if (!keyword) {
+          e.preventDefault();
+          log("검색어가 비었습니다. 전송을 취소합니다!");
+        }
+      });
+
+      document.forms.login.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const email = e.target.email.value.trim();
+        const password = e.target.password.value;
+
+        if (!email || !password) {
+          log("이메일과 비밀번호를 모두 입력해야 한다.");
+          return;
+        }
+
+        log(`서버로 보낼 값 : ${email}`); // 서버로 요청을 보냄
+        
+        // form 안의 버튼이 기본값이 submit
+        // 제출용이 아닌 버튼은 꼭 type = 'button'을 해주자!
+        document.getElementById("restbtn").addEventListener("click", () => {
+          document.forms.login.reset();
+          log("입력지움");
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>09_이벤트 위임</title>
+    <style>
+      ul {
+        background: lightgray;
+        padding: 20px;
+        width: 260px;
+      }
+      li {
+        background: white;
+        padding: 8px;
+        margin: 4px;
+        cursor: pointer;
+      }
+      .highlight {
+        font-weight: bolder;
+        text-decoration: underline;
+        background-color: greenyellow;
+      }
+      #log {
+        background: #f4f4f4;
+        padding: 10px;
+        min-height: 60px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>09. 이벤트 위임</h1>
+
+    <ul id="drink">
+      <li>커피</li>
+      <li>콜라</li>
+      <li>우유</li>
+    </ul>
+
+    <button id="addBtn">항목 추가</button>
+
+    <h3>실행 결과</h3>
+    <div id="log"></div>
+
+    <script>
+      const $log = document.getElementById("log");
+
+      function log(message) {
+        $log.insertAdjacentHTML("beforeend", `<div>${message}</div>`);
+        console.log(message);
+      }
+
+      const $drink = document.getElementById("drink");
+
+      $drink.addEventListener("click", (e) => {
+        if (e.target.tagName !== "LI") return;
+
+        e.target.classList.toggle("highlight");
+        log(`${e.target.textContent}를 눌렀다`);
+      });
+
+      let count = 0;
+
+      document.getElementById("addBtn").addEventListener("click", () => {
+        count++;
+        $drink.insertAdjacentHTML("beforeend", `<li>새 음료 ${count}</li>`);
+      });
+    </script>
+  </body>
+</html>
