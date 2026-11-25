@@ -1,0 +1,9 @@
+.title {
+  color: #087ea4;
+}
+
+.card {
+  border: 2px solid #087ea4;
+  border-radius: 10px;
+  padding: 12px 16px;
+}

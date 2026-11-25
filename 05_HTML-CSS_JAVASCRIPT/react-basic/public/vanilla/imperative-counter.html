@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>01-4. 명령형 카운터 (Vanilla JS)</title>
+    <style>
+      body {
+        font-family: system-ui, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+        padding: 40px;
+      }
+      #count {
+        font-size: 40px;
+        font-weight: 700;
+      }
+      .bad {
+        color: #d9363e;
+      }
+      button {
+        font-size: 16px;
+        padding: 6px 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>명령형(Imperative) 카운터</h1>
+    <p id="count">0</p>
+    <button id="minus">-1</button>
+    <button id="plus">+1</button>
+
+    <script>
+      // 1) 화면 요소를 직접 찾는다
+      const countEl = document.querySelector('#count')
+      const minusBtn = document.querySelector('#minus')
+      const plusBtn = document.querySelector('#plus')
+
+      let count = 0
+
+      // 2) 값이 바뀔 때마다 "어떻게" 화면을 바꿀지 하나하나 명령한다
+      function render() {
+        countEl.textContent = count // 텍스트 바꾸기
+        if (count < 0) {
+          countEl.classList.add('bad') // 색 바꾸기
+        } else {
+          countEl.classList.remove('bad') // 색 되돌리기 (잊으면 버그!)
+        }
+      }
+
+      // 3) 이벤트를 직접 연결한다
+      minusBtn.addEventListener('click', () => {
+        count = count - 1
+        render() // 화면 갱신도 직접 호출해야 한다 (잊으면 화면이 안 바뀜)
+      })
+
+      plusBtn.addEventListener('click', () => {
+        count = count + 1
+        render()
+      })
+    </script>
+  </body>
+</html>

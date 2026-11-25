@@ -1,0 +1,13 @@
+.title {
+  color: #d9363e;
+}
+
+.card {
+  border: 2px solid #d9363e;
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+
+.isActive {
+  background: #fff1f0;
+}

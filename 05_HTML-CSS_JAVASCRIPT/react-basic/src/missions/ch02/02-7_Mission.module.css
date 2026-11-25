@@ -1,0 +1,21 @@
+.ticket {
+  border: 2px dashed #087ea4;
+  border-radius: 12px;
+  padding: 16px 20px;
+  background: #e6f7ff;
+  max-width: 360px;
+}
+
+.title {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.seat {
+  display: inline-block;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #087ea4;
+  color: #fff;
+}

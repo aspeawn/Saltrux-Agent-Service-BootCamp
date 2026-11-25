@@ -1,0 +1,97 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e3e6ec;
+  border-radius: 14px;
+  padding: 24px 20px 20px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.04);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.08);
+}
+
+.avatar {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 32px;
+  color: #fff;
+}
+
+.status {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background: #9ca3af;
+}
+
+.online {
+  background: #22c55e;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.job {
+  font-size: 14px;
+  color: #5e687e;
+}
+
+.bio {
+  font-size: 14px;
+  margin: 12px 0;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+.skill {
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #f0f3f7;
+}
+
+.followButton {
+  width: 100%;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #087ea4;
+  background: #087ea4;
+  color: #fff;
+  cursor: pointer;
+}
+
+.following {
+  background: #fff;
+  color: #087ea4;
+}
