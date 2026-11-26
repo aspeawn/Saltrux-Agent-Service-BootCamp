@@ -1,0 +1,169 @@
+.app {
+  max-width: 560px;
+  background: #fff;
+  border: 1px solid #e3e6ec;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.04);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 22px;
+}
+
+.summary {
+  font-size: 14px;
+  color: #5e687e;
+}
+
+.form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.input {
+  flex: 1;
+  font: inherit;
+  font-size: 15px;
+  padding: 10px 12px;
+  border: 1px solid #e3e6ec;
+  border-radius: 10px;
+}
+
+.input:focus {
+  outline: 2px solid #087ea4;
+  outline-offset: -1px;
+}
+
+.addButton {
+  font: inherit;
+  font-weight: 600;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 10px;
+  background: #087ea4;
+  color: #fff;
+  cursor: pointer;
+}
+
+.addButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.filter {
+  font: inherit;
+  font-size: 13px;
+  padding: 4px 12px;
+  border: 1px solid #e3e6ec;
+  border-radius: 999px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.filterActive {
+  background: #23272f;
+  border-color: #23272f;
+  color: #fff;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 4px;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #087ea4;
+  cursor: pointer;
+}
+
+.text {
+  flex: 1;
+  font-size: 15px;
+  word-break: break-all;
+}
+
+.done .text {
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.editInput {
+  flex: 1;
+  font: inherit;
+  font-size: 15px;
+  padding: 4px 8px;
+  border: 1px solid #087ea4;
+  border-radius: 6px;
+}
+
+.actions {
+  display: flex;
+  gap: 4px;
+}
+
+.iconButton {
+  font: inherit;
+  font-size: 13px;
+  padding: 4px 8px;
+  border: 1px solid #e3e6ec;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.iconButton:hover {
+  border-color: #087ea4;
+  color: #087ea4;
+}
+
+.danger:hover {
+  border-color: #d9363e;
+  color: #d9363e;
+}
+
+.empty {
+  text-align: center;
+  color: #9ca3af;
+  padding: 28px 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e3e6ec;
+  font-size: 13px;
+  color: #5e687e;
+}

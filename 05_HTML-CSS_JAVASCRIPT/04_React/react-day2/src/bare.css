@@ -1,0 +1,125 @@
+:where(.bare) {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+}
+
+:where(.bare) h1,
+:where(.bare) h2,
+:where(.bare) h3,
+:where(.bare) h4 {
+  margin: 16px 0 8px;
+  line-height: 1.35;
+}
+
+:where(.bare) :where(h1, h2, h3, h4):where(:first-child) {
+  margin-top: 0;
+}
+
+:where(.bare) p {
+  margin: 6px 0;
+}
+
+:where(.bare) ul,
+:where(.bare) ol {
+  margin: 8px 0;
+  padding-left: 22px;
+}
+
+:where(.bare) li {
+  margin: 4px 0;
+}
+
+:where(.bare) small {
+  color: var(--muted);
+}
+
+:where(.bare) hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 16px 0;
+}
+
+:where(.bare) a {
+  color: var(--accent);
+}
+
+:where(.bare) article {
+  background: #fafbfc;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin: 10px 0;
+}
+
+:where(.bare) header,
+:where(.bare) footer {
+  margin: 8px 0;
+}
+
+:where(.bare) button {
+  font: inherit;
+  font-size: 14px;
+  padding: 6px 14px;
+  margin: 4px 6px 4px 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+}
+
+:where(.bare) button:where(:hover:not(:disabled)) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+:where(.bare) button:where(:disabled) {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+:where(.bare) input,
+:where(.bare) select,
+:where(.bare) textarea {
+  font: inherit;
+  font-size: 14px;
+  padding: 6px 10px;
+  margin: 4px 6px 4px 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+:where(.bare) input:where([type='checkbox'], [type='radio']) {
+  margin: 0 6px 0 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+:where(.bare) :where(input, select, textarea):where(:focus) {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+:where(.bare) label {
+  margin-right: 8px;
+}
+
+:where(.bare) table {
+  border-collapse: collapse;
+  font-size: 14px;
+  margin: 8px 0;
+}
+
+:where(.bare) th,
+:where(.bare) td {
+  border: 1px solid var(--line);
+  padding: 6px 12px;
+  text-align: left;
+}
+
+:where(.bare) th {
+  background: #f0f3f7;
+}
